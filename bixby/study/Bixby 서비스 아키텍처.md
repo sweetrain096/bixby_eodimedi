@@ -1,5 +1,4 @@
 ## 01 Bixby Capsule개발 기본개념
-
 ### 1. 음성 인식과 자연어 이해
 
 * ASR(Automatic Speech Recognition) : 발화를 문자로 변환하는 기술
@@ -59,7 +58,7 @@
 4. 트레이닝
 
    * 발화 Training : Capsule이 잘 동작하도록 처리할 수 있는 발화를 생성하고 자연어 트레이닝(NL Training)을진행
-   * Debugging : 개발한 캡슐이 구현한대로 동작하는지 확인
+* Debugging : 개발한 캡슐이 구현한대로 동작하는지 확인
 
 ## 02 Bixby Capsule 개발 기본 개념
 
