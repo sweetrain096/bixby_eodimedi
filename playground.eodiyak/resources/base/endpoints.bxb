@@ -12,5 +12,9 @@ endpoints {
     //     method (__HTTP_METHOD_USED__)
     //   }
     // }
+    action-endpoint (GetCurrentPosition){
+      accepted-inputs (point)
+      local-endpoint ("getCurrentPosition.js")
+    }
   }
 }
