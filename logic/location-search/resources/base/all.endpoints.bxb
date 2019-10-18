@@ -1,0 +1,13 @@
+endpoints {
+
+  action-endpoints {
+    action-endpoint (FindRideShare) {
+      accepted-inputs (sourcePoint, destinationPoint)
+      local-endpoint (FindRideShare.js)
+    }
+    action-endpoint (ConstructDestination) {
+      accepted-inputs (business)
+      local-endpoint (constructDestination.js)
+    }
+  }
+}
