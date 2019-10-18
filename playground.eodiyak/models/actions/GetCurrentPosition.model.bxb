@@ -1,0 +1,20 @@
+action (GetCurrentPosition) {
+  description (__DESCRIPTION__)
+  type(Search)
+  collect {
+    input (point) {
+      min (Required) max (One)
+      type (geo.GeoPoint)
+
+      default-init{
+        if ($user.currentLocation.$exists){
+          intent{
+            goal: geo.GeoPoint
+            value-set: geo.CurrentLocation { $expr($user.currentLocation)}
+          }
+        }
+      }
+    }
+  }
+  output (MyPosition)
+}

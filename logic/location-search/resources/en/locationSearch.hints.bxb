@@ -1,0 +1,7 @@
+hints {
+  uncategorized {
+    hint ("In Location Search Sample Capsule, search for a ride")
+    hint ("In Location Search Sample Capsule, get me a ride")
+    hint ("In Location Search Sample Capsule, find a ride")
+  }
+}

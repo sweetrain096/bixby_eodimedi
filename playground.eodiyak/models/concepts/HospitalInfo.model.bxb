@@ -1,0 +1,15 @@
+structure (HospitalInfo) {
+	description (병원의 정보들)
+	property (name) {
+		type (HospitalNames)
+		min (Required) max (One)
+	}
+	property (addr) {
+		type (DutyAddr)
+		min (Optional) max (One)
+	}
+	property (dutytel) {
+		type (DutyTel)
+		min (Optional) max (One)
+	}
+}
