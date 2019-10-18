@@ -1,13 +1,11 @@
 result-view {
-	match {
-		NearHospitalList (this)
-	}
+	match : NearHospitalList (this)
 	
 	message {
 		if (size(this) == 0) {
-			template ("#{event(this, 'NoResult')}")
+			template ("가까운 병원입니다")
 		} else {
-			template ("#{event(this, 'Result')}")
+			template ("가까운 병원 목록입니다")
 		}
 	}
 	
@@ -20,9 +18,12 @@ result-view {
 			}
 		} else {
 			list-of (this) {
+				has-details (true)
 				where-each (item) {
-					layout-match (item) {
-						mode (Summary)
+					layout-macro (NearResultSum){
+						param (resultsum) {
+							expression(item)
+						}
 					}
 				}
 			}
