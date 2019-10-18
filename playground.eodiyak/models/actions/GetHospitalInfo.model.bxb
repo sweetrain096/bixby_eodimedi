@@ -1,0 +1,18 @@
+action (GetHospitalInfo) {
+  description (병원 정보를 찾는다.)
+  type(Search)
+  collect {
+    input (hpId) {
+      type (HpID)
+      min (Required) max (One)
+      default-init{
+        intent{
+          goal: SelectHospital
+        }
+      }
+    }
+    // hpId, hpName, hpTel, hpAddr, hpEndTime
+
+  }
+  output (HospitalInfo)
+}
