@@ -1,0 +1,4 @@
+structure (Navigate) {
+  role-of (navigation.Navigate) // navigation.Navigate 부분에서
+  // navigation은 import 할떄 as로 설정해준 이름을 사용하면 된다.
+}
