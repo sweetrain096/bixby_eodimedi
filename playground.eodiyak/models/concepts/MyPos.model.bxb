@@ -1,0 +1,4 @@
+structure (MyPos) {
+  description (내 위치를 가져오는 geo 라이브러리)
+  role-of (geo.CurrentLocation)
+}

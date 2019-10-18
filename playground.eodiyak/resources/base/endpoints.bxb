@@ -12,5 +12,13 @@ endpoints {
     //     method (__HTTP_METHOD_USED__)
     //   }
     // }
+    action-endpoint (GetCurrentPosition){
+      accepted-inputs (point)
+      local-endpoint ("getCurrentPosition.js")
+    }
+    action-endpoint (GetHospitalList){
+      accepted-inputs (position, hospitalLists)
+      local-endpoint ("getHospitalList.js")
+    }
   }
 }

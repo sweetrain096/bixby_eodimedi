@@ -3,11 +3,22 @@ capsule {
   version (0.1.0)
   format (3)
   targets {
-    target (bixby-mobile-en-US)
+    target (bixby-mobile-ko-KR)
   }
   runtime-flags {
     concepts-inherit-super-type-features
     modern-prompt-rejection
     support-halt-effect-in-computed-inputs
+  }
+  capsule-imports{
+    import(viv.geo){
+      as(geo)
+      version(9.21.0)
+    }
+
+  }
+  // 사용자의 정보를 얻기 위한 permissions(위치 등)
+  permissions{
+    user-profile-access
   }
 }

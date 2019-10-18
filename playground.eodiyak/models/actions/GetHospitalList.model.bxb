@@ -1,0 +1,25 @@
+action (GetHospitalList) {
+  description (주변 병원 목록을 가져온다.)
+  type(Search)
+
+  collect {
+    computed-input (position){  // 현재 위치 찾기
+      type(MyPosition)          // MyPosition concept
+      min (Required) max (One)  // 내 위치는 하나. 꼭 필요함
+      compute{
+        intent{
+          goal: MyPosition          // 내 위치 출력
+          route: GetCurrentPosition // GetCurrentPosition action 사용
+        }
+      }
+    }
+
+    input(hospitalLists){
+      type(HospitalNames)
+      min (Optional) max (Many)
+    }
+  }
+
+
+  output (HospitalNames)
+}
