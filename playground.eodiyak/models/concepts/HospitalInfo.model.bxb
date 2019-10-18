@@ -1,7 +1,7 @@
 structure (HospitalInfo) {
 	description (병원의 정보들)
 	property (name) {
-		type (HospitalNames)
+		type (DutyName)
 		min (Required) max (One)
 	}
 	property (addr) {
@@ -9,7 +9,11 @@ structure (HospitalInfo) {
 		min (Optional) max (One)
 	}
 	property (dutytel) {
-		type (DutyTel)
+		type (DutyTel1)
+		min (Optional) max (One)
+	}
+	property (endtime) {			// 병원 마감시간
+		type (EndTime)
 		min (Optional) max (One)
 	}
 }

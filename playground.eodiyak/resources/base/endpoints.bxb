@@ -20,5 +20,13 @@ endpoints {
       accepted-inputs (position, hospitalLists, hpId)
       local-endpoint ("getHospitalList.js")
     }
+    action-endpoint (SelectHospital){
+      accepted-inputs (hospital)
+      local-endpoint ("selectHospital.js")
+    }
+    action-endpoint (GetHospitalInfo){
+      accepted-inputs (hpId)
+      local-endpoint ("getHospitalInfo.js")
+    }
   }
 }

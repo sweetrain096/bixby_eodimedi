@@ -7,14 +7,11 @@ var num = 5
 
 module.exports.function = function getHospitalList (position, hospitalLists, hpId) {
   const console = require("console")
-  let listName, listId
   let results = new Array
     
     // position['myPos']['latitude'] // 위도 
     // position['myPos']['longitude'] // 경도
 
-  listName = ['A병원', 'B병원', 'C병원']
-  listId = [123, 124, 125]
   
 
   var url = EndPoint + Operation 
