@@ -15,7 +15,7 @@ action (GetHospitalList) {
     }
 
     input(hospitalLists){
-      type(HospitalNames)
+      type(DutyName)
       min (Optional) max (Many)
     }
     input(hpId){
