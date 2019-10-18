@@ -235,5 +235,3 @@
 * Fail : Runtime 에러 exception을 핸들링
 * http : http request를 위한 함수 제공
 * Secret : Capsule의 secrets를 가져옴
-
-### 
