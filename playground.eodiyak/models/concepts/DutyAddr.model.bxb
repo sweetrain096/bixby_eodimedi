@@ -1,0 +1,3 @@
+text (DutyAddr) {
+  description (병원 주소)
+}

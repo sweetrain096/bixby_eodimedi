@@ -1,0 +1,3 @@
+integer (HpID) {
+  description (병원 고유 아이디)
+}

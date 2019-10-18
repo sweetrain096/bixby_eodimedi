@@ -18,8 +18,12 @@ action (GetHospitalList) {
       type(HospitalNames)
       min (Optional) max (Many)
     }
+    input(hpId){
+      type(HpID)
+      min (Optional) max (Many)
+    }
   }
 
 
-  output (HospitalNames)
+  output (NearHospitalList)
 }
