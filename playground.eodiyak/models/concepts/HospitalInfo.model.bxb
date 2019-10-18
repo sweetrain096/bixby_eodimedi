@@ -12,4 +12,8 @@ structure (HospitalInfo) {
 		type (DutyTel1)
 		min (Optional) max (One)
 	}
+	property (endtime) {			// 병원 마감시간
+		type (EndTime)
+		min (Optional) max (One)
+	}
 }
