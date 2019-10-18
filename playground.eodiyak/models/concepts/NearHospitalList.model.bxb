@@ -1,15 +1,15 @@
 structure (NearHospitalList) {
   description (근처 병원 리스트)
   property (dutyName) { /// 
-    type (HospitalNames)
+    type (DutyName)
     min (Required) max (Many)
   }
   property (distance) {
-    type (HospitalDistance)
+    type (Distance)
     min (Required) max (Many)
   }
   property (dutyDivName) {
-    type (HospitalDiv)
+    type (DutyDivName)
     min (Required) max (Many)
   }
   property (hpid) {
@@ -17,7 +17,7 @@ structure (NearHospitalList) {
     min (Required) max (Many)
   }
   property (dutyTel1) {
-    type (DutyTel)
+    type (DutyTel1)
     min (Required) max (Many)
   }
   property (startTime) {
