@@ -1,0 +1,5 @@
+train (t-ky5i96y5772y8go29klnd0gxq) {
+  utterance ([g:HospitalNames] 가까운 병원 알려줘)
+  plan (Y2BkUCjISaxML8ovzUvRS81PyaxMzNbzyC8uyCxJzPFLzE0tZgABRhABAA==)
+  last-modified (1571360854375)
+}
