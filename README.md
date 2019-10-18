@@ -61,3 +61,17 @@
 + 빅스비 plan 및 UI 구현
   + 박성민, 박성주, 이민지
 
+
+
+
+
+## 5. 회의 구상 내용
+
+![readme_01](img/readme_01.jpg)
+
+![readme_02](img/readme_02.jpg)
+
+![readme_03](img/readme_03.jpg)
+
+![readme_04](img/readme_04.jpg)
+
