@@ -10,13 +10,6 @@ module.exports.function = function getHospitalList (position, hospitalLists, hpI
   let listName, listId
   let results = new Array
     
-    // position['myPos']['latitude'] // 위도 
-    // position['myPos']['longitude'] // 경도
-
-  listName = ['A병원', 'B병원', 'C병원']
-  listId = [123, 124, 125]
-  
-
   var url = EndPoint + Operation 
   + "?ServiceKey= " + ServiceKey 
   + "&WGS84_LON=" + position['myPos']['longitude']
@@ -39,8 +32,8 @@ module.exports.function = function getHospitalList (position, hospitalLists, hpI
     info['dutyTel1'] = item[i].dutyTel1
     info['endTime'] = item[i].endTime
     info['startTime'] = item[i].startTime
-    res.push(info)
+    results.push(info)
   }
 
-  return res
+  return results
 }

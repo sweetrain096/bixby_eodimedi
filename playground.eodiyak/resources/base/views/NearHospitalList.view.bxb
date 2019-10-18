@@ -1,0 +1,31 @@
+result-view {
+	match {
+		NearHospitalList (this)
+	}
+	
+	message {
+		if (size(this) == 0) {
+			template ("#{event(this, 'NoResult')}")
+		} else {
+			template ("#{event(this, 'Result')}")
+		}
+	}
+	
+	render {
+		if (size(this) == 0) {
+			nothing
+		} else-if (size(this) == 1) {
+			layout-match(this) {
+				mode (Details)
+			}
+		} else {
+			list-of (this) {
+				where-each (item) {
+					layout-match (item) {
+						mode (Summary)
+					}
+				}
+			}
+		}
+	}
+}

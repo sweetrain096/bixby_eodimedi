@@ -1,0 +1,35 @@
+// layout {
+//   match: NearHospitalList (this)
+//   mode (Summary)
+
+//   content {
+//     section {
+//       content {
+//         paragraph {
+//           value ("#{value(this)}")
+//           style (Title_L)
+//         }
+//       }
+//     }
+//   }
+// }
+
+layout-macro-def (this) {
+	params {
+		param (this) {
+			type (NearHospitalList)
+		}
+	}
+	content {
+		section {
+			content {
+				single-line {
+					text {
+						style (Detail_M)
+						value (this)
+					}
+				}
+			}
+		}
+	}
+}
