@@ -22,7 +22,6 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
 
   var item = details.response.body.items.item
 
-  var res = "true,false,true,false"
   var dgidldList = new Array();
   for(var i=0; i<treatmentList.length; i++){
     if(item.dgidIdName.includes(treatmentList[i])){
