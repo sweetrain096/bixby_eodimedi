@@ -19,6 +19,7 @@ module.exports.function = function getHospitalList (position) {
   var item = hList.response.body.items.item
 
   let results = new Array
+
   if (item.dutyName) {
       let info = {}
       info['dutyName'] = item.dutyName
@@ -37,8 +38,17 @@ module.exports.function = function getHospitalList (position) {
       info['dutyDivName'] = item[i].dutyDivName
       info['hpid'] = item[i].hpid
       info['dutyTel1'] = item[i].dutyTel1
-      info['endTime'] = item[i].endTime
-      info['startTime'] = item[i].startTime
+      
+    var stime = item[i].startTime.substring(0,2) + ":" + item[i].startTime.substring(2,4)
+    var etime = item[i].endTime.substring(0,2) + ":" + item[i].endTime.substring(2,4)
+    if (stime.charAt(0)==0 && stime.charAt(1)!=0){
+      stime = stime.substring(1,5)
+    }
+    if(etime.charAt(0)==0 && etime.charAt(1)!=0){
+      etime = etime.substr(1,5)
+    }
+    info['endTime'] = etime
+    info['startTime'] = stime
       results.push(info)
     }
   }
