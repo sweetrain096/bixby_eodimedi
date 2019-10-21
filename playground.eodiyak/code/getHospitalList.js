@@ -13,7 +13,7 @@ module.exports.function = function getHospitalList (position, hospitalLists, hpI
     // position['myPos']['longitude'] // 경도
 
   var url = EndPoint + Operation 
-  + "?ServiceKey= " + ServiceKey 
+  + "?ServiceKey=" + ServiceKey 
   + "&WGS84_LON=" + position['myPos']['longitude']
   + "&WGS84_LAT=" + position['myPos']['latitude']
   + "&pageNo=" + pageNo
@@ -28,14 +28,25 @@ module.exports.function = function getHospitalList (position, hospitalLists, hpI
 
   res = []
   for(i in item){
+    console.log(item[i])
     let info = {}
     info['dutyName'] = item[i].dutyName
     info['distance'] = item[i].distance
     info['dutyDivName'] = item[i].dutyDivName
     info['hpid'] = item[i].hpid
     info['dutyTel1'] = item[i].dutyTel1
-    info['endTime'] = item[i].endTime
-    info['startTime'] = item[i].startTime
+    
+    var stime = item[i].startTime.substring(0,2) + ":" + item[i].startTime.substring(2,4)
+    var etime = item[i].endTime.substring(0,2) + ":" + item[i].endTime.substring(2,4)
+    if (stime.charAt(0)==0 && stime.charAt(1)!=0){
+      stime = stime.substring(1,5)
+    }
+    if(etime.charAt(0)==0 && etime.charAt(1)!=0){
+      etime = etime.substr(1,5)
+    }
+    info['endTime'] = etime
+    info['startTime'] = stime
+    info['hyotest'] = "this is test!"
     results.push(info)
   }
 
