@@ -1,4 +1,4 @@
-action (GetHospitalList) {
+ action (GetHospitalList) {
   description (주변 병원 목록을 가져온다.)
   type(Constructor)
 

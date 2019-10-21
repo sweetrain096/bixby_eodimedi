@@ -15,7 +15,10 @@ capsule {
       as(geo)
       version(9.21.0)
     }
-
+    import (viv.entity) {
+      as (entity)
+      version (3.19.8)
+    }
   }
   // 사용자의 정보를 얻기 위한 permissions(위치 등)
   permissions{
