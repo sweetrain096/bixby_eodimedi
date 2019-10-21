@@ -12,12 +12,12 @@ var treatmentList = new Array(
   "가정의학과","핵의학과","응급의학과","치과","구강악안면외과"
 )
 
-module.exports.function = function getHospitalInfo (hpId) {
+module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentPosition) {
   const console = require("console")
   
   var url = EndPoint + Operation 
   + "?ServiceKey=" + ServiceKey 
-  + "&HPID=" + hpId
+  + "&HPID=" + hospitalSummaryInfo.hpId
   var details = http.getUrl(url,{format: 'xmljs'})
 
   var item = details.response.body.items.item
@@ -31,18 +31,17 @@ module.exports.function = function getHospitalInfo (hpId) {
         dgidldList[i] = false
     }
   }
-  
 
   let info = {}
   info['wgs84Lat'] = item.wgs84Lat
   info['wgs84Lon'] = item.wgs84Lon
   info['dutyAddr'] = item.dutyAddr
   info['dutyName'] = item.dutyName
-  info['dgidIdName'] = dgidldList
+  info['dgidIdName'] = true
   info['dutyTel1'] = item.dutyTel1
-  // info['startTime'] = startTime
-  // info['endTime'] = endTime
-
+  info['startTime'] = hospitalSummaryInfo.startTime
+  info['endTime'] = hospitalSummaryInfo.endTime
+  info['currentPosition'] = currentPosition
 
   return info
 }

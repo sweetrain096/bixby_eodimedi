@@ -31,13 +31,18 @@ structure (HospitalInfo) {
 		min (Required) max (One)
 	}
 
-	// property (startTime) {			// 병원 마감시간
-	// 	type (StartTime)
-	// 	min (Required) max (One)
-	// }
+	property (startTime) {			// 병원 마감시간
+		type (StartTime)
+		min (Required) max (One)
+	}
 
-	// property (endtime) {			// 병원 마감시간
-	// 	type (EndTime)
-	// 	min (Required) max (One)
-	// }
+	property (endTime) {			// 병원 마감시간
+		type (EndTime)
+		min (Required) max (One)
+	}
+
+	property (currentPosition) {
+		type (MyPos)
+		min (Required) max (One)
+	}
 }
