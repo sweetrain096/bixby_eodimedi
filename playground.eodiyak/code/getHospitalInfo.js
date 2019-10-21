@@ -1,10 +1,12 @@
-module.exports.function = function getHospitalInfo (hpId) {
+module.exports.function = function getHospitalInfo (hospitalSummaryInfo, currentPosition) {
+  const console = require("console")
+  console.log(hospitalSummaryInfo)
   let name, tel, addr, endtime;
   let result = {}
   name = "A병원"
   tel = "032-111-1111"
   addr = "대전 유성구 어쩌구저쩌구"
-  endtime = "0630"
+  endtime = hospitalSummaryInfo.endTime
 
   result['name'] = name
   result['addr'] = addr

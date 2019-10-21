@@ -1,7 +1,7 @@
 var http = require('http')
 var EndPoint = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/"
 var Operation = "getHsptlMdcncLcinfoInqire"
-var ServiceKey = "nw2RgjbfShJMzZ05sLGUzWEasNUweUuRNuA6YHyEvNHn9b3Ahc9rp8VMOKYbPW5qb%2FKqQ0eP1imWvPWKnjJ9Zw%3D%3D"
+var ServiceKey = "gn5ejsq90TNNHM0RqAPfZLH3CqbsjglfdEtVcxywRr3WPeqGRCthdzAmebLE4s25J1iQoVNtAnKxDm7JGpOMVA%3D%3D"
 var pageNo = 1
 var num = 5
 
