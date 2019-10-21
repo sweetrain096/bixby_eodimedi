@@ -1,6 +1,6 @@
 action (GetHospitalList) {
   description (주변 병원 목록을 가져온다.)
-  type(Search)
+  type(Constructor)
 
   collect {
     computed-input (position){  // 현재 위치 찾기

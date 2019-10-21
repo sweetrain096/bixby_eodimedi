@@ -1,0 +1,5 @@
+train (t-12e8x9qygm1r7d9lf7pohe71i) {
+  utterance ([g:HospitalInfo] 첫번째 보여줘)
+  plan (Y2BkkC/ISaxML8ovzUvRS81PyaxMzNbzyC8uyCxJzPHMS8tnAAFGEAEA)
+  last-modified (1571380484103)
+}

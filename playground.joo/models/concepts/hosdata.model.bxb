@@ -1,0 +1,11 @@
+structure (hosdata) {
+  description (__DESCRIPTION__)
+  property (hosnumber) {
+    type (hosnumber)
+    min (Required) max (One)
+  }
+  property (hosname) {
+    type (hosname)
+    min (Required) max (One)
+  }
+}

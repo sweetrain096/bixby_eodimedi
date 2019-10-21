@@ -1,0 +1,61 @@
+layout-macro-def (NearResultSum) {
+	params {
+		param (resultsum) {
+			type (NearHospitalList)
+			min (Required) max (One)
+		}
+	}
+	content {
+		cell-card {
+			slot1 {
+
+			}
+			slot2 {
+				content {
+					primary ("#{value(resultsum.dutyName)}")
+					// secondary ("#{value(resultsum.dutyDivName)} / #{value(resultsum.distance)} km")
+					secondary ("#{value(resultsum.dutyDivName)} / #{value(resultsum.startTime)} ~ #{value(resultsum.endTime)}")
+					// secondary ("#{value(resultsum.startTime)} ~ #{value(resultsum.endTime)} / #{value(resultsum.dutyDivName)}")
+					// secondary ("#{value(resultsum.dutyDivName)} / #{value(resultsum.distance)} km")
+				}
+			}
+			slot3 {
+				label {
+					valign (Middle)
+					value {
+						template ("#{value(resultsum.distance)} km")
+						// template ("#{value(resultsum.startTime)} ~ #{value(resultsum.endTime)}")
+						// template ("#{value(resultsum.startTime)} ~ #{value(resultsum.endTime)}")
+					}
+				}
+			}
+			
+		}
+		// title-card {
+		// 	title-area {
+		// 		halign (Start)
+		// 		slot1 {
+		// 			text {
+		// 				value {
+		// 					template ("#{value(resultsum.dutyName)}")
+		// 				}
+		// 			}
+		// 		}
+		// 		slot2 {
+		// 			paragraph {
+		// 				value {
+		// 					template ("#{value(resultsum.dutyDivName)}")
+		// 				}
+		// 			}
+		// 		}
+		// 		slot3 {
+		// 			paragraph {
+		// 				value {
+		// 					template ("#{value(resultsum.startTime)}~#{value(resultsum.endTime)}")
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// }
+	}
+}
