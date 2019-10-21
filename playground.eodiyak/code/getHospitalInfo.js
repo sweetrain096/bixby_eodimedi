@@ -36,7 +36,7 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
   info['wgs84Lon'] = item.wgs84Lon
   info['dutyAddr'] = item.dutyAddr
   info['dutyName'] = item.dutyName
-  info['dgidIdName'] = true
+  info['dgidIdName'] = dgidldList
   info['dutyTel1'] = item.dutyTel1
   info['startTime'] = hospitalSummaryInfo.startTime
   info['endTime'] = hospitalSummaryInfo.endTime
@@ -44,3 +44,4 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
 
   return info
 }
+
