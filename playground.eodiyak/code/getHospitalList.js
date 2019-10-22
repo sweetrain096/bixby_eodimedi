@@ -39,6 +39,7 @@ module.exports.function = function getHospitalList (position, baby) {
       info['dutyTel1'] = item.dutyTel1
       info['endTime'] = item.endTime
       info['startTime'] = item.startTime
+      
       results.push(info)
   } else {
     for(i in item){
@@ -49,16 +50,17 @@ module.exports.function = function getHospitalList (position, baby) {
       info['hpid'] = item[i].hpid
       info['dutyTel1'] = item[i].dutyTel1
       
-    var stime = item[i].startTime.substring(0,2) + ":" + item[i].startTime.substring(2,4)
-    var etime = item[i].endTime.substring(0,2) + ":" + item[i].endTime.substring(2,4)
-    if (stime.charAt(0)==0 && stime.charAt(1)!=0){
-      stime = stime.substring(1,5)
-    }
-    if(etime.charAt(0)==0 && etime.charAt(1)!=0){
-      etime = etime.substr(1,5)
-    }
-    info['endTime'] = etime
-    info['startTime'] = stime
+      
+      var stime = item[i].startTime.substring(0,2) + ":" + item[i].startTime.substring(2,4)
+      var etime = item[i].endTime.substring(0,2) + ":" + item[i].endTime.substring(2,4)
+      if (stime.charAt(0)==0 && stime.charAt(1)!=0){
+        stime = stime.substring(1,5)
+      }
+      if(etime.charAt(0)==0 && etime.charAt(1)!=0){
+        etime = etime.substr(1,5)
+      }
+      info['endTime'] = etime
+      info['startTime'] = stime
       results.push(info)
     }
   }
