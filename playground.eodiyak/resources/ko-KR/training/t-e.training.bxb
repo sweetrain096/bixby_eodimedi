@@ -1,5 +1,5 @@
 train (t-e1cu10o8er208sebodhemzoes) {
   utterance ([g:GetPharmacyInfo] 가까운 약국 알려줘)
   plan (Y2BhkC/ISaxML8ovzUvRS81PyaxMzNYLyEgsyk1MrvTMS8tnUMKiwD21BEWNBBY1vpUB+cUManiMDy7NzU0sgpjAzMDIwAQkGYA0CEIAmAUA)
-  last-modified (1571714040670)
+  last-modified (1571733055645)
 }

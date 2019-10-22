@@ -32,6 +32,7 @@ module.exports.function = function getPharmacyInfo (pharmacySummaryInfo,currentP
     info['pStartTime'] = pharmacySummaryInfo.pStartTime
     info['pEndTime'] = pharmacySummaryInfo.pEndTime
     info['currentPosition'] = currentPosition
+    info['purl'] = 'https://search.naver.com/search.naver?query=' + info['pDutyName']
 
     return info
 }

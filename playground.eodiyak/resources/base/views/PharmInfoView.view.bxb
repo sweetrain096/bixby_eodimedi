@@ -1,0 +1,18 @@
+result-view {
+  match : PharmacyInfo (this)
+    /// concepts의 HospitalInfo에서 정의된 것 매치
+  
+  message {
+    template ("선택하신 약국의 정보입니다.")
+  }
+
+  render {
+    layout {
+      layout-macro (PharmInfoDetail) {
+        param (detail) {
+          expression (this)
+        }
+      }
+    }
+	}
+}

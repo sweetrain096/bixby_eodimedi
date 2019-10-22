@@ -1,5 +1,5 @@
 train (t-lkkjfrsu6y6jyt358k2f0eisa) {
   utterance ("[g:GetHospitalInfo] {[g:Baby] (달빛 병원)[v:Baby:true]} 알려줘")
   plan (Y+BkkC/ISaxML8ovzUvRS81PyaxMzNbzyC8uyCxJzPHMS8tnUMKiwD21BEWNGh5DgktzcxOLKsHqJLCo860MyC9mUMQiE5yak5oMt4hBGYsSv9TEIpgCn8ziEkKuBasRx6LGKTGpErcEBwMjAxMDMwMLAysDGwM7kM8AFAGJwUQYGRjAYhDMA8TMQBY7WCc7AA==)
-  last-modified (1571723537607)
+  last-modified (1571733061362)
 }
