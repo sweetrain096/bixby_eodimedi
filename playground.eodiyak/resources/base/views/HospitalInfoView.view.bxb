@@ -1,0 +1,56 @@
+result-view {
+  match : HospitalInfo (this) 
+    /// concepts의 HospitalInfo에서 정의된 것 매치
+  
+  message {
+    template ("선택하신 병원의 정보입니다.")
+  }
+
+  render {
+    layout {
+      section {
+        content {
+          divider
+          paragraph {
+              value ("#{value(this.dutyName)}")
+              style (Title_S)
+          }
+          map-card{
+          // aspect-ratio(1:1)
+          aspect-ratio(4:3)
+           markers{
+             marker{
+              geo(this.point)
+              width(25)
+              height(25)
+              anchor-x(5)
+              anchor-y(15)
+              rotation(0)
+            }
+           }
+           title-area{
+             slot1{
+               text{
+                 value()
+               }
+             }
+           }
+         }
+         paragraph {
+              value ("#{value(this.dutyAddr)}")
+              style (Title_S)
+          }
+          paragraph {
+              value ("#{value(this.startTime)} ~ #{value(this.endTime)}")
+              style (Title_S)
+          }
+          
+          paragraph {
+              value ("#{value(this.dutyTel1)}")
+              style (Title_S)
+          }
+        }
+      }
+    }
+  }
+}
