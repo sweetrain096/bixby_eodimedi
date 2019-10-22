@@ -14,6 +14,32 @@ result-view {
               value ("#{value(this.dutyName)}")
               style (Title_S)
           }
+
+          if(this.dutyTel1 != ''){
+            cell-card {
+
+              slot1 {
+                  image {
+                      url (/images/telephone.png)
+                      shape (Square)
+                      // background-color (White)
+                  }
+              }
+
+              slot2 {
+                content{
+                   primary("#{value(this.dutyTel1)}")
+                }
+              }
+              on-click {
+                intent {
+                  goal: OpenBrowser
+                  value: $expr(this.dutyTel1)
+                }
+              }
+            }
+          }
+
           map-card{
           // aspect-ratio(1:1)
           aspect-ratio(4:3)
@@ -48,13 +74,30 @@ result-view {
           //     value ("#{value(this.dutyTel1)}")
           //     style (Title_S)
           // }
-          divider
-          attribution-link {
-            label {
-                template ("#{value(this.dutyTel1)}")
-            }
-            url ("#{value(this.url)}")
-          }
+
+          // divider
+          // attribution-link {
+          //   label {
+          //       template ("#{value(this.dutyTel1)}")
+          //   }
+          //   url ("#{value(this.url)}")
+          // }
+
+        // cell-card {
+        //   slot2 {
+        //     content{
+        //       primary("네이버에서 검색")
+        //       secondary("#{value(this.url)}")
+        //     }
+        //   }
+        //   on-click {
+        //     intent {
+        //       goal: OpenBrowser
+        //       value: $expr(this.url)
+        //     }
+        //   }
+        // }    
+
         }
       }
     }
