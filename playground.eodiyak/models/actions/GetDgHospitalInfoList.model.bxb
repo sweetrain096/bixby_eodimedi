@@ -15,6 +15,10 @@ action (GetDgHospitalInfoList){
       type(DgName)
       min (Required) max (One)
     }
+    input(currentPosition){
+      type(MyPos)
+      min (Required) max (One)
+    }
   }
-  output (HospitalInfo)
+  output (DgHospitalInfoListStructure)
 }
