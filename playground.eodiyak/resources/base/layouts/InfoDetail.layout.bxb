@@ -65,36 +65,36 @@ layout-macro-def (InfoDetail) {
         paragraph {
             value ("운영시간 : #{value(detail.startTime)} ~ #{value(detail.endTime)}")
         }
-        // for-each (detail.dgidIdName) {
-        //   as (dgId) {
-        //     if ("dgId.IsInclude == true") {
-        //       hbox {
-        //         content {
-        //           vbox {
-        //             content {
-        //               text {
-        //                 value ("#{value(dgid.DgIdName)}")
-        //                 color (Green)
-        //               }
-        //             }
-        //           }
-        //         }
-        //       }
-        //     } else-if ("dgId.IsInclude == false") {
-        //       hbox {
-        //         content {
-        //           vbox {
-        //             content {
-        //               text {
-        //                 value ("#{value(dgid.DgIdName = false)}")
-        //               }
-        //             }
-        //           }
-        //         }
-        //       }
-        //     }
-        //   }
-        // }
+        for-each (detail.dgidIdName) {
+          as (dgId) {
+            if ("dgId.isInclude == true") {
+              hbox {
+                content {
+                  vbox {
+                    content {
+                      text {
+                        value ("#{value(dgId.dgIdName)}")
+                        color (Green)
+                      }
+                    }
+                  }
+                }
+              }
+            } else-if ("dgId.isInclude == false") {
+              hbox {
+                content {
+                  vbox {
+                    content {
+                      text {
+                        value ("#{value(dgId.dgIdName)}")
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
