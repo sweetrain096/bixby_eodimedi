@@ -1,7 +1,8 @@
-module.exports.function = function getDgHospitalInfo () {
+module.exports.function = function getDgHospitalInfo (hospital) {
   const console = require("console")
-  
 
-  return info
+  console.log(hospital)
+
+  return hospital
 }
 
