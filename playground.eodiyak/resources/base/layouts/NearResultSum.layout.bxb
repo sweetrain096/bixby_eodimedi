@@ -7,9 +7,6 @@ layout-macro-def (NearResultSum) {
 	}
 	content {
 		cell-card {
-			slot1 {
-
-			}
 			slot2 {
 				content {
 					primary ("#{value(resultsum.dutyName)}")
