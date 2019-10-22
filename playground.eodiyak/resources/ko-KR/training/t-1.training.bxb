@@ -1,0 +1,5 @@
+train (t-12e8x9qygm1r7d9lf7pohe71i) {
+  utterance ("[g:GetHospitalInfo:continue:NearHospitalList] (첫번째)[v:entity.Ordinal:1] 보여줘")
+  plan (Y2BlkC/ISaxML8ovzUvRS81PyaxMzNbzyC8uyCxJzPHMS8tnUMKiwD21BEWNGh5DgktzcxOLKsHqJLCo860MyC9mECrLLNNLzSvJLKnU8y9KycxLzGFgZmBkYAKSDEAaBCGACchiYWAAAA==)
+  last-modified (1571634095131)
+}

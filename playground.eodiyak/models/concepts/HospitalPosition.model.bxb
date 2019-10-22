@@ -1,0 +1,11 @@
+structure (HospitalPosition) {
+  description (__DESCRIPTION__)
+  property (wgs84Lat) {
+    type (Wgs84Lat)
+    min (Optional) max (One)
+  }
+  property (wgs84Lon) {
+    type (Wgs84Lon)
+    min (Optional) max (One)
+  }
+}

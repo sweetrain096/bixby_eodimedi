@@ -29,4 +29,12 @@ result-view {
 			}
 		}
 	}
+	conversation-drivers {
+		conversation-driver {
+			if (size(this) == 1){
+				template ("전화 걸어줘")
+				
+			}
+		}
+	}
 }
