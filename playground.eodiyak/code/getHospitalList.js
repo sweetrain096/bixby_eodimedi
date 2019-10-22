@@ -5,8 +5,16 @@ var ServiceKey = "Z6lJuu3urgG5yS0Gsn67Vc7jF4RBEpoMneik3qshCxF%2FoQDSri4aC8TThqkn
 var pageNo = 1
 var num = 50
 
-module.exports.function = function getHospitalList (position) {
+module.exports.function = function getHospitalList (position, baby) {
   const console = require("console")
+  console.log(baby)
+  if (baby == true){
+    console.log("in")
+  }
+  let results = new Array
+    
+    // position['myPos']['latitude'] // 위도 
+    // position['myPos']['longitude'] // 경도
 
   var url = EndPoint + Operation 
   + "?ServiceKey=" + ServiceKey 
@@ -18,8 +26,6 @@ module.exports.function = function getHospitalList (position) {
   var hList = http.getUrl(url,{format: 'xmljs'})
   var item = hList.response.body.items.item
 
-  
-  let results = new Array
 
   if (item.dutyName) {
       let info = {}
