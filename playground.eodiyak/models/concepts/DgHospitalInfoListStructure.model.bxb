@@ -1,14 +1,43 @@
 structure (DgHospitalInfoListStructure) {
   description (병원 진료 목록 포함한 상세정보 list)
-  
-  // property (dgHospitalInfoList) {
-  //   type (DgHospitalInfoList)
-  //   min (Optional) max (Many)
-  // }
-  property(HospitalInfo){
-    type(HospitalInfo)
-    min(Optional)
-    max(Many)
-  }
-  
+
+	property(point) {
+		type(Hospoint)
+		min (Required) max (One)
+	}
+
+	property (dutyAddr) {
+		type (DutyAddr)
+		min (Required) max (One)
+	}
+
+	property (dutyName) {
+		type (DutyName)
+		min (Required) max (One)
+	}
+
+	property (dgidIdName) {
+		type (DgidIdName)
+		min (Required) max (Many)
+	}
+
+	property (dutyTel1) {
+		type (DutyTel1)
+		min (Required) max (One)
+	}
+
+	property (startTime) {			// 병원 마감시간
+		type (StartTime)
+		min (Required) max (One)
+	}
+
+	property (endTime) {			// 병원 마감시간
+		type (EndTime)
+		min (Required) max (One)
+	}
+
+	property (currentPosition) {
+		type (MyPos)
+		min (Required) max (One)
+	}
 }

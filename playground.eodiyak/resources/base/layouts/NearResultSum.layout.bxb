@@ -5,6 +5,11 @@ layout-macro-def (NearResultSum) {
 			min (Required) max (One)
 		}
 	}
+
+
+
+
+	
 	content {
 		cell-card {
 			slot2 {
@@ -16,7 +21,7 @@ layout-macro-def (NearResultSum) {
 					// secondary ("#{value(resultsum.dutyDivName)} / #{value(resultsum.distance)} km")
 				}
 			}
-
+			
 			slot3 {
 				label {
 					valign (Middle)
@@ -27,56 +32,6 @@ layout-macro-def (NearResultSum) {
 					}
 				}
 			}
-			on-click {
-				intent {
-					goal: CallPhoneNum
-					value: $expr(resultsum.dutyTel1)
-				}
-			}
 		}
-
-		if(resultsum.dutyTel1 != ''){
-			cell-card {
-				slot2 {
-					content{
-						primary("전화 걸기")
-						secondary("#{value(resultsum.dutyTel1)}")
-					}
-				}
-				on-click {
-					intent {
-						goal: CallPhoneNum
-						value: $expr(resultsum.dutyTel1)
-					}
-				}
-			}
-			
-		}
-		// title-card {
-		// 	title-area {
-		// 		halign (Start)
-		// 		slot1 {
-		// 			text {
-		// 				value {
-		// 					template ("#{value(resultsum.dutyName)}")
-		// 				}
-		// 			}
-		// 		}
-		// 		slot2 {
-		// 			paragraph {
-		// 				value {
-		// 					template ("#{value(resultsum.dutyDivName)}")
-		// 				}
-		// 			}
-		// 		}
-		// 		slot3 {
-		// 			paragraph {
-		// 				value {
-		// 					template ("#{value(resultsum.startTime)}~#{value(resultsum.endTime)}")
-		// 				}
-		// 			}
-		// 		}
-		// 	}
-		// }
 	}
 }

@@ -1,0 +1,41 @@
+
+result-view {
+	match : DgHospitalInfoListStructure (this)
+	
+	message {
+		if (size(this) == 0) {
+			template ("가까운 병원입니다")
+		} else {
+			template ("가까운 병원 목록입니다")
+		}
+	}
+	
+	render {
+		if (size(this) == 0) {
+			nothing
+		} else-if (size(this) == 1) {
+			layout-match(this) {
+				mode (Details)
+			}
+		} else {
+			list-of (this) {
+				has-details (true)
+				where-each (item) {
+					layout-macro (DgList){
+						param (resultsum) {
+							expression(item)
+						}
+					}
+				}
+			}
+		}
+	}
+	conversation-drivers {
+		conversation-driver {
+			if (size(this) == 1){
+				template ("전화 걸어줘")
+				
+			}
+		}
+	}
+}
