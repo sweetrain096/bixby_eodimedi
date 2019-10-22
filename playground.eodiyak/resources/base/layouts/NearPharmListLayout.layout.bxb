@@ -1,0 +1,27 @@
+layout-macro-def (NearPharmListLayout) {
+	params {
+		param (pharms) {
+			type (NearPharmacyList)
+			min (Required) max (One)
+		}
+	}
+	content {
+		cell-card {
+			slot2 {
+				content {
+					primary ("#{value(pharms.pDutyName)}")
+					secondary ("#{value(pharms.pStartTime)} ~ #{value(pharms.pEndTime)}")
+				}
+			}
+			
+			slot3 {
+				label {
+					valign (Middle)
+					value {
+						template ("#{value(pharms.pDistance)} km")
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,5 +1,5 @@
 train (t-ky5i96y5772y8go29klnd0gxq) {
   utterance ([g:GetHospitalInfo] 가까운 병원 알려줘)
   plan (Y2BhkC/ISaxML8ovzUvRS81PyaxMzNbzyC8uyCxJzPHMS8tnUMKiwD21BEWNGh5DgktzcxOLKsHqJLCo860MyC9mYGZgZGACkgxAGgQhAMwCAA==)
-  last-modified (1571718429343)
+  last-modified (1571733059701)
 }
