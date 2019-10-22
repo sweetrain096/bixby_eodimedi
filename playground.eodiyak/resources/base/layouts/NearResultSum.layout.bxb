@@ -5,6 +5,11 @@ layout-macro-def (NearResultSum) {
 			min (Required) max (One)
 		}
 	}
+
+
+
+
+	
 	content {
 		cell-card {
 			slot2 {
@@ -16,7 +21,7 @@ layout-macro-def (NearResultSum) {
 					// secondary ("#{value(resultsum.dutyDivName)} / #{value(resultsum.distance)} km")
 				}
 			}
-
+			
 			slot3 {
 				label {
 					valign (Middle)
@@ -28,31 +33,5 @@ layout-macro-def (NearResultSum) {
 				}
 			}
 		}
-		// title-card {
-		// 	title-area {
-		// 		halign (Start)
-		// 		slot1 {
-		// 			text {
-		// 				value {
-		// 					template ("#{value(resultsum.dutyName)}")
-		// 				}
-		// 			}
-		// 		}
-		// 		slot2 {
-		// 			paragraph {
-		// 				value {
-		// 					template ("#{value(resultsum.dutyDivName)}")
-		// 				}
-		// 			}
-		// 		}
-		// 		slot3 {
-		// 			paragraph {
-		// 				value {
-		// 					template ("#{value(resultsum.startTime)}~#{value(resultsum.endTime)}")
-		// 				}
-		// 			}
-		// 		}
-		// 	}
-		// }
 	}
 }

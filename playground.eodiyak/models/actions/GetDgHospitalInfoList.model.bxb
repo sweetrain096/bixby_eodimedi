@@ -20,5 +20,5 @@
       min (Required) max (One)
     }
   }
-  output (DgHospitalInfoListStructure)
+  output (DgHospitalInfoList)
 }

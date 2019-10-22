@@ -1,0 +1,25 @@
+layout-macro-def (DgList) {
+	params {
+		param (resultsum) {
+			type (DgHospitalInfoListStructure)
+			min (Required) max (One)
+		}
+	}
+	content {
+		cell-card {
+			slot2 {
+				content {
+					primary ("#{value(resultsum.dutyName)}")
+				}
+			}
+			slot3 {
+				label {
+					valign (Middle)
+					value {
+						template ("hi")
+					}
+				}
+			}
+		}
+	}
+}
