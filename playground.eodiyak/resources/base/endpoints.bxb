@@ -44,5 +44,9 @@ endpoints {
       accepted-inputs (pharmacySummaryInfo, currentPosition)
       local-endpoint ("getPharmacyInfo.js")
     }
+    action-endpoint (OpenBrowser) {
+      accepted-inputs (url, dutyTel1)
+      local-endpoint ("OpenBrowser.js")
+    }
   }
 }
