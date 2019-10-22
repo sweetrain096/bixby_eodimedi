@@ -50,6 +50,7 @@ module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgid
         console.log("this is item",item)
         var obj = new Object();
         let info = {}
+        let url = ""
         info = {
           latitude : item.wgs84Lat,
           longitude : item.wgs84Lon,
@@ -67,6 +68,11 @@ module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgid
         obj.distance = nearHospitalList[i].distance[0]
         obj.dutyDivName = nearHospitalList[i].dutyDivName[0]
 
+        url = 'https://search.naver.com/search.naver?query=' + item.dutyName
+        obj.url = url
+
+        console.log("url", url)
+        console.log("obj", obj)
         result.push(obj);
     }
   }

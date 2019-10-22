@@ -18,6 +18,7 @@ module.exports.function = function selectDgHospital (hospital) {
   obj.startTime = hospital.startTime
   obj.endTime = hospital.endTime
   obj.currentPosition = hospital.currentPosition
+  obj.url = hospital.url
 
   console.log(obj)
   
