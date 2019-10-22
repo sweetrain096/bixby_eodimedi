@@ -13,17 +13,12 @@
         }
       }
     }
+    input(baby){    // 달빛병원이니?
+      type(Baby)
+      min (Optional) max (One)
+    }
 
-    input(hospitalLists){
-      type(DutyName)
-      min (Optional) max (Many)
-    }
-    input(hpId){
-      type(HpID)
-      min (Optional) max (Many)
-    }
   }
-
 
   output (NearHospitalList)
 }
