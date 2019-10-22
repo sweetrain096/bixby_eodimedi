@@ -1,0 +1,43 @@
+structure (PharmacyInfo) {
+	description (약국의 정보들)
+
+	property(pWgs84Lat) {
+		type(PWgs84Lat)
+		min (Required) max (One)
+	}
+
+	property(pWgs84Lon) {
+		type(PWgs84Lon)
+		min (Required) max (One)
+	}
+
+	property (pDutyAddr) {
+		type (PDutyAddr)
+		min (Required) max (One)
+	}
+
+	property (pDutyName) {
+		type (PDutyName)
+		min (Required) max (One)
+	}
+
+	property (pDutyTel1) {
+		type (PDutyTel1)
+		min (Required) max (One)
+	}
+
+	property (pStartTime) {			// 병원 마감시간
+		type (PStartTime)
+		min (Required) max (One)
+	}
+
+	property (pEndTime) {			// 병원 마감시간
+		type (PEndTime)
+		min (Required) max (One)
+	}
+
+	property (currentPosition) {
+		type (MyPos)
+		min (Required) max (One)
+	}
+}
