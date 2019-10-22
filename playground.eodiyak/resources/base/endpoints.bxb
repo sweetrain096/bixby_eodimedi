@@ -48,5 +48,9 @@ endpoints {
       accepted-inputs (url, dutyTel1)
       local-endpoint ("OpenBrowser.js")
     }
+    action-endpoint (POpenBrowser) {
+      accepted-inputs (purl, pDutyTel1)
+      local-endpoint ("POpenBrowser.js")
+    }
   }
 }

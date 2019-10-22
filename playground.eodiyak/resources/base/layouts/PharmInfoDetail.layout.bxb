@@ -1,0 +1,75 @@
+layout-macro-def (PharmInfoDetail) {
+	params {
+		param (detail) {
+			type (PharmacyInfo)
+			min (Required) max (One)
+		}
+	}
+  content {
+    section {
+      content {
+        divider
+        paragraph {
+            value ("#{value(detail.pDutyName)}")
+            style (Title_S)
+        }
+        if(detail.pDutyTel1 != ''){
+            cell-card {
+
+              slot1 {
+                  image {
+                      url (/images/telephone.png)
+                      shape (Square)
+                  }
+              }
+
+              slot2 {
+                content{
+                   primary("#{value(detail.pDutyTel1)}")
+                }
+              }
+              on-click {
+                intent {
+                  goal: OpenBrowser
+                  value: $expr(detail.pDutyTel1)
+                }
+              }
+            }
+          }
+        map-card{
+        // aspect-ratio(1:1)
+        aspect-ratio(4:3)
+        markers{
+          marker{
+            geo(detail.point)
+            width(25)
+            height(25)
+            anchor-x(5)
+            anchor-y(15)
+            rotation(0)
+          }
+        }
+        title-area{
+          slot1{
+            text{
+              value()
+            }
+          }
+        }
+      }
+      spacer
+      paragraph {
+            value ("#{value(detail.pDutyAddr)}")
+            style (Title_S)
+        }
+        paragraph {
+            value ("운영시간 : #{value(detail.pStartTime)} ~ #{value(detail.pEndTime)}")
+        }
+        
+        paragraph {
+            value ("전화번호 : #{value(detail.pDutyTel1)}")
+        }
+      }
+    }
+  }
+}

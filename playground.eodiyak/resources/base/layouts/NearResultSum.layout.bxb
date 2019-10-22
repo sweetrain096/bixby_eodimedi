@@ -5,20 +5,12 @@ layout-macro-def (NearResultSum) {
 			min (Required) max (One)
 		}
 	}
-
-
-
-
-	
 	content {
 		cell-card {
 			slot2 {
 				content {
 					primary ("#{value(resultsum.dutyName)}")
-					// secondary ("#{value(resultsum.dutyDivName)} / #{value(resultsum.distance)} km")
 					secondary ("#{value(resultsum.dutyDivName)} / #{value(resultsum.startTime)} ~ #{value(resultsum.endTime)}")
-					// secondary ("#{value(resultsum.startTime)} ~ #{value(resultsum.endTime)} / #{value(resultsum.dutyDivName)}")
-					// secondary ("#{value(resultsum.dutyDivName)} / #{value(resultsum.distance)} km")
 				}
 			}
 			
@@ -27,8 +19,6 @@ layout-macro-def (NearResultSum) {
 					valign (Middle)
 					value {
 						template ("#{value(resultsum.distance)} km")
-						// template ("#{value(resultsum.startTime)} ~ #{value(resultsum.endTime)}")
-						// template ("#{value(resultsum.startTime)} ~ #{value(resultsum.endTime)}")
 					}
 				}
 			}
