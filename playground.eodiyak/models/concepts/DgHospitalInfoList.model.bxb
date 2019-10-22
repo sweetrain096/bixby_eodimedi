@@ -1,4 +1,4 @@
-structure (DgHospitalInfoListStructure) {
+structure (DgHospitalInfoList) {
   description (병원 진료 목록 포함한 상세정보 list)
 
 	property(point) {
