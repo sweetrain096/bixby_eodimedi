@@ -1,0 +1,19 @@
+layout-macro-def (GetHospitalInfo) {
+	params {
+		param (result) {
+			type (GetHospitalInfo)
+			min (Required) max (One)
+		}
+	}
+
+  content {
+    section {
+      content {
+        paragraph {
+          value ("#{value(result)}")
+          style (Title_L)
+        }
+      }
+    }
+  }
+}
