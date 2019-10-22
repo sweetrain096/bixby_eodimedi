@@ -6,6 +6,8 @@ capsule {
     target (bixby-mobile-ko-KR)
   }
   runtime-flags {
+    no-filtering-with-validation
+    modern-default-view-behavior
     concepts-inherit-super-type-features
     modern-prompt-rejection
     support-halt-effect-in-computed-inputs
@@ -17,7 +19,7 @@ capsule {
     }
     import (viv.entity) {
       as (entity)
-      version (3.19.8)
+      version (3.21.0)
     }
   }
   // 사용자의 정보를 얻기 위한 permissions(위치 등)
