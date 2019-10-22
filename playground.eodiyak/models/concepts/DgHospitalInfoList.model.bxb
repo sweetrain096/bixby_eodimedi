@@ -40,4 +40,13 @@ structure (DgHospitalInfoList) {
 		type (MyPos)
 		min (Required) max (One)
 	}
+
+	property (distance) {
+    type (Distance)
+    min (Required) max (Many)
+  }
+  property (dutyDivName) {
+    type (DutyDivName)
+    min (Required) max (Many)
+  }
 }
