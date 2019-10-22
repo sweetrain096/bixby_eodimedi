@@ -67,10 +67,6 @@ layout-macro-def (InfoDetail) {
         }
         
         paragraph {
-            value ("전화번호 : #{value(detail.dutyTel1)}")
-        }
-        
-        paragraph {
           value ("#{value(detail.dgidIdName)}")
         }
       }
