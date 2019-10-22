@@ -14,7 +14,6 @@ var treatmentList = new Array(
 
 module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentPosition) {
   const console = require("console")
-  
   var url = EndPoint + Operation 
   + "?ServiceKey=" + ServiceKey 
   + "&HPID=" + hospitalSummaryInfo.hpId

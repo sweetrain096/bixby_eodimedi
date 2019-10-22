@@ -16,7 +16,6 @@ action (GetHospitalInfo) {
       type(MyPos)
       min (Required) max (One)
     }
-    
 
   }
   output (HospitalInfo)
