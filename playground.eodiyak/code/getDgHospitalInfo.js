@@ -12,10 +12,10 @@ var treatmentList = new Array(
   "가정의학과","핵의학과","응급의학과","치과","구강악안면외과"
 )
 
-module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentPosition) {
+module.exports.function = function getDgHospitalInfo () {
   const console = require("console")
   
-  var url = EndPoint + Operation 
+  var url = EndPoint + Operation
   + "?ServiceKey=" + ServiceKey 
   + "&HPID=" + hospitalSummaryInfo.hpId
   var details = http.getUrl(url,{format: 'xmljs'})
@@ -30,17 +30,18 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
         dgidldList[i] = false
     }
   }
+  var obj = new Object();
+  obj.dlist = dgidldList
+  var dlist = JSON.stringify(obj);
+
+  console.log(dlist)
 
   let info = {}
-  info['point'] = {
-    latitude : item.wgs84Lat,
-    longitude : item.wgs84Lon,
-    $id : null,
-    $type : "viv.geo.GeoPoint"
-  }
+  info['wgs84Lat'] = item.wgs84Lat
+  info['wgs84Lon'] = item.wgs84Lon
   info['dutyAddr'] = item.dutyAddr
   info['dutyName'] = item.dutyName
-  info['dgidIdName'] = dgidldList
+  info['dgidIdName'] = dlist
   info['dutyTel1'] = item.dutyTel1
   info['startTime'] = hospitalSummaryInfo.startTime
   info['endTime'] = hospitalSummaryInfo.endTime

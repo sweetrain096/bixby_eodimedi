@@ -5,8 +5,12 @@ var ServiceKey = "Z6lJuu3urgG5yS0Gsn67Vc7jF4RBEpoMneik3qshCxF%2FoQDSri4aC8TThqkn
 var pageNo = 1
 var num = 50
 
-module.exports.function = function getHospitalList (position, hospitalLists, hpId) {
+module.exports.function = function getHospitalList (position, baby) {
   const console = require("console")
+  console.log(baby)
+  if (baby == true){
+    console.log("in")
+  }
   let results = new Array
     
     // position['myPos']['latitude'] // 위도 
@@ -19,12 +23,10 @@ module.exports.function = function getHospitalList (position, hospitalLists, hpI
   + "&pageNo=" + pageNo
   + "&numOfRows=" + num
 
-  console.log(url)
-
   var hList = http.getUrl(url,{format: 'xmljs'})
+  var item = hList.response.body.items.item
 
-  var items = hList.response.body.items
-  var item = items.item
+
   if (item.dutyName) {
       let info = {}
       info['dutyName'] = item.dutyName
@@ -44,7 +46,7 @@ module.exports.function = function getHospitalList (position, hospitalLists, hpI
       info['hpid'] = item[i].hpid
       info['dutyTel1'] = item[i].dutyTel1
       
-      var stime = item[i].startTime.substring(0,2) + ":" + item[i].startTime.substring(2,4)
+    var stime = item[i].startTime.substring(0,2) + ":" + item[i].startTime.substring(2,4)
     var etime = item[i].endTime.substring(0,2) + ":" + item[i].endTime.substring(2,4)
     if (stime.charAt(0)==0 && stime.charAt(1)!=0){
       stime = stime.substring(1,5)
@@ -57,5 +59,6 @@ module.exports.function = function getHospitalList (position, hospitalLists, hpI
       results.push(info)
     }
   }
+
   return results
 }

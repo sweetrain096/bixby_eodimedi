@@ -1,8 +1,13 @@
-structure (DgHospitalInfoListStructure) {
-  description (병원 진료 목록 포함한 상세정보 list)
+structure (DgHospitalInfo) {
+	description (병원의 정보들)
 
-	property(point) {
-		type(Hospoint)
+	property(wgs84Lat) {
+		type(Wgs84Lat)
+		min (Required) max (One)
+	}
+
+	property(wgs84Lon) {
+		type(Wgs84Lon)
 		min (Required) max (One)
 	}
 
@@ -18,7 +23,7 @@ structure (DgHospitalInfoListStructure) {
 
 	property (dgidIdName) {
 		type (DgidIdName)
-		min (Required) max (Many)
+		min (Required) max (One)
 	}
 
 	property (dutyTel1) {
