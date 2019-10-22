@@ -52,7 +52,7 @@ layout-macro-def (InfoDetail) {
         title-area{
           slot1{
             text{
-              value()
+              value('123')
             }
           }
         }
@@ -65,13 +65,35 @@ layout-macro-def (InfoDetail) {
         paragraph {
             value ("운영시간 : #{value(detail.startTime)} ~ #{value(detail.endTime)}")
         }
-        
-        paragraph {
-            value ("전화번호 : #{value(detail.dutyTel1)}")
-        }
-        
-        paragraph {
-          value ("#{value(detail.dgidIdName)}")
+        for-each (detail.dgidIdName) {
+          as (dgId) {
+            if ("dgId.isInclude == true") {
+              hbox {
+                content {
+                  vbox {
+                    content {
+                      text {
+                        value ("#{value(dgId.dgIdName)}")
+                        color (Green)
+                      }
+                    }
+                  }
+                }
+              }
+            } else-if ("dgId.isInclude == false") {
+              hbox {
+                content {
+                  vbox {
+                    content {
+                      text {
+                        value ("#{value(dgId.dgIdName)}")
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
