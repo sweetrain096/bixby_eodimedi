@@ -26,14 +26,17 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
   var originDNList = item.dgidIdName.split(",");
 
   for(var i=0; i<treatmentList.length; i++){
+    dgidldList[i] = new Object();
+    dgidldList[i].dgIdName = treatmentList[i];
+
     if(item.dutyName.includes(treatmentList[i])){
-      dgidldList[i] = true;
+      dgidldList[i].isInclude = true;
     }else{
       for(var j=0; j<originDNList.length; j++){
         if(treatmentList[i] == originDNList[j]){
-          dgidldList[i] = true;
+          dgidldList[i].isInclude = true;
         }else{
-          dgidldList[i] =false;
+          dgidldList[i].isInclude = false;
         }
       }
     }
