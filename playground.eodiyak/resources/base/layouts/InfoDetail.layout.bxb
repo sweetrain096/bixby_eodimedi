@@ -9,11 +9,33 @@ layout-macro-def (InfoDetail) {
     section {
       content {
         divider
-        
         paragraph {
             value ("#{value(detail.dutyName)}")
             style (Title_S)
         }
+        if(detail.dutyTel1 != ''){
+            cell-card {
+
+              slot1 {
+                  image {
+                      url (/images/telephone.png)
+                      shape (Square)
+                  }
+              }
+
+              slot2 {
+                content{
+                   primary("#{value(detail.dutyTel1)}")
+                }
+              }
+              on-click {
+                intent {
+                  goal: OpenBrowser
+                  value: $expr(detail.dutyTel1)
+                }
+              }
+            }
+          }
         map-card{
         // aspect-ratio(1:1)
         aspect-ratio(4:3)
