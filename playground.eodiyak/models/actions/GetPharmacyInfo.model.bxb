@@ -1,0 +1,22 @@
+action (GetPharmacyInfo) {
+  description (약국 정보를 찾는다.)
+  type(Search)
+  collect {
+    input (pharmacySummaryInfo) {
+      type (PharmacySummaryInfo)
+      min (Required) max (One)
+      default-init{
+        intent{
+          goal: SelectPharmacy
+        }
+      }
+    }
+    // hpId, hpName, hpTel, hpAddr, hpEndTime
+    input(currentPosition){
+      type(MyPos)
+      min (Required) max (One)
+    }
+
+  }
+  output (PharmacyInfo)
+}
