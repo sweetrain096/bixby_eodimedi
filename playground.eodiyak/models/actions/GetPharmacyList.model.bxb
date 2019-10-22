@@ -12,8 +12,6 @@ action (GetPharmacyList) {
         }
       }
     }
-
-
   }
   output (NearPharmacyList)
 }

@@ -7,7 +7,7 @@ action (SelectPharmacy) {
       min (Required) max (One)
       default-init{
         intent{
-          goal: GetHospitalList
+          goal: GetPharmacyList
         }
       }
     }
