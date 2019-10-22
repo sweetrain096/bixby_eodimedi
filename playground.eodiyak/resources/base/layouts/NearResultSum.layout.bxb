@@ -30,30 +30,6 @@ layout-macro-def (NearResultSum) {
 					}
 				}
 			}
-			on-click {
-				intent {
-					goal: CallPhoneNum
-					value: $expr(resultsum.dutyTel1)
-				}
-			}
-		}
-
-		if(resultsum.dutyTel1 != ''){
-			cell-card {
-				slot2 {
-					content{
-						primary("전화 걸기")
-						secondary("#{value(resultsum.dutyTel1)}")
-					}
-				}
-				on-click {
-					intent {
-						goal: CallPhoneNum
-						value: $expr(resultsum.dutyTel1)
-					}
-				}
-			}
-			
 		}
 		// title-card {
 		// 	title-area {
