@@ -1,0 +1,16 @@
+action (SelectPharmacy) {
+  description (유저가 약국을 선택한다.)
+  type(Constructor)
+  collect {
+    input (pharmacy) {
+      type (NearPharmacyList)
+      min (Required) max (One)
+      default-init{
+        intent{
+          goal: GetHospitalList
+        }
+      }
+    }
+  }
+  output (PharmacySummaryInfo)
+}
