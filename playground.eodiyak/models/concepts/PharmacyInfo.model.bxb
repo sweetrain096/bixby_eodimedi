@@ -45,4 +45,8 @@ structure (PharmacyInfo) {
 		type(Ppoint)
 		min (Required) max (One)
 	}
+		property (purl) {
+		type (PURL)
+		min (Required) max (One)
+	}
 }

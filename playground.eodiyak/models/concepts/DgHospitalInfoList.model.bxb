@@ -49,4 +49,8 @@ structure (DgHospitalInfoList) {
     type (DutyDivName)
     min (Required) max (Many)
   }
+	property (url) {
+		type (URL)
+		min (Required) max (One)
+	}
 }

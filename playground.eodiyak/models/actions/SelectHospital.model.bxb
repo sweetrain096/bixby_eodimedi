@@ -11,7 +11,10 @@ action (SelectHospital) {
         }
       }
     }
-    
+    input(selectNum){
+      type(entity.Ordinal)
+      min (Optional) max (One)
+    }
   }
   output (HospitalSummaryInfo)
 }
