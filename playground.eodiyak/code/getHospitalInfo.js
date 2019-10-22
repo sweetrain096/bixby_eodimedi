@@ -30,11 +30,6 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
         dgidldList[i] = false
     }
   }
-  var obj = new Object();
-  obj.dlist = dgidldList
-  var dlist = JSON.stringify(obj);
-
-  console.log(dlist)
 
   let info = {}
   info['point'] = {
@@ -45,7 +40,7 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
   }
   info['dutyAddr'] = item.dutyAddr
   info['dutyName'] = item.dutyName
-  info['dgidIdName'] = dlist
+  info['dgidIdName'] = dgidldList
   info['dutyTel1'] = item.dutyTel1
   info['startTime'] = hospitalSummaryInfo.startTime
   info['endTime'] = hospitalSummaryInfo.endTime
