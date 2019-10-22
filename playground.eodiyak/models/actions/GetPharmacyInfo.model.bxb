@@ -1,13 +1,13 @@
-action (GetHospitalInfo) {
-  description (병원 정보를 찾는다.)
+action (GetPharmacyInfo) {
+  description (약국 정보를 찾는다.)
   type(Search)
   collect {
-    input (hospitalSummaryInfo) {
-      type (HospitalSummaryInfo)
+    input (pharmacySummaryInfo) {
+      type (PharmacySummaryInfo)
       min (Required) max (One)
       default-init{
         intent{
-          goal: SelectHospital
+          goal: SelectPharmacy
         }
       }
     }
@@ -16,8 +16,7 @@ action (GetHospitalInfo) {
       type(MyPos)
       min (Required) max (One)
     }
-    
 
   }
-  output (HospitalInfo)
+  output (PharmacyInfo)
 }

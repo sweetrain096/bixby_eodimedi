@@ -32,8 +32,12 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
   }
 
   let info = {}
-  info['wgs84Lat'] = item.wgs84Lat
-  info['wgs84Lon'] = item.wgs84Lon
+  info['point'] = {
+    latitude : item.wgs84Lat,
+    longitude : item.wgs84Lon,
+    $id : null,
+    $type : "viv.geo.GeoPoint"
+  }
   info['dutyAddr'] = item.dutyAddr
   info['dutyName'] = item.dutyName
   info['dgidIdName'] = dgidldList
