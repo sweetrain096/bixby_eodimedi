@@ -22,14 +22,21 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
   var item = details.response.body.items.item
 
   var dgidldList = new Array();
+  var originDNList = item.dgidIdName.split(",");
+
   for(var i=0; i<treatmentList.length; i++){
-    if(item.dgidIdName.includes(treatmentList[i])){
-        dgidldList[i] = true
+    if(item.dutyName.includes(treatmentList[i])){
+      dgidldList[i] = true;
     }else{
-        dgidldList[i] = false
+      for(var j=0; j<originDNList.length; j++){
+        if(treatmentList[i] == originDNList[j]){
+          dgidldList[i] = true;
+        }else{
+          dgidldList[i] =false;
+        }
+      }
     }
   }
-
   let info = {}
   info['point'] = {
     latitude : item.wgs84Lat,
@@ -44,6 +51,7 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
   info['startTime'] = hospitalSummaryInfo.startTime
   info['endTime'] = hospitalSummaryInfo.endTime
   info['currentPosition'] = currentPosition
+  info['url'] = 'https://search.naver.com/search.naver?query=' + info['dutyName']
 
   return info
 }

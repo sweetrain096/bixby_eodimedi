@@ -40,4 +40,9 @@ structure (HospitalInfo) {
 		type (MyPos)
 		min (Required) max (One)
 	}
+
+	property (url) {
+		type (URL)
+		min (Required) max (One)
+	}
 }
