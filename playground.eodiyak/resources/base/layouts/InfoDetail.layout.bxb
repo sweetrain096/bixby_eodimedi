@@ -52,7 +52,7 @@ layout-macro-def (InfoDetail) {
         title-area{
           slot1{
             text{
-              value()
+              value('123')
             }
           }
         }
@@ -65,10 +65,36 @@ layout-macro-def (InfoDetail) {
         paragraph {
             value ("운영시간 : #{value(detail.startTime)} ~ #{value(detail.endTime)}")
         }
-        
-        paragraph {
-          value ("#{value(detail.dgidIdName)}")
-        }
+        // for-each (detail.dgidIdName) {
+        //   as (dgId) {
+        //     if ("dgId.IsInclude == true") {
+        //       hbox {
+        //         content {
+        //           vbox {
+        //             content {
+        //               text {
+        //                 value ("#{value(dgid.DgIdName)}")
+        //                 color (Green)
+        //               }
+        //             }
+        //           }
+        //         }
+        //       }
+        //     } else-if ("dgId.IsInclude == false") {
+        //       hbox {
+        //         content {
+        //           vbox {
+        //             content {
+        //               text {
+        //                 value ("#{value(dgid.DgIdName = false)}")
+        //               }
+        //             }
+        //           }
+        //         }
+        //       }
+        //     }
+        //   }
+        // }
       }
     }
   }
