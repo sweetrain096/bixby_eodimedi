@@ -1,16 +1,11 @@
 structure (HospitalInfo) {
 	description (병원의 정보들)
 
-	property(wgs84Lat) {
-		type(Wgs84Lat)
+	property(point) {
+		type(Hospoint)
 		min (Required) max (One)
 	}
-
-	property(wgs84Lon) {
-		type(Wgs84Lon)
-		min (Required) max (One)
-	}
-
+	
 	property (dutyAddr) {
 		type (DutyAddr)
 		min (Required) max (One)
@@ -23,7 +18,7 @@ structure (HospitalInfo) {
 
 	property (dgidIdName) {
 		type (DgidIdName)
-		min (Required) max (One)
+		min (Required) max (Many)
 	}
 
 	property (dutyTel1) {

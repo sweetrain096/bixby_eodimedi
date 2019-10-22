@@ -30,18 +30,17 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
         dgidldList[i] = false
     }
   }
-  var obj = new Object();
-  obj.dlist = dgidldList
-  var dlist = JSON.stringify(obj);
-
-  console.log(dlist)
 
   let info = {}
-  info['wgs84Lat'] = item.wgs84Lat
-  info['wgs84Lon'] = item.wgs84Lon
+  info['point'] = {
+    latitude : item.wgs84Lat,
+    longitude : item.wgs84Lon,
+    $id : null,
+    $type : "viv.geo.GeoPoint"
+  }
   info['dutyAddr'] = item.dutyAddr
   info['dutyName'] = item.dutyName
-  info['dgidIdName'] = dlist
+  info['dgidIdName'] = dgidldList
   info['dutyTel1'] = item.dutyTel1
   info['startTime'] = hospitalSummaryInfo.startTime
   info['endTime'] = hospitalSummaryInfo.endTime
