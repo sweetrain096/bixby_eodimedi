@@ -1,57 +1,40 @@
+var http = require('http')
+var EndPoint = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/"
+var Operation = "getHsptlBassInfoInqire"
+var ServiceKey = "Z6lJuu3urgG5yS0Gsn67Vc7jF4RBEpoMneik3qshCxF%2FoQDSri4aC8TThqkniotYQ%2Flgpc23f6ByJ6Sp0uPvBw%3D%3D"
+
+//nearHospitalList ==> 근처병원 리스트
+// dgidIdName ==> 찾으려는 병원 종류 // 내과, 외과....
+//currentPosition ==> 현재 위치
 module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgidIdName, currentPosition) {
+
   const console = require("console")
-  let results = new Array
-  
-  console.log(dgidIdName)
+  //우리가 리턴할것은 결국 커다란 structure == object 이다 (result)
+  // 그 안에 들어간 속성 하나의 이름이 'HospitalInfo'이고, 그 속성이 배열의 형태를 가질 수 있는것이다
+  // result['HospitalInfo'] <- 이것이 하나의 배열이라 생각하고, 보낼 값들을 push 하면 된다.
+  var result = {}
+  result['HospitalInfo'] = new Array();
 
-  // 알아서 구현하세요
-  console.log(nearHospitalList)
-  console.log(currentPosition)
   for (let i = 0; i<nearHospitalList.length; i++){
-    // console.log(nearHospitalList[i])
-    // console.log(nearHospitalList[i].hpid)
-    // 알아서 뭐 잘 넘어왔겠지
-    // 여기서 아이디 뽑고 잘 가져오세요~~
-    let tmp = {}
-    let result = {}
-    tmp['dutytel'] = nearHospitalList[i].hpid[0]
-    tmp['name'] = nearHospitalList[i].dutyName[0]
-    tmp['addr'] = "가나다동"
-    tmp['endtime'] = "0630"
-    result['hospitalInfo'] = tmp
-    results.push(result)
-  }
-  
-  console.log(results)
-  
-  var obj = new Array();
-
-  //배열에 객체 넣기
-  var hospital = new Object();
-  hospital.hpid = "A000"
-  hospital.openTime = "8:30"
-  hospital.closeTime = "18:00"
-  obj[0] = hospital
-
-  //for문으로 배열에 객체넣기
-  for (var i = 1; i<=3; i++){
-      var hp = new Object();
-      hp.hpid = "A00"+i;
-      hp.openTime = "9:0"+i
-      hp.closeTime = "18:0"+i
-      obj[i] = hp
+    var url = EndPoint + Operation 
+      + "?ServiceKey=" + ServiceKey 
+      + "&HPID=" + nearHospitalList[i].hpid
+      var details = http.getUrl(url,{format: 'xmljs'})
+      var item = details.response.body.items.item
+      if ( item.dgidIdName != undefined && item.dgidIdName.includes(dgidIdName) ) {
+        var obj = new Object();
+        obj.wgs84Lat = item.wgs84Lat
+        obj.wgs84Lon = item.wgs84Lon
+        obj.dutyAddr = item.dutyAddr
+        obj.dutyName = item.dutyName
+        obj.dgidIdName = item.dgidIdName
+        obj.dutyTel1 = item.dutyTel1
+        obj.startTime = nearHospitalList[i].startTime[0]
+        obj.endTime = nearHospitalList[i].endTime[0]
+        obj.currentPosition = currentPosition
+        result['HospitalInfo'].push(obj);
+    }
   }
 
-  //배열을 json으로 만듬 ==> jpack을 빅스비 text취급할 수 있게됨
-  var jpack = JSON.stringify(obj)
-  console.log(jpack)
-
-  // jpack을 받은곳에서 데이터를 배열로 쓰려면, json.parse를 쓰면됨
-  var origin = JSON.parse(jpack)
-  console.log(origin)
-  console.log(origin[0])
-
-  console.log(obj)
-
-  return obj
+  return result
 }

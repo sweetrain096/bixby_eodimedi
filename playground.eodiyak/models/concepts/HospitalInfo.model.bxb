@@ -23,7 +23,7 @@ structure (HospitalInfo) {
 
 	property (dgidIdName) {
 		type (DgidIdName)
-		min (Required) max (One)
+		min (Required) max (Many)
 	}
 
 	property (dutyTel1) {
