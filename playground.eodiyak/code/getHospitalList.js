@@ -9,7 +9,8 @@ module.exports.function = function getHospitalList (position, baby) {
   const console = require("console")
   console.log(baby)
   if (baby == true){
-    console.log("in")
+    console.log("달빛병원이에요!!")
+
   }
   let results = new Array
     

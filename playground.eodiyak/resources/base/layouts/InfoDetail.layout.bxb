@@ -1,0 +1,79 @@
+layout-macro-def (InfoDetail) {
+	params {
+		param (detail) {
+			type (HospitalInfo)
+			min (Required) max (One)
+		}
+	}
+  content {
+    section {
+      content {
+        divider
+        paragraph {
+            value ("#{value(detail.dutyName)}")
+            style (Title_S)
+        }
+        if(detail.dutyTel1 != ''){
+            cell-card {
+
+              slot1 {
+                  image {
+                      url (/images/telephone.png)
+                      shape (Square)
+                  }
+              }
+
+              slot2 {
+                content{
+                   primary("#{value(detail.dutyTel1)}")
+                }
+              }
+              on-click {
+                intent {
+                  goal: OpenBrowser
+                  value: $expr(detail.dutyTel1)
+                }
+              }
+            }
+          }
+        map-card{
+        // aspect-ratio(1:1)
+        aspect-ratio(4:3)
+        markers{
+          marker{
+            geo(detail.point)
+            width(25)
+            height(25)
+            anchor-x(5)
+            anchor-y(15)
+            rotation(0)
+          }
+        }
+        title-area{
+          slot1{
+            text{
+              value()
+            }
+          }
+        }
+      }
+      spacer
+      paragraph {
+            value ("#{value(detail.dutyAddr)}")
+            style (Title_S)
+        }
+        paragraph {
+            value ("운영시간 : #{value(detail.startTime)} ~ #{value(detail.endTime)}")
+        }
+        
+        paragraph {
+            value ("전화번호 : #{value(detail.dutyTel1)}")
+        }
+        
+        paragraph {
+          value ("#{value(detail.dgidIdName)}")
+        }
+      }
+    }
+  }
+}
