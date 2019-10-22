@@ -1,7 +1,8 @@
 result-view{
  match: MyPosition(myPosition){
    from-output: GetCurrentPosition
- } 
+ }
+ 
  message{
    template ("당신의 현재 위치")
  }
