@@ -40,5 +40,9 @@ endpoints {
       accepted-inputs (pharmacy)
       local-endpoint ("selectPharmacy.js")
     }
+    action-endpoint (OpenBrowser) {
+      accepted-inputs (url, dutyTel1)
+      local-endpoint ("OpenBrowser.js")
+    }
   }
 }

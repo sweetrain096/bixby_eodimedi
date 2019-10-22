@@ -45,9 +45,16 @@ result-view {
               style (Title_S)
           }
           
-          paragraph {
-              value ("#{value(this.dutyTel1)}")
-              style (Title_S)
+          // paragraph {
+          //     value ("#{value(this.dutyTel1)}")
+          //     style (Title_S)
+          // }
+          divider
+          attribution-link {
+            label {
+                template ("#{value(this.dutyTel1)}")
+            }
+            url ("#{value(this.url)}")
           }
         }
       }
