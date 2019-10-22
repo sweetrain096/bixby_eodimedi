@@ -1,11 +1,11 @@
+
 var http = require('http')
 
 var EndPoint = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/"
 var Operation = "getHsptlBassInfoInqire"
 var ServiceKey = "Z6lJuu3urgG5yS0Gsn67Vc7jF4RBEpoMneik3qshCxF%2FoQDSri4aC8TThqkniotYQ%2Flgpc23f6ByJ6Sp0uPvBw%3D%3D"
 
-module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgidIdName) {
-  const console = require("console")
+module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgidIdName, currentPosition) {
 
   let results = new Array
   // console.log(dgidIdName)
@@ -22,6 +22,6 @@ module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgid
         results.push(item)
     }
   }
-  
+
   return results
 }
