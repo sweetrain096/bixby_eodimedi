@@ -5,101 +5,14 @@ result-view {
   message {
     template ("선택하신 병원의 정보입니다.")
   }
+
   render {
     layout {
-      section {
-        content {
-          divider
-          paragraph {
-              value ("#{value(this.dutyName)}")
-              style (Title_S)
-          }
-
-          if(this.dutyTel1 != ''){
-            cell-card {
-
-              slot1 {
-                  image {
-                      url (/images/telephone.png)
-                      shape (Square)
-                      // background-color (White)
-                  }
-              }
-
-              slot2 {
-                content{
-                   primary("#{value(this.dutyTel1)}")
-                }
-              }
-              on-click {
-                intent {
-                  goal: OpenBrowser
-                  value: $expr(this.dutyTel1)
-                }
-              }
-            }
-          }
-
-          map-card{
-          // aspect-ratio(1:1)
-          aspect-ratio(4:3)
-           markers{
-             marker{
-              geo(this.point)
-              width(25)
-              height(25)
-              anchor-x(5)
-              anchor-y(15)
-              rotation(0)
-            }
-           }
-           title-area{
-             slot1{
-               text{
-                 value()
-               }
-             }
-           }
-         }
-         paragraph {
-              value ("#{value(this.dutyAddr)}")
-              style (Title_S)
-          }
-          paragraph {
-              value ("#{value(this.startTime)} ~ #{value(this.endTime)}")
-              style (Title_S)
-          }
-          
-          // paragraph {
-          //     value ("#{value(this.dutyTel1)}")
-          //     style (Title_S)
-          // }
-
-          // divider
-          // attribution-link {
-          //   label {
-          //       template ("#{value(this.dutyTel1)}")
-          //   }
-          //   url ("#{value(this.url)}")
-          // }
-
-        // cell-card {
-        //   slot2 {
-        //     content{
-        //       primary("네이버에서 검색")
-        //       secondary("#{value(this.url)}")
-        //     }
-        //   }
-        //   on-click {
-        //     intent {
-        //       goal: OpenBrowser
-        //       value: $expr(this.url)
-        //     }
-        //   }
-        // }    
-
+      layout-macro (InfoDetail) {
+        param (detail) {
+          expression (this)
         }
       }
     }
-  }
+	}
 }
