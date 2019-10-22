@@ -46,8 +46,8 @@ module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgid
         }
       }
 
-      // if ( item.dgidIdName != undefined && item.dgidIdName.includes(dgidIdName) ) {
-      if ( item.dgidIdName != undefined && flag ) {
+      if (flag ) {
+        console.log("this is item",item)
         var obj = new Object();
         let info = {}
         info = {
@@ -64,6 +64,9 @@ module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgid
         obj.startTime = nearHospitalList[i].startTime[0]
         obj.endTime = nearHospitalList[i].endTime[0]
         obj.currentPosition = currentPosition
+        obj.distance = nearHospitalList[i].distance[0]
+        obj.dutyDivName = nearHospitalList[i].dutyDivName[0]
+
         result.push(obj);
     }
   }
