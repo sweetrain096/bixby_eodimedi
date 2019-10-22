@@ -7,3 +7,4 @@ module.exports.function = function selectHospital (hospital) {
     endTime: hospital.endTime
   }
 }
+ 
