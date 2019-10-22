@@ -17,14 +17,22 @@ module.exports.function = function getPharmacyInfo (pharmacySummaryInfo,currentP
     var item = details.response.body.items.item
     console.log(details)
     let info = {}
-    info['pWgs84Lat'] = item.wgs84Lat
-    info['pWgs84Lon'] = item.wgs84Lon
+    // info['pWgs84Lat'] = item.wgs84Lat
+    // info['pWgs84Lon'] = item.wgs84Lon
+    info['point'] = {
+    latitude : item.wgs84Lat,
+    longitude : item.wgs84Lon,
+    $id : null,
+    $type : "viv.geo.GeoPoint"
+  }
+    
     info['pDutyAddr'] = item.dutyAddr
     info['pDutyName'] = item.dutyName
     info['pDutyTel1'] = item.dutyTel1
     info['pStartTime'] = pharmacySummaryInfo.pStartTime
     info['pEndTime'] = pharmacySummaryInfo.pEndTime
     info['currentPosition'] = currentPosition
+    info['purl'] = 'https://search.naver.com/search.naver?query=' + info['pDutyName']
 
     return info
 }

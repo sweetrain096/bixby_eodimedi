@@ -1,0 +1,15 @@
+action (POpenBrowser) {
+  description (URL을 통하여 app-lauch를 실행하는 action입니다)
+  type(Constructor)
+  collect {
+    input (purl) {
+      type (PURL)
+      min (Optional) max (One)
+    }
+    input (pDutyTel1) {
+      type (PDutyTel1)
+      min (Optional) max (One)
+    }
+  }
+  output (URL)
+}

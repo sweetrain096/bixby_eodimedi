@@ -1,15 +1,15 @@
 structure (PharmacyInfo) {
 	description (약국의 정보들)
 
-	property(pWgs84Lat) {
-		type(PWgs84Lat)
-		min (Required) max (One)
-	}
+	// property(pWgs84Lat) {
+	// 	type(PWgs84Lat)
+	// 	min (Required) max (One)
+	// }
 
-	property(pWgs84Lon) {
-		type(PWgs84Lon)
-		min (Required) max (One)
-	}
+	// property(pWgs84Lon) {
+	// 	type(PWgs84Lon)
+	// 	min (Required) max (One)
+	// }
 
 	property (pDutyAddr) {
 		type (PDutyAddr)
@@ -38,6 +38,15 @@ structure (PharmacyInfo) {
 
 	property (currentPosition) {
 		type (MyPos)
+		min (Required) max (One)
+	}
+
+	property(point) {
+		type(Ppoint)
+		min (Required) max (One)
+	}
+		property (purl) {
+		type (PURL)
 		min (Required) max (One)
 	}
 }

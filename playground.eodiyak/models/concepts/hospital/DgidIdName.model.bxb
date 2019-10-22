@@ -1,3 +1,13 @@
-boolean  (DgidIdName) {
+structure   (DgidIdName) {
   description (병원의 진료과목)
+
+  property(dgIdName) {
+		type(DgIdName)
+		min (Required) max (One)
+	}
+
+  property(isInclude) {
+		type(IsInclude)
+		min (Required) max (One)
+	}
 }
