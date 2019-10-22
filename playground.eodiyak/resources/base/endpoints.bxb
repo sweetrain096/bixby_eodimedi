@@ -17,7 +17,7 @@ endpoints {
       local-endpoint ("getCurrentPosition.js")
     }
     action-endpoint (GetHospitalList){
-      accepted-inputs (position)
+      accepted-inputs (position, baby)
       local-endpoint ("getHospitalList.js")
     }
     action-endpoint (SelectHospital){

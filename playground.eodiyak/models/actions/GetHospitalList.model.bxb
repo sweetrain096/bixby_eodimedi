@@ -13,6 +13,11 @@
         }
       }
     }
+    input(baby){    // 달빛병원이니?
+      type(Baby)
+      min (Optional) max (One)
+    }
+
   }
 
   output (NearHospitalList)
