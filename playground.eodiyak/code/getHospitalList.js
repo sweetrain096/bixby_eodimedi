@@ -18,6 +18,7 @@ module.exports.function = function getHospitalList (position) {
   var hList = http.getUrl(url,{format: 'xmljs'})
   var item = hList.response.body.items.item
 
+  
   let results = new Array
 
   if (item.dutyName) {
