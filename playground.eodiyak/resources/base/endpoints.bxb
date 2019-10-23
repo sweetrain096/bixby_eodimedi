@@ -37,8 +37,20 @@ endpoints {
       local-endpoint ("getDgHospitalInfoList.js")
     }
     action-endpoint (GetDgHospitalInfo){
-      accepted-inputs (currentPosition, dgidIdName, hospital)
+      accepted-inputs (hospital)
       local-endpoint ("getDgHospitalInfo.js")
+    }
+    action-endpoint (GetLocationHospitalList){
+      accepted-inputs (position, locationName1, locationName2)
+      local-endpoint ("getLocationHospitalList.js")
+    }
+    action-endpoint (SelectLocationHospital){
+      accepted-inputs (hospital)
+      local-endpoint ("selectLocationHospital.js")
+    }
+    action-endpoint (GetLocationHospitalInfo){
+      accepted-inputs (hospital)
+      local-endpoint ("getLocationHospitalInfo.js")
     }
     action-endpoint (GetPharmacyList){
       accepted-inputs (position)

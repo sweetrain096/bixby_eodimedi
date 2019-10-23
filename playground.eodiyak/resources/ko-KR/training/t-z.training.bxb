@@ -1,0 +1,5 @@
+train (t-zscs90mcq1t2l0pvao3w7gp64) {
+  utterance ("[g:GetLocationHospitalInfo] {[g:LocationName1] (대전광역시)[v:LocationName1]} {[g:LocationName2] (유성구)[v:LocationName2]} 병원 알려줘")
+  plan (Y+BikCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ1BFlXNPLfHJT04syczPQ1GGzwg5VLng1JzU5BKXdJgaBgVUeYQMSLdPZnEJEY4AK5NGVQZT45eYm2pItqQRfklOBkYGJgZmBhYGVgY2BnYGDqAIA4oYK1CMESwGwTxQzArkwXQwAVkcAA==)
+  last-modified (1571808242267)
+}
