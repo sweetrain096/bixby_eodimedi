@@ -11,9 +11,9 @@
         }
       }
     }
-    input(dgidIdName){
+    input(dgidIdName){    // 병원 진료과목
       type(DgName)
-      min (Optional) max (One)
+      min (Required) max (One)
     }
     input(currentPosition){
       type(MyPos)

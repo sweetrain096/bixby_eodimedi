@@ -1,0 +1,16 @@
+action (SelectLocationHospital) {
+  description (특정 지역의 병원 목록에서 하나를 선택한다.)
+  type(Constructor)
+  collect {
+    input (hospital) {
+      type (DgHospitalInfoList)
+      min (Required) max (One)
+      default-init{
+        intent{
+          goal: GetDgHospitalInfoList
+        }
+      }
+    }
+  }
+  output (HospitalInfo)
+}
