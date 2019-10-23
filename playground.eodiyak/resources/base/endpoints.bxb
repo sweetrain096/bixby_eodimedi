@@ -73,7 +73,7 @@ endpoints {
       local-endpoint ("POpenBrowser.js")
     }
     action-endpoint (MapOpenBrowser){
-      accepted-inputs (dutyName)
+      accepted-inputs (myPos, hospitalInfo)
       local-endpoint ("mapOpenBrowser.js")
     }
   }

@@ -47,6 +47,6 @@ structure (HospitalInfo) {
 	}
 	property (mapUrl){
 		type(MapUrl)
-		min (Required) max (One)
+		min (Optional) max (One)
 	}
 }

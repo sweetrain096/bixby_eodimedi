@@ -55,7 +55,7 @@ module.exports.function = function getLocationHospitalList (position, locationNa
     obj.currentPosition = position
     obj.distance = "tmpdata"
     obj.dutyDivName = "tmpdata"
-
+    obj.mapUrl = item.dutyName
     url = 'https://search.naver.com/search.naver?query=' + item.dutyName
     obj.url = url
     result.push(obj);
