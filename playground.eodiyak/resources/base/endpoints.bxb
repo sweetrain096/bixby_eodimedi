@@ -33,7 +33,7 @@ endpoints {
       local-endpoint ("getHospitalInfo.js")
     }
     action-endpoint (GetDgHospitalInfoList){
-      accepted-inputs (nearHospitalList, dgidIdName, currentPosition)
+      accepted-inputs (nearHospitalList, dgName, currentPosition)
       local-endpoint ("getDgHospitalInfoList.js")
     }
     action-endpoint (GetDgHospitalInfo){

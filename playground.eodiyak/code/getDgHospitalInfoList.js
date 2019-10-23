@@ -18,12 +18,12 @@ var treatmentList = new Array(
 //nearHospitalList ==> 근처병원 리스트
 // dgidIdName ==> 찾으려는 병원 종류 // 내과, 외과....
 //currentPosition ==> 현재 위치
-module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgidIdName, currentPosition) {
+module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgName, currentPosition) {
   const console = require("console")
   var result = new Array() 
   console.log("====this is show time! ====")
   console.log(nearHospitalList)
-  console.log(dgidIdName)
+  console.log(dgName)
   console.log(currentPosition)
   console.log("===========")
 
@@ -43,10 +43,10 @@ module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgid
         if(item.dgidIdName.includes(",")){
           var originDNList = item.dgidIdName.split(",");
           for(var k=0; k<originDNList.length; k++){
-            if(originDNList[k] == dgidIdName && item.dutyName.indexOf("요양병원")==-1) flag = true;
+            if(originDNList[k] == dgName && item.dutyName.indexOf("요양병원")==-1) flag = true;
           }
         }else{
-          if(item.dgidIdName == dgidIdName && item.dutyName.indexOf("요양병원")==-1) flag = true;
+          if(item.dgidIdName == dgName && item.dutyName.indexOf("요양병원")==-1) flag = true;
         }
       }
 
@@ -71,6 +71,7 @@ module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgid
         obj.currentPosition = currentPosition
         obj.distance = nearHospitalList[i].distance[0]
         obj.dutyDivName = nearHospitalList[i].dutyDivName[0]
+        obj.dgName = dgName
 
         url = 'https://search.naver.com/search.naver?query=' + item.dutyName
         obj.url = url
