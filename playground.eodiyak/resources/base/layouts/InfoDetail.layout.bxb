@@ -5,38 +5,107 @@ layout-macro-def (InfoDetail) {
 			min (Required) max (One)
 		}
 	}
-  content {
-    section {
-      content {
-        divider
-        paragraph {
-            value ("#{value(detail.dutyName)}")
-            style (Title_S)
+	content {
+		section {
+			content {
+				divider
+				paragraph {
+					value ("#{value(detail.dutyName)}")
+					style (Title_S)
+				}
+				if(detail.dutyTel1 != ''){
+					cell-card {
+						slot1 {
+							image {
+								url (/images/telephone.png)
+								shape (Square)
+							}
+						}
+						slot2 {
+							content{
+								primary("#{value(detail.dutyTel1)}")
+							}
+						}
+						on-click {
+							intent {
+								goal: OpenBrowser
+								value: $expr(detail.dutyTel1)
+							}
+						}
+					}
         }
-        if(detail.dutyTel1 != ''){
-            cell-card {
+        if(detail.mapUrl != ''){
+          cell-card {
 
-              slot1 {
-                  image {
-                      url (/images/telephone.png)
-                      shape (Square)
-                  }
-              }
+            slot1 {
+                image {
+                    url (/images/map.png)
+                    shape (Square)
+                }
+            }
 
-              slot2 {
-                content{
-                   primary("#{value(detail.dutyTel1)}")
-                }
+            slot2 {
+              content{
+                 primary("#{value(detail.mapUrl)} 까지 길 찾기")
               }
-              on-click {
-                intent {
-                  goal: OpenBrowser
-                  value: $expr(detail.dutyTel1)
-                }
+            }
+            on-click {
+              intent {
+                goal: MapOpenBrowser
+                value: $expr(detail.mapUrl)
               }
             }
           }
-        if(detail.mapUrl != ''){
+        }
+				map-card{
+					aspect-ratio(4:3)
+					markers{
+						marker{
+							geo(detail.point)
+							width(25)
+							height(25)
+							anchor-x(5)
+							anchor-y(15)
+							rotation(0)
+						}
+					}
+					title-area{
+						slot1{
+							text{
+								value()
+							}
+						}
+					}
+				}
+				spacer
+				paragraph {
+					value ("#{value(detail.dutyAddr)}")
+					style (Title_S)
+				}
+				
+				split-input-cell {
+					left {
+						input-cell {
+							label {
+								template ("병원 운영 시간")
+							}
+							value {
+								template ("#{value(detail.startTime)} ~ #{value(detail.endTime)}") // Standard
+							}
+						}
+					}
+					right {
+						input-cell {
+							label {
+								template ("병원까지 소요 시간")
+							}
+							value {
+								template ("10분")
+							}
+						}
+					}
+				}
+                if(detail.mapUrl != ''){
             cell-card {
 
               slot1 {
@@ -53,42 +122,163 @@ layout-macro-def (InfoDetail) {
               }
               on-click {
                 intent {
-                  goal: MapOpenBrowser
+                  goal: OpenBrowser
                   value: $expr(detail.mapUrl)
                 }
               }
             }
           }
-        map-card{
-        // aspect-ratio(1:1)
-        aspect-ratio(4:3)
-        markers{
-          marker{
-            geo(detail.point)
-            width(25)
-            height(25)
-            anchor-x(5)
-            anchor-y(15)
-            rotation(0)
-          }
-        }
-        title-area{
-          slot1{
-            text{
-              value()
-            }
-          }
-        }
-      }
-      spacer
-      paragraph {
-            value ("#{value(detail.dutyAddr)}")
-            style (Title_S)
-        }
-        paragraph {
-            value ("운영시간 : #{value(detail.startTime)} ~ #{value(detail.endTime)}")
-        }
-      }
-    }
-  }
+				paragraph {
+					value ("진료 과목")
+				}
+
+				hbox {
+					content {
+						vbox {
+							halign (Start)
+							content {
+								if ("detail.dgidIdName[0] == true") {
+									text { value ("내과") style (Detail_M) }
+								} else {
+									text { value ("내과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[3] == true") {
+									text { value ("안과") style (Detail_M) }
+								} else {
+									text { value ("안과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[6] == true") {
+									text { value ("가정의학과") style (Detail_M) }
+								} else {
+									text { value ("가정의학과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[9] == true") {
+									text { value ("외과") style (Detail_M) }
+								} else {
+									text { value ("외과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[12] == true") {
+									text { value ("흉부외과") style (Detail_M) }
+								} else {
+									text { value ("흉부외과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[15] == true") {
+									text { value ("정신건강의학과") style (Detail_M) }
+								} else {
+									text { value ("정신건강의학과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[18] == true") {
+									text { value ("영상의학과") style (Detail_M) }
+								} else {
+									text { value ("영상의학과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[21] == true") {
+									text { value ("해부병리과") style (Detail_M) }
+								} else {
+									text { value ("해부병리과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[23] == true") {
+									text { value ("마취통증의학과") style (Detail_M) }
+								} else {
+									text { value ("마취통증의학과") style (Detail_M_Soft) }
+								}
+							}
+						}
+						divider
+						vbox {
+							halign (Start)
+							content {
+								if ("detail.dgidIdName[1] == true") {
+									text { value ("소아청소년과") style (Detail_M) }
+								} else {
+									text { value ("소아청소년과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[4] == true") {
+									text { value ("치과") style (Detail_M) }
+								} else {
+									text { value ("치과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[7] == true") {
+									text { value ("산부인과") style (Detail_M) }
+								} else {
+									text { value ("산부인과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[10] == true") {
+									text { value ("정형외과") style (Detail_M) }
+								} else {
+									text { value ("정형외과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[13] == true") {
+									text { value ("재활의학과") style (Detail_M) }
+								} else {
+									text { value ("재활의학과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[16] == true") {
+									text { value ("신경과") style (Detail_M) }
+								} else {
+									text { value ("신경과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[19] == true") {
+									text { value ("치료방사선과") style (Detail_M) }
+								} else {
+									text { value ("치료방사선과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[22] == true") {
+									text { value ("임상병리과") style (Detail_M) }
+								} else {
+									text { value ("임상병리과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[24] == true") {
+									text { value ("구강악안면외과") style (Detail_M) }
+								} else {
+									text { value ("구강악안면외과") style (Detail_M_Soft) }
+								}
+							}
+						}
+						divider
+						vbox {
+							halign (Start)
+							content {
+								if ("detail.dgidIdName[2] == true") {
+									text { value ("이비인후과") style (Detail_M) }
+								} else {
+									text { value ("이비인후과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[5] == true") {
+									text { value ("피부과") style (Detail_M) }
+								} else {
+									text { value ("피부과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[8] == true") {
+									text { value ("비뇨기과") style (Detail_M) }
+								} else {
+									text { value ("비뇨기과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[11] == true") {
+									text { value ("성형외과") style (Detail_M) }
+								} else {
+									text { value ("성형외과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[14] == true") {
+									text { value ("응급의학과") style (Detail_M) }
+								} else {
+									text { value ("응급의학과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[17] == true") {
+									text { value ("신경외과") style (Detail_M) }
+								} else {
+									text { value ("신경외과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[20] == true") {
+									text { value ("핵의학과") style (Detail_M) }
+								} else {
+									text { value ("핵의학과") style (Detail_M_Soft) }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
