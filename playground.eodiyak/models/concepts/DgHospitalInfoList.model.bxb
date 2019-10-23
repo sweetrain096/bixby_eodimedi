@@ -21,7 +21,7 @@ structure (DgHospitalInfoList) {
 	}
 	property (dgidIdName) {
 		type (DgidIdName)
-		min (Required) max (Many)
+		min (Optional) max (Many)
 	}
 
 	property (dutyTel1) {
