@@ -36,29 +36,29 @@ layout-macro-def (InfoDetail) {
               }
             }
           }
-        // if(detail.MapUrl != ''){
-        //     cell-card {
+        if(detail.mapUrl != ''){
+            cell-card {
 
-        //       slot1 {
-        //           image {
-        //               url (/images/telephone.png)
-        //               shape (Square)
-        //           }
-        //       }
+              slot1 {
+                  image {
+                      url (/images/map.png)
+                      shape (Square)
+                  }
+              }
 
-        //       slot2 {
-        //         content{
-        //            primary("#{value(detail.MapUrl)}")
-        //         }
-        //       }
-        //       on-click {
-        //         intent {
-        //           goal: OpenBrowser
-        //           value: $expr(detail.MapUrl)
-        //         }
-        //       }
-        //     }
-        //   }
+              slot2 {
+                content{
+                   primary("#{value(detail.mapUrl)} 까지 길 찾기")
+                }
+              }
+              on-click {
+                intent {
+                  goal: OpenBrowser
+                  value: $expr(detail.mapUrl)
+                }
+              }
+            }
+          }
         map-card{
         // aspect-ratio(1:1)
         aspect-ratio(4:3)
