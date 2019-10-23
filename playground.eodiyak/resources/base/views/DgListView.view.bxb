@@ -1,4 +1,3 @@
-
 result-view {
 	match : DgHospitalInfoList (this)
 	
@@ -14,10 +13,8 @@ result-view {
 		if (size(this) == 0) {
 			nothing
 		} else-if (size(this) == 1) {
-			layout-macro (InfoDetail) {
-				param(detail) {
-					expression (this)
-				}
+			layout-match (this) {
+				mode (Details)
 			}
 		} else {
 			list-of (this) {
