@@ -72,6 +72,7 @@ module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgNa
         obj.distance = nearHospitalList[i].distance[0]
         obj.dutyDivName = nearHospitalList[i].dutyDivName[0]
         obj.dgName = dgName
+        obj.mapUrl = item.dutyName
 
         url = 'https://search.naver.com/search.naver?query=' + item.dutyName
         obj.url = url
