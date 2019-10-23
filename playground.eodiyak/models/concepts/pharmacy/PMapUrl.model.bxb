@@ -1,0 +1,3 @@
+text (PMapUrl) {
+  description (map과 연결할 url 약국)
+}

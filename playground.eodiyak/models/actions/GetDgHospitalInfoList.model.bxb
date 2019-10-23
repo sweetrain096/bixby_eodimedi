@@ -13,7 +13,7 @@
     }
     input(dgidIdName){
       type(DgName)
-      min (Required) max (One)
+      min (Optional) max (One)
     }
     input(currentPosition){
       type(MyPos)
