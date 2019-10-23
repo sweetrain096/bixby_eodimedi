@@ -4,7 +4,7 @@ var Operation = "getHsptlBassInfoInqire"
 var ServiceKey = "K6sYWvqebVyngpczytPk5eOtSHyZapagbhcTDE31E6hsk57L5V8cJdQKn033Fvj4QU7m6jfDg7evWZLIgCHPBw%3D%3D"
 
 var treatmentList = new Array(
-  "내과", "소아청소년", "이비인후과",
+  "내과", "소아청소년과", "이비인후과",
   "안과", "치과", "피부과",
   "가정의학과", "산부인과", "비뇨기과",
   "외과", "정형외과", "성형외과",
@@ -12,7 +12,7 @@ var treatmentList = new Array(
   "정신건강의학과", "신경과", "신경외과",
   "영상의학과", "치료방사선과", "핵의학과",
   "해부병리과", "임상병리과",
-  "마취통증의학과", "구강안면외과"
+  "마취통증의학과", "구강악안면외과"
 )
 
 //nearHospitalList ==> 근처병원 리스트
