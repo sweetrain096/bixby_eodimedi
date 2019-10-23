@@ -1,7 +1,7 @@
 var http = require('http')
 var EndPoint = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/"
 var Operation = "getParmacyLcinfoInqire"
-var ServiceKey = "K6sYWvqebVyngpczytPk5eOtSHyZapagbhcTDE31E6hsk57L5V8cJdQKn033Fvj4QU7m6jfDg7evWZLIgCHPBw%3D%3D"
+var ServiceKey = "Z6lJuu3urgG5yS0Gsn67Vc7jF4RBEpoMneik3qshCxF%2FoQDSri4aC8TThqkniotYQ%2Flgpc23f6ByJ6Sp0uPvBw%3D%3D"
 
 module.exports.function = function getPharmacyList (position) {
   const console = require("console")
@@ -17,8 +17,19 @@ module.exports.function = function getPharmacyList (position) {
   var item = pList.response.body.items.item
 
   let results = new Array
-  
-  if (item.dutyName) {
+  if (item == undefined ) {
+      console.log("가나다라마바사")
+      let info = {}
+      
+      info['pDutyName'] = "null"
+      info['pDistance'] = "null"
+      info['pHpid'] = "null"
+      info['pDutyTel1'] = "null"
+      info['pStartTime'] = "null"
+      info['pEndTime'] = "null"
+      
+      results.push(info)
+  } else if (item.dutyName) {
       let info = {}
       var stime = item.startTime.substring(0,2) + ":" + item.startTime.substring(2,4)
       var etime = item.endTime.substring(0,2) + ":" + item.endTime.substring(2,4)
@@ -60,7 +71,7 @@ module.exports.function = function getPharmacyList (position) {
       results.push(info)
     }
   }
-
+  console.log(results)
   return results
 }
  

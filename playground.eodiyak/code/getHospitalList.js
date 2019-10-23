@@ -2,7 +2,7 @@ var http = require('http')
 var EndPoint = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/"
 var Operation = "getHsptlMdcncLcinfoInqire"
 var BabyOperation = "getBabyLcinfoInqire"
-var ServiceKey = "K6sYWvqebVyngpczytPk5eOtSHyZapagbhcTDE31E6hsk57L5V8cJdQKn033Fvj4QU7m6jfDg7evWZLIgCHPBw%3D%3D"
+var ServiceKey = "Z6lJuu3urgG5yS0Gsn67Vc7jF4RBEpoMneik3qshCxF%2FoQDSri4aC8TThqkniotYQ%2Flgpc23f6ByJ6Sp0uPvBw%3D%3D"
 var pageNo = 1
 var num = 50
 
@@ -28,9 +28,17 @@ module.exports.function = function getHospitalList (position, baby) {
 
   var hList = http.getUrl(url,{format: 'xmljs'})
   var item = hList.response.body.items.item
-
-
-  if (item.dutyName) {
+  if (item == undefined ) {
+      let info = {}
+      info['dutyName'] = "null"
+      info['distance'] = "null"
+      info['dutyDivName'] = "null"
+      info['hpid'] = "null"
+      info['dutyTel1'] = "null"
+      info['endTime'] = "null"
+      info['startTime'] = "null"
+      results.push(info)
+  } else if (item.dutyName) {
       let info = {}
       info['dutyName'] = item.dutyName
       info['distance'] = item.distance
@@ -62,8 +70,7 @@ module.exports.function = function getHospitalList (position, baby) {
       info['endTime'] = etime
       info['startTime'] = stime
       results.push(info)
-    }
+    } 
   }
-
   return results
 }
