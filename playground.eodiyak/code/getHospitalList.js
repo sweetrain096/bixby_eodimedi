@@ -28,9 +28,17 @@ module.exports.function = function getHospitalList (position, baby) {
 
   var hList = http.getUrl(url,{format: 'xmljs'})
   var item = hList.response.body.items.item
-
-
-  if (item.dutyName) {
+  if (item == undefined ) {
+      let info = {}
+      info['dutyName'] = "null"
+      info['distance'] = "null"
+      info['dutyDivName'] = "null"
+      info['hpid'] = "null"
+      info['dutyTel1'] = "null"
+      info['endTime'] = "null"
+      info['startTime'] = "null"
+      results.push(info)
+  } else if (item.dutyName) {
       let info = {}
       info['dutyName'] = item.dutyName
       info['distance'] = item.distance
@@ -62,8 +70,7 @@ module.exports.function = function getHospitalList (position, baby) {
       info['endTime'] = etime
       info['startTime'] = stime
       results.push(info)
-    }
+    } 
   }
-
   return results
 }

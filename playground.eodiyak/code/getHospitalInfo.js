@@ -14,46 +14,64 @@ var treatmentList = new Array(
 
 module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentPosition) {
   const console = require("console")
-  var url = EndPoint + Operation 
-  + "?ServiceKey=" + ServiceKey 
-  + "&HPID=" + hospitalSummaryInfo.hpId
-  var details = http.getUrl(url,{format: 'xmljs'})
+  
+  let info = {}
+  if ( hospitalSummaryInfo.hpId == "null" && hospitalSummaryInfo.startTime == "null" && hospitalSummaryInfo.endTime == "null" ) {
+    info['point'] = {
+      latitude : null,
+      longitude : null,
+      $id : null,
+      $type : "viv.geo.GeoPoint"
+    }
+    info['dutyAddr'] = null
+    info['dutyName'] = null
+    info['dgidIdName'] = null
+    info['dutyTel1'] = null
+    info['startTime'] = null
+    info['endTime'] = null
+    info['currentPosition'] = null
+    info['url'] = null
+    return info
+  } else {
+    var url = EndPoint + Operation 
+    + "?ServiceKey=" + ServiceKey 
+    + "&HPID=" + hospitalSummaryInfo.hpId
+    var details = http.getUrl(url,{format: 'xmljs'})
 
-  var item = details.response.body.items.item
+    var item = details.response.body.items.item
 
-  var dgidldList = new Array();
-  var originDNList = item.dgidIdName.split(",");
+    var dgidldList = new Array();
+    var originDNList = item.dgidIdName.split(",");
 
-  for(var i=0; i<treatmentList.length; i++){
+    for(var i=0; i<treatmentList.length; i++){
 
-    if(item.dutyName.includes(treatmentList[i])){
-      dgidldList[i] = true;
-    }else{
-      for(var j=0; j<originDNList.length; j++){
-        if(treatmentList[i] == originDNList[j]){
-          dgidldList[i] = true;
-        }else{
-          dgidldList[i] = false;
+      if(item.dutyName.includes(treatmentList[i])){
+        dgidldList[i] = true;
+      }else{
+        for(var j=0; j<originDNList.length; j++){
+          if(treatmentList[i] == originDNList[j]){
+            dgidldList[i] = true;
+          }else{
+            dgidldList[i] = false;
+          }
         }
       }
     }
+    info['point'] = {
+      latitude : item.wgs84Lat,
+      longitude : item.wgs84Lon,
+      $id : null,
+      $type : "viv.geo.GeoPoint"
+    }
+    info['dutyAddr'] = item.dutyAddr
+    info['dutyName'] = item.dutyName
+    info['dgidIdName'] = dgidldList
+    info['dutyTel1'] = item.dutyTel1
+    info['startTime'] = hospitalSummaryInfo.startTime
+    info['endTime'] = hospitalSummaryInfo.endTime
+    info['currentPosition'] = currentPosition
+    info['url'] = 'https://search.naver.com/search.naver?query=' + info['dutyName']
   }
-  let info = {}
-  info['point'] = {
-    latitude : item.wgs84Lat,
-    longitude : item.wgs84Lon,
-    $id : null,
-    $type : "viv.geo.GeoPoint"
-  }
-  info['dutyAddr'] = item.dutyAddr
-  info['dutyName'] = item.dutyName
-  info['dgidIdName'] = dgidldList
-  info['dutyTel1'] = item.dutyTel1
-  info['startTime'] = hospitalSummaryInfo.startTime
-  info['endTime'] = hospitalSummaryInfo.endTime
-  info['currentPosition'] = currentPosition
-  info['url'] = 'https://search.naver.com/search.naver?query=' + info['dutyName']
-
-  return info
+    return info
 }
 

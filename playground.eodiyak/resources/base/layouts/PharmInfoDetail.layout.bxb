@@ -2,7 +2,7 @@ layout-macro-def (PharmInfoDetail) {
 	params {
 		param (detail) {
 			type (PharmacyInfo)
-			min (Required) max (One)
+			min (Optional) max (Many)
 		}
 	}
   content {

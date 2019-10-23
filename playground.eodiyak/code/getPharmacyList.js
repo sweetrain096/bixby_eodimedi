@@ -17,8 +17,19 @@ module.exports.function = function getPharmacyList (position) {
   var item = pList.response.body.items.item
 
   let results = new Array
-  
-  if (item.dutyName) {
+  if (item == undefined ) {
+      console.log("가나다라마바사")
+      let info = {}
+      
+      info['pDutyName'] = "null"
+      info['pDistance'] = "null"
+      info['pHpid'] = "null"
+      info['pDutyTel1'] = "null"
+      info['pStartTime'] = "null"
+      info['pEndTime'] = "null"
+      
+      results.push(info)
+  } else if (item.dutyName) {
       let info = {}
       var stime = item.startTime.substring(0,2) + ":" + item.startTime.substring(2,4)
       var etime = item.endTime.substring(0,2) + ":" + item.endTime.substring(2,4)
@@ -60,7 +71,7 @@ module.exports.function = function getPharmacyList (position) {
       results.push(info)
     }
   }
-
+  console.log(results)
   return results
 }
  
