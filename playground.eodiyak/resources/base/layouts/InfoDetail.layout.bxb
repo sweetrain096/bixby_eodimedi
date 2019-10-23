@@ -36,6 +36,29 @@ layout-macro-def (InfoDetail) {
               }
             }
           }
+        // if(detail.MapUrl != ''){
+        //     cell-card {
+
+        //       slot1 {
+        //           image {
+        //               url (/images/telephone.png)
+        //               shape (Square)
+        //           }
+        //       }
+
+        //       slot2 {
+        //         content{
+        //            primary("#{value(detail.MapUrl)}")
+        //         }
+        //       }
+        //       on-click {
+        //         intent {
+        //           goal: OpenBrowser
+        //           value: $expr(detail.MapUrl)
+        //         }
+        //       }
+        //     }
+        //   }
         map-card{
         // aspect-ratio(1:1)
         aspect-ratio(4:3)
