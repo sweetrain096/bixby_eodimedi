@@ -82,6 +82,29 @@ layout-macro-def (InfoDetail) {
 						}
 					}
 				}
+                if(detail.mapUrl != ''){
+            cell-card {
+
+              slot1 {
+                  image {
+                      url (/images/map.png)
+                      shape (Square)
+                  }
+              }
+
+              slot2 {
+                content{
+                   primary("#{value(detail.mapUrl)} 까지 길 찾기")
+                }
+              }
+              on-click {
+                intent {
+                  goal: OpenBrowser
+                  value: $expr(detail.mapUrl)
+                }
+              }
+            }
+          }
 				paragraph {
 					value ("진료 과목")
 				}

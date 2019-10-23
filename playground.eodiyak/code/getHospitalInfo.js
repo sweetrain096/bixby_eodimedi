@@ -76,6 +76,7 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
     info['endTime'] = hospitalSummaryInfo.endTime
     info['currentPosition'] = currentPosition
     info['url'] = 'https://search.naver.com/search.naver?query=' + info['dutyName']
+    info['mapUrl'] = item.dutyName
   }
     return info
 }

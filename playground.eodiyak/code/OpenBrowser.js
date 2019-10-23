@@ -5,10 +5,10 @@ module.exports.function = function openBrowser (url, dutyTel1) {
   
   let result = '';
   if(dutyTel1 != undefined){
-    result = dutyTel1;
+    result = 'tel:'+dutyTel1;
   }else{
     result = url;
   }
-  
+  console.log(url)
   return result;
 }
