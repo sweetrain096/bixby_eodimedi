@@ -7,8 +7,6 @@ var ServiceKey = "Z6lJuu3urgG5yS0Gsn67Vc7jF4RBEpoMneik3qshCxF%2FoQDSri4aC8TThqkn
 var pageNo = 1
 var num = 50
 
-
-
 module.exports.function = function getHospitalList(position, baby) {
   const console = require("console")
   var url = ""
