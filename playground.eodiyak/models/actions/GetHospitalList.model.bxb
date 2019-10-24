@@ -20,5 +20,26 @@
 
   }
 
-  output (NearHospitalList)
+  output (NearHospitalList) {
+    throws {
+      error (ErrorNotWorking) {
+        on-catch {
+          halt {
+            dialog {
+              template ("현재 서버가 작동하지 않습니다..")
+            }
+          }
+        }
+      }
+      error (ErrorNoResults) {
+        on-catch {
+          halt {
+            dialog {
+              template ("현재 주변에 진료중인 병원이 없습니다.")
+            }
+          }
+        }
+      }
+    }
+  }
 }
