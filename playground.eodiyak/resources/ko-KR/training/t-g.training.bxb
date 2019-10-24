@@ -1,5 +1,4 @@
 train (t-g92mop2yovnm53j6ivzby6xtz) {
   utterance ("[g:GetLocationHospitalInfo] {[g:LocationName1] (대전광역시)[v:LocationName1]} 병원 알려줘")
-  plan (Y+BgkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ1BFlXNPLfHJT04syczPQ1GGzwg5VLng1JzU5BKXdJgaBgVUeYQMSLdPZnEJEY4AK5NGVQZT45eYm2qIX5KdgZGBiYGZgYWBlYENyGNA4TOC+RDMA8TMQBYbWA8bAA==)
-  last-modified (1571810038372)
+  last-modified (1571892230819)
 }
