@@ -1,7 +1,7 @@
 var http = require('http')
 var EndPoint = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/"
 var Operation = "getHsptlBassInfoInqire"
-var ServiceKey = "K6sYWvqebVyngpczytPk5eOtSHyZapagbhcTDE31E6hsk57L5V8cJdQKn033Fvj4QU7m6jfDg7evWZLIgCHPBw%3D%3D"
+var ServiceKey = secret.get('servicekey')
 
 
 var tmapkey = secret.get('tmapkey')
