@@ -54,6 +54,49 @@ function cuttingTime(time){
   return time
 }
 
+function makeDgididNameList(originData, hosName){ //원본DgidIdName, 병원이름
+  var dgList = new Array();
+
+  if(originData != undefined){
+    var spl = originData.split(",")
+    for(var i=0; i<treatmentList.length; i++){
+      if(hosName.includes(treatmentList[i])){
+        dgList[i] = true;
+      }else{
+        dgList[i]= false;
+        for(var j=0; j<spl.length; j++){
+          if(treatmentList[i] == spl[j]){
+            dgList[i] = true;
+            break
+          }
+        }
+      }
+    }
+  }else{
+    for(var i=0; i<treatmentList.length; i++){
+      if(hosName.includes(treatmentList[i])){
+        dgList[i] = true;
+      }else{
+        dgList[i] = false;
+      }
+    }
+  }
+  return dgList
+}
+
+function getDgiddData(hpid){
+  var operation2 = "getHsptlBassInfoInqire"
+  var url = EndPoint + operation2
+    + "?ServiceKey=" + ServiceKey 
+    + "&HPID=" + hpid
+    + "&pageNo=1"
+    + "&numOfRows=10"
+  
+  var details = http.getUrl(url,{format: 'xmljs'})
+  var item = details.response.body.items.item
+  return item.dgidIdName
+}
+
 module.exports.function = function getLocationHospitalList (position, locationName1, locationName2) {  
   const console = require("console")
 
@@ -69,7 +112,7 @@ module.exports.function = function getLocationHospitalList (position, locationNa
   + "&Q1=" + enlocation2
   + "&QT= " + day
   + "&pageNo=1"
-  + "&numOfRows=10"
+  + "&numOfRows=50"
 
   var details = http.getUrl(url,{format: 'xmljs'})
   var item = details.response.body.items.item
@@ -77,7 +120,6 @@ module.exports.function = function getLocationHospitalList (position, locationNa
   var result = new Array() 
 
   for(var i =0; i<item.length; i++){
-    console.log(item[i])
     var obj = new Object();
     let url = ""
     let info = {
@@ -90,7 +132,7 @@ module.exports.function = function getLocationHospitalList (position, locationNa
     obj.currentPosition = position.myPos // 사용자의 좌표
     obj.dutyAddr = item[i].dutyAddr
     obj.dutyName = item[i].dutyName
-    obj.dgidIdName = item[i].dgidIdName
+    obj.dgidIdName = makeDgididNameList(getDgiddData(item[i].hpid), item[i].dutyName)
     obj.dutyTel1 = item[i].dutyTel1
 
     ////////////////오늘의 진료시간을 알아내기위함
@@ -113,11 +155,9 @@ module.exports.function = function getLocationHospitalList (position, locationNa
 
     let Startlat = position.myPos.latitude
     let Startlon = position.myPos.longitude
-    console.log(Startlat)
 
     let Endlat = item[i].wgs84Lat
     let Endlon = item[i].wgs84Lon
-    console.log(Endlat)
 
     let options = {
       format: 'json',
