@@ -1,7 +1,7 @@
 input-view {
 	match : NearHospitalList (this)
 	message {
-		if ("exists(this.isPharmacy)") {
+		if ("this.isPharmacy == true") {
       template ("현재 열려있는 약국의 정보입니다.")      
     } else {
 			template ("현재 진료중인 병원의 정보입니다.")
