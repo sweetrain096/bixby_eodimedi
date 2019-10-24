@@ -13,50 +13,12 @@ layout-macro-def (InfoDetail) {
 					value ("#{value(detail.dutyName)}")
 					style (Title_S)
 				}
-				if(detail.dutyTel1 != ''){
-					cell-card {
-						slot1 {
-							image {
-								url (/images/telephone.png)
-								shape (Square)
-							}
-						}
-						slot2 {
-							content{
-								primary("#{value(detail.dutyTel1)}")
-							}
-						}
-						on-click {
-							intent {
-								goal: OpenBrowser
-								value: $expr(detail.dutyTel1)
-							}
-						}
-					}
-        }
-        if(detail.mapUrl != ''){
-          cell-card {
-
-            slot1 {
-                image {
-                    url (/images/map.png)
-                    shape (Square)
-                }
-            }
-
-            slot2 {
-              content{
-                 primary("#{value(detail.mapUrl)} 까지 길 찾기")
-              }
-            }
-            on-click {
-              intent {
-                goal: MapOpenBrowser
-                value: $expr(detail.mapUrl)
-              }
-            }
-          }
-        }
+				paragraph {
+					value ("#{value(detail.dutyAddr)}")
+					style (Detail_M_Soft)
+				}
+				
+        
 				map-card{
 					aspect-ratio(4:3)
 					markers{
@@ -77,12 +39,6 @@ layout-macro-def (InfoDetail) {
 						}
 					}
 				}
-				spacer
-				paragraph {
-					value ("#{value(detail.dutyAddr)}")
-					style (Title_S)
-				}
-				
 				split-input-cell {
 					left {
 						input-cell {
@@ -105,33 +61,56 @@ layout-macro-def (InfoDetail) {
 						}
 					}
 				}
-                if(detail.mapUrl != ''){
-            cell-card {
 
-              slot1 {
-                  image {
-                      url (/images/map.png)
-                      shape (Square)
-                  }
-              }
-
-              slot2 {
-                content{
-                   primary("#{value(detail.mapUrl)} 까지 길 찾기")
-                }
-              }
-              on-click {
-                intent {
-                  goal: OpenBrowser
-                  value: $expr(detail.mapUrl)
-                }
-              }
-            }
-          }
+				if(detail.dutyTel1 != ''){
+					cell-card {
+						slot1 {
+							image {
+								url (/images/telephone.png)
+								shape (Circle)
+							}
+						}
+						slot2 {
+							content{
+								primary("#{value(detail.dutyTel1)}")
+							}
+						}
+						on-click {
+							intent {
+								goal: OpenBrowser
+								value: $expr(detail.dutyTel1)
+							}
+						}
+					}
+				}
+				if(detail.mapUrl != ''){
+					cell-card {
+						
+						slot1 {
+							image {
+								url (/images/map.png)
+								shape (Circle)
+							}
+						}
+						
+						slot2 {
+							content{
+								primary("#{value(detail.mapUrl)} 까지 길 찾기")
+							}
+						}
+						on-click {
+							intent {
+								goal: OpenBrowser
+								value: $expr(detail.mapUrl)
+							}
+						}
+					}
+				}
 				paragraph {
 					value ("진료 과목")
+          
 				}
-
+				
 				hbox {
 					content {
 						vbox {
@@ -177,7 +156,7 @@ layout-macro-def (InfoDetail) {
 								} else {
 									text { value ("해부병리과") style (Detail_M_Soft) }
 								}
-								if ("detail.dgidIdName[23] == true") {
+								if ("detail.dgidIdName[24] == true") {
 									text { value ("마취통증의학과") style (Detail_M) }
 								} else {
 									text { value ("마취통증의학과") style (Detail_M_Soft) }
@@ -228,7 +207,7 @@ layout-macro-def (InfoDetail) {
 								} else {
 									text { value ("임상병리과") style (Detail_M_Soft) }
 								}
-								if ("detail.dgidIdName[24] == true") {
+								if ("detail.dgidIdName[25] == true") {
 									text { value ("구강악안면외과") style (Detail_M) }
 								} else {
 									text { value ("구강악안면외과") style (Detail_M_Soft) }
@@ -273,6 +252,16 @@ layout-macro-def (InfoDetail) {
 									text { value ("핵의학과") style (Detail_M) }
 								} else {
 									text { value ("핵의학과") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[23] == true") {
+									text { value ("요양병원") style (Detail_M) }
+								} else {
+									text { value ("요양병원") style (Detail_M_Soft) }
+								}
+								if ("detail.dgidIdName[26] == true") {
+									text { value ("한의원") style (Detail_M) }
+								} else {
+									text { value ("한의원") style (Detail_M_Soft) }
 								}
 							}
 						}
