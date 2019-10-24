@@ -8,8 +8,13 @@ result-view {
     payload-uri ("#{value(this)}")
 
     requires {
-      // app-id ("net.daum.android.map")
-      app-store-url ("net.daum.android.map")
+      app-name ("카카오맵")
+      app-id {
+        template ("net.daum.android.map")
+      }
+      app-store-url {
+        template ("https://play.google.com/store/apps/details?id=net.daum.android.map&hl=ko")
+      }
     }
   }
-}
+} 
