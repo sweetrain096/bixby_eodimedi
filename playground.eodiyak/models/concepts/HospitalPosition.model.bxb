@@ -1,0 +1,7 @@
+structure (HospitalPosition) {
+  description (__DESCRIPTION__)
+  property (hospoint) {
+    type (Hospoint)
+    min (Optional) max (One)
+  }
+}

@@ -1,4 +1,4 @@
-action (GetHospitalList) {
+ action (GetHospitalList) {
   description (주변 병원 목록을 가져온다.)
   type(Constructor)
 
@@ -13,17 +13,37 @@ action (GetHospitalList) {
         }
       }
     }
+    input(baby){    // 달빛병원이니?
+      type(Baby)
+      min (Optional) max (One)
+    }
+    input(pharmacy){    // 약국이니?
+      type(Pharmacy)
+      min (Optional) max (One)
+    }
 
-    input(hospitalLists){
-      type(DutyName)
-      min (Optional) max (Many)
-    }
-    input(hpId){
-      type(HpID)
-      min (Optional) max (Many)
-    }
   }
 
-
-  output (NearHospitalList)
+  output (NearHospitalList) {
+    throws {
+      error (ErrorNotWorking) {
+        on-catch {
+          halt {
+            dialog {
+              template ("현재 서버가 작동하지 않습니다..")
+            }
+          }
+        }
+      }
+      error (ErrorNoResults) {
+        on-catch {
+          halt {
+            dialog {
+              template ("현재 주변에 진료중인 병원이 없습니다.")
+            }
+          }
+        }
+      }
+    }
+  }
 }

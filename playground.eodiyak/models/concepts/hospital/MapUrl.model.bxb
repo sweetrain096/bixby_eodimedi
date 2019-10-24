@@ -1,0 +1,3 @@
+text (MapUrl) {
+  description (map과 연결할 url)
+}

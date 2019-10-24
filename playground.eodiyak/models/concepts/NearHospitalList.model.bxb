@@ -10,7 +10,7 @@ structure (NearHospitalList) {
   }
   property (dutyDivName) {
     type (DutyDivName)
-    min (Required) max (Many)
+    min (Optional) max (Many)
   }
   property (hpid) {
     type (HpID)
@@ -27,5 +27,9 @@ structure (NearHospitalList) {
   property (endTime) {
     type (EndTime)
     min (Required) max (Many)
+  }
+  property (isPharmacy){
+    type(Pharmacy)
+    min (Optional) max (One)
   }
 }

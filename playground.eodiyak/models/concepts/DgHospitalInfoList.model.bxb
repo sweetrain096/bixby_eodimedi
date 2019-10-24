@@ -1,11 +1,11 @@
-structure (HospitalInfo) {
-	description (병원의 정보들)
+structure (DgHospitalInfoList) {
+  description (병원 진료 목록 포함한 상세정보 list)
 
 	property(point) {
 		type(Hospoint)
 		min (Required) max (One)
 	}
-	
+
 	property (dutyAddr) {
 		type (DutyAddr)
 		min (Required) max (One)
@@ -15,7 +15,10 @@ structure (HospitalInfo) {
 		type (DutyName)
 		min (Required) max (One)
 	}
-
+	property (dgName){
+		type(DgName)
+		min (Optional) max (One)
+	}
 	property (dgidIdName) {
 		type (DgidIdName)
 		min (Optional) max (Many)
@@ -41,16 +44,24 @@ structure (HospitalInfo) {
 		min (Required) max (One)
 	}
 
+	property (distance) {
+    type (Distance)
+    min (Required) max (Many)
+  }
+  property (dutyDivName) {
+    type (DutyDivName)
+    min (Required) max (Many)
+  }
 	property (url) {
 		type (URL)
 		min (Required) max (One)
 	}
-	property (mapUrl){
-		type(MapUrl)
+	property (mapUrl) {
+		type (MapUrl)
 		min (Optional) max (One)
 	}
-	property (time){
-		type(Time)
+	property (time) {
+		type (Time)
 		min (Optional) max (One)
 	}
 }

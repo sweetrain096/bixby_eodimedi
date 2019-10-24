@@ -1,0 +1,18 @@
+result-view {
+  match : HospitalInfo (this)
+    /// concepts의 HospitalInfo에서 정의된 것 매치
+  
+  message {
+    template ("선택하신 병원의 정보입니다.")
+  }
+
+  render {
+    layout {
+      layout-macro (InfoDetail) {
+        param (detail) {
+          expression (this)
+        }
+      }
+    }
+	}
+}

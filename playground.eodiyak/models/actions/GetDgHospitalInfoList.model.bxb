@@ -1,0 +1,24 @@
+ action (GetDgHospitalInfoList){
+  description (진료 과목에 해당하는 병원 리스트를 가져온다.)
+  type(Search)
+  collect{
+    input (nearHospitalList) {
+      type (NearHospitalList)
+      min (Required) max (Many)
+      default-init{
+        intent{
+          goal: GetHospitalList
+        }
+      }
+    }
+    input(dgName){    // 병원 진료과목
+      type(DgName)
+      min (Required) max (One)
+    }
+    input(currentPosition){
+      type(MyPos)
+      min (Required) max (One)
+    }
+  }
+  output (DgHospitalInfoList)
+}

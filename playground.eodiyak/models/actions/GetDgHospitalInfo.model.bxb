@@ -1,0 +1,16 @@
+action (GetDgHospitalInfo) {
+  description (병원 정보를 찾는다.)
+  type(Search)
+  collect {
+    input (hospital) {
+      type (HospitalInfo)
+      min (Required) max (One)
+      default-init{
+        intent{
+          goal: SelectDgHospital
+        }
+      }
+    }
+  }
+  output (HospitalInfo)
+}

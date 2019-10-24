@@ -1,0 +1,3 @@
+text (Wgs84Lon) { // 이건 경도입니다아아아아
+  description (병원의 경도좌표)
+}

@@ -1,0 +1,3 @@
+integer (DgSelectNum) {
+  description (병원목록 번호 선택한다.)
+}

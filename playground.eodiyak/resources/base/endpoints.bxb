@@ -17,16 +17,48 @@ endpoints {
       local-endpoint ("getCurrentPosition.js")
     }
     action-endpoint (GetHospitalList){
-      accepted-inputs (position, hospitalLists, hpId)
+      accepted-inputs (position, baby, pharmacy)
       local-endpoint ("getHospitalList.js")
     }
     action-endpoint (SelectHospital){
-      accepted-inputs (hospital)
+      accepted-inputs (hospital, selectNum)
       local-endpoint ("selectHospital.js")
     }
+    action-endpoint (SelectDgHospital){
+      accepted-inputs (hospital)
+      local-endpoint ("selectDgHospital.js")
+    }
     action-endpoint (GetHospitalInfo){
-      accepted-inputs (hpId)
+      accepted-inputs (hospitalSummaryInfo, currentPosition)
       local-endpoint ("getHospitalInfo.js")
+    }
+    action-endpoint (GetDgHospitalInfoList){
+      accepted-inputs (nearHospitalList, dgName, currentPosition)
+      local-endpoint ("getDgHospitalInfoList.js")
+    }
+    action-endpoint (GetDgHospitalInfo){
+      accepted-inputs (hospital)
+      local-endpoint ("getDgHospitalInfo.js")
+    }
+    action-endpoint (GetLocationHospitalList){
+      accepted-inputs (position, locationName1, locationName2)
+      local-endpoint ("getLocationHospitalList.js")
+    }
+    action-endpoint (SelectLocationHospital){
+      accepted-inputs (hospital)
+      local-endpoint ("selectLocationHospital.js")
+    }
+    action-endpoint (GetLocationHospitalInfo){
+      accepted-inputs (hospital)
+      local-endpoint ("getLocationHospitalInfo.js")
+    }
+    action-endpoint (OpenBrowser) {
+      accepted-inputs (url, dutyTel1)
+      local-endpoint ("OpenBrowser.js")
+    }
+    action-endpoint (MapOpenBrowser){
+      accepted-inputs (hospitalInfo)
+      local-endpoint ("mapOpenBrowser.js")
     }
   }
 }
