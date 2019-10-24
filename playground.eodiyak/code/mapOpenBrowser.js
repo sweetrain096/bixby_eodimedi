@@ -1,7 +1,11 @@
-module.exports.function = function mapOpenBrowser (dutyName) {
+module.exports.function = function mapOpenBrowser (hospitalInfo) {
   const console = require("console")
-  let result = ""
-  result = "daummaps://open"
-  console.log(dutyName)
+  console.log(hospitalInfo)
+  let result = "daummaps://route?sp="
+  result += hospitalInfo.currentPosition.latitude+', '
+  result += hospitalInfo.currentPosition.longitude + '&ep='
+  result += hospitalInfo.point.latitude + ', '
+  result += hospitalInfo.point.longitude += '&by=CAR'
+  console.log(result)
   return result
 }
