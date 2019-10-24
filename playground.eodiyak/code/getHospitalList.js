@@ -11,16 +11,18 @@ var num = 50
 
 
 
-module.exports.function = function getHospitalList(position, baby, pharmacy) {
+module.exports.function = function getHospitalList(position, baby, dgName) {
+
   var ep = ""
   var oper = ""
-  if (baby != true && pharmacy != true ) { //일반병원 호출
+  // if (baby != true && pharmacy != true ) { //일반병원 호출
+  if (dgName == '병원' ) { //일반병원 호출
     ep = EndPoint
     oper = Operation
   } else if (baby == true) { //달빛병원 호출
     ep = EndPoint
     oper =BabyOperation
-  } else if (pharmacy == true){ //약국 호출
+  } else if (dgName == '약국'){ //약국 호출
     ep = PharmacyEndPoint
     oper = PharmacyOperation
   } else {

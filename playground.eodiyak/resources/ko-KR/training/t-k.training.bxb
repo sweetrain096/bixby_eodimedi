@@ -1,5 +1,6 @@
 train (t-ky5i96y5772y8go29klnd0gxq) {
-  utterance ([g:GetHospitalInfo] 가까운 병원 알려줘)
-  plan (Y2BhkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xAzMDIwMTkGQA0iAIAWAWAA==)
-  last-modified (1571881107868)
+  utterance ("[g:GetHospitalInfo] 가까운 {[g:DgName] (병원)[v:DgName]} 알려줘")
+  plan (Y+BkkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xgwyqYHBqTmoy3GQGOVRZv9TEIpicT2ZxCR5HgaVFUKVd0v0Sc1NxiHIwMDIwMTAzsDCwMrAxsAP5DEARkBhMhJGBASwGwTxAzAxksYN1sgMA)
+  enabled (false)
+  last-modified (1571903505230)
 }
