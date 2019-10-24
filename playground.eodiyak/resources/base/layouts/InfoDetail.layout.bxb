@@ -56,7 +56,7 @@ layout-macro-def (InfoDetail) {
 								template ("병원까지 소요 시간")
 							}
 							value {
-								template ("10분")
+								template ("#{value(detail.time)}분")
 							}
 						}
 					}
