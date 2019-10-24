@@ -95,7 +95,7 @@ module.exports.function = function getHospitalList(position, baby, dgName) {
     flag = 1
   } else { // 내과,치과 등등 다른 병원들을 호출 할 때,
     ep = EndPoint
-    oper = BabyOperation
+    oper = Operation
     flag = 2
   }
 
