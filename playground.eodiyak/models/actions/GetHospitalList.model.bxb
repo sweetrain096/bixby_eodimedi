@@ -13,14 +13,18 @@
         }
       }
     }
+    input(locality){
+      type(Locality)
+      min (Optional) max (One)
+    }
+    input(locationName){
+      type(LocationName)
+      min (Optional) max (One)
+    }
     input(baby){    // 달빛병원이니?
       type(Baby)
       min (Optional) max (One)
     }
-    // input(pharmacy){    // 약국이니?
-    //   type(Pharmacy)
-    //   min (Optional) max (One)
-    // }
     input(dgName){
       type(DgName)
       min (Optional) max (One)

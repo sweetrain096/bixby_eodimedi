@@ -12,13 +12,9 @@ action (GetLocationHospitalList) {
         }
       }
     }
-    input(locationName1){ // 병원 위치 도/시
-      type(LocationName1)
+    input(locationName){ // 병원 위치 도/시
+      type(LocationName)
       min (Optional) max(One)
-    }
-    input (locationName2){  // 병원 위치 군/구
-      type(LocationName2)
-      min (Optional) max (One)
     }
   }
   output (DgHospitalInfoList) // 병원 목록 리스트와 공유한다.
