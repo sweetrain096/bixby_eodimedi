@@ -7,6 +7,13 @@ layout-macro-def (NearPharmListLayout) {
 	}
 	content {
 		cell-card {
+			slot1 {
+				image {
+					shape (Square)
+					url ("/icon/hospital.png")
+				}
+				
+			}
 			slot2 {
 				content {
 					primary ("#{value(pharms.pDutyName)}")
