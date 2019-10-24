@@ -18,10 +18,26 @@ var treatmentList = new Array(
 
 
 module.exports.function = function getLocationHospitalList (position, locationName1, locationName2) {
+  /* 여기 파라미터 position이 아래와 같이 넘어온다
+  myPos
+    latitude:37.492711
+    longitude:127.046315
+    $id:null
+    $type:todoc.eodiyak.MyPos
+  $id:null
+  $type:todoc.eodiyak.MyPosition
+  ---
+  그래서 슈바 바로 position을 넘겨주지 말고 position.myPos로 넘겨줘야한다.
+  */
+  
   const console = require("console")
 
   var enlocation1 = encodeURI(locationName1)
   var enlocation2 = encodeURI(locationName2)
+
+  console.log("========thisisshowtime!========")
+  console.log(position)
+  console.log("===============================")
 
   var url = EndPoint + Operation 
   + "?ServiceKey=" + ServiceKey 
@@ -32,7 +48,8 @@ module.exports.function = function getLocationHospitalList (position, locationNa
 
   var details = http.getUrl(url,{format: 'xmljs'})
   var item = details.response.body.items.item
-  console.log("thisistest : ",item)
+  console.log("api response : ", details)
+
   var result = new Array() 
 
   for(var i =0; i<item.length; i++){
@@ -52,7 +69,7 @@ module.exports.function = function getLocationHospitalList (position, locationNa
     obj.dutyTel1 = item[i].dutyTel1
     obj.startTime = "tmpdata"
     obj.endTime = "tmpdata"
-    obj.currentPosition = position
+    obj.currentPosition = position.myPos
     obj.distance = "tmpdata"
     obj.dutyDivName = "tmpdata"
     obj.mapUrl = item.dutyName
@@ -60,7 +77,7 @@ module.exports.function = function getLocationHospitalList (position, locationNa
     obj.url = url
     result.push(obj);
   }
-  console.log(result)
+  console.log("result : ",result)
 
   
   return result
