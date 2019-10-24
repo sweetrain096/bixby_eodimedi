@@ -21,17 +21,44 @@ var treatmentList = new Array(
   "마취통증의학과", "구강악안면외과", "한의원"
 )
 
+function makeDgididNameList(originData, hosName){ //원본DgidIdName, 병원이름
+  var dgList = new Array();
+
+  if(originData != undefined){
+    var spl = originData.split(",")
+    for(var i=0; i<treatmentList.length; i++){
+      if(hosName.includes(treatmentList[i])){
+        dgList[i] = true;
+      }else{
+        dgList[i]= false;
+        for(var j=0; j<spl.length; j++){
+          if(treatmentList[i] == spl[j]){
+            dgList[i] = true;
+            break
+          }
+        }
+      }
+    }
+  }else{
+    for(var i=0; i<treatmentList.length; i++){
+      if(hosName.includes(treatmentList[i])){
+        dgList[i] = true;
+      }else{
+        dgList[i] = false;
+      }
+    }
+  }
+  return dgList
+}
+
+
+
 //nearHospitalList ==> 근처병원 리스트
 // dgidIdName ==> 찾으려는 병원 종류 // 내과, 외과....
 //currentPosition ==> 현재 위치
 module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgName, currentPosition) {
   const console = require("console")
   var result = new Array() 
-  console.log("====this is show time! ====")
-  console.log(nearHospitalList)
-  console.log(dgName)
-  console.log(currentPosition)
-  console.log("===========")
 
   for (let i = 0; i<nearHospitalList.length; i++){
     var url = EndPoint + Operation 
@@ -39,9 +66,6 @@ module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgNa
       + "&HPID=" + nearHospitalList[i].hpid
       var details = http.getUrl(url,{format: 'xmljs'})
       var item = details.response.body.items.item
-      console.log("tag : ",item)
-      console.log(nearHospitalList[i])
-      console.log("-------")
 
       // 사용자가 찾는 병원인가?
       var flag = false;
@@ -56,8 +80,7 @@ module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgNa
         }
       }
 
-      if (flag ) {
-        console.log("this is item",item)
+      if (flag) {
         var obj = new Object();
         let info = {}
         let url = ""
@@ -67,34 +90,10 @@ module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgNa
           $id : null,
           $type : "viv.geo.GeoPoint"
         }
-
-        var dgList = new Array();
-        if(item.dgidIdName != undefined){
-          originDNList = item.dgidIdName.split(",")
-          for(var k=0; k<treatmentList.length; k++){
-            if(item.dutyName.includes(treatmentList[k])){
-              dgList[k] = true;
-            }else{
-              for(var j=0; j<originDNList.length; j++){
-                if(treatmentList[k] == originDNList[j]){
-                  dgList[k] = true;
-                  break
-                }else{
-                  dgList[k] = false;
-                }
-              }
-            }
-          }
-        }else{
-          for(var k=0; k<25; k++){
-            dgList.push(false);
-          }
-        }
-
         obj.point = info
         obj.dutyAddr = item.dutyAddr
         obj.dutyName = item.dutyName
-        obj.dgidIdName = dgList
+        obj.dgidIdName = makeDgididNameList(item.dgidIdName, item.dutyName)
         obj.dutyTel1 = item.dutyTel1
         obj.startTime = nearHospitalList[i].startTime[0]
         obj.endTime = nearHospitalList[i].endTime[0]
