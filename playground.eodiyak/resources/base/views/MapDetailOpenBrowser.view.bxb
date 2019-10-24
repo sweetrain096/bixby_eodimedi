@@ -1,0 +1,20 @@
+result-view {
+  match: MapUrl (this)
+  
+  message()
+  
+  // 앱을 실행하고 내부 데이터를 앱으로 전달 (https://bixbydevelopers.com/dev/docs/reference/type/result-view.app-launch)
+  app-launch {
+    payload-uri ("#{value(this)}")
+
+    requires {
+      app-name ("카카오맵")
+      app-id {
+        template ("net.daum.android.map")
+      }
+      app-store-url {
+        template ("https://play.google.com/store/apps/details?id=net.daum.android.map&hl=ko")
+      }
+    }
+  }
+} 
