@@ -2,6 +2,8 @@ var http = require('http')
 
 var EndPoint = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/"
 var Operation = "getHsptlBassInfoInqire"
+var PharmacyEndPoint = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/"
+var PharmacyOperation = "getParmacyBassInfoInqire"
 var ServiceKey = "Z6lJuu3urgG5yS0Gsn67Vc7jF4RBEpoMneik3qshCxF%2FoQDSri4aC8TThqkniotYQ%2Flgpc23f6ByJ6Sp0uPvBw%3D%3D"
 
 var treatmentList = new Array(
@@ -18,67 +20,110 @@ var treatmentList = new Array(
 
 module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentPosition) {
   const console = require("console")
-  
   let info = {}
-  if ( hospitalSummaryInfo.hpId == "null" && hospitalSummaryInfo.startTime == "null" && hospitalSummaryInfo.endTime == "null" ) {
-    info['point'] = {
-      latitude : null,
-      longitude : null,
-      $id : null,
-      $type : "viv.geo.GeoPoint"
-    }
-    info['dutyAddr'] = null
-    info['dutyName'] = null
-    info['dgidIdName'] = null
-    info['dutyTel1'] = null
-    info['startTime'] = null
-    info['endTime'] = null
-    info['currentPosition'] = null
-    info['url'] = null
-    return info
-  } else {
-    var url = EndPoint + Operation 
-    + "?ServiceKey=" + ServiceKey 
-    + "&HPID=" + hospitalSummaryInfo.hpId
-    var details = http.getUrl(url,{format: 'xmljs'})
+  if (hospitalSummaryInfo.isPharmacy == true){
+    // 약국
+    if ( hospitalSummaryInfo.hpId == "null" && hospitalSummaryInfo.startTime == "null" && hospitalSummaryInfo.endTime == "null" ) {
+      info['point'] = null
+      info['dutyAddr'] = null
+      info['dutyName'] = null
+      info['dutyTel1'] = null
+      info['startTime'] = null
+      info['endTime'] = null
+      info['currentPosition'] = null
+      info['url'] = null
+      info['mapUrl'] = null
+    } else {
+      var url = PharmacyEndPoint + PharmacyOperation 
+        + "?ServiceKey=" + ServiceKey 
+        + "&HPID=" + hospitalSummaryInfo.hpId
 
-    var item = details.response.body.items.item
+        var details = http.getUrl(url,{format: 'xmljs'})
 
-    var dgidldList = new Array();
-    console.log(details.response)
-    var originDNList = item.dgidIdName.split(",");
+        var item = details.response.body.items.item
+    
+        info['point'] = {
+        latitude : item.wgs84Lat,
+        longitude : item.wgs84Lon,
+        $id : null,
+        $type : "viv.geo.GeoPoint"
+      }
+        
+        info['dutyAddr'] = item.dutyAddr
+        info['dutyName'] = item.dutyName
+        info['dutyTel1'] = item.dutyTel1
+        info['startTime'] = hospitalSummaryInfo.startTime
+        info['endTime'] = hospitalSummaryInfo.endTime
+        info['currentPosition'] = currentPosition
+        info['url'] = 'https://search.naver.com/search.naver?query=' + info['dutyName']
+        info['mapUrl'] = item.dutyName
+      }
 
-    for(var i=0; i<treatmentList.length; i++){
 
-      if(item.dutyName.includes(treatmentList[i])){
-        dgidldList[i] = true;
-      }else{
-        for(var j=0; j<originDNList.length; j++){
-          if(treatmentList[i] == originDNList[j]){
-            dgidldList[i] = true;
-            break
-          }else{
-            dgidldList[i] = false;
+
+  } else{ // 병원
+    if ( hospitalSummaryInfo.hpId == "null" && hospitalSummaryInfo.startTime == "null" && hospitalSummaryInfo.endTime == "null" ) {
+      info['point'] = {
+        latitude : null,
+        longitude : null,
+        $id : null,
+        $type : "viv.geo.GeoPoint"
+      }
+      info['dutyAddr'] = null
+      info['dutyName'] = null
+      info['dgidIdName'] = null
+      info['dutyTel1'] = null
+      info['startTime'] = null
+      info['endTime'] = null
+      info['currentPosition'] = null
+      info['url'] = null
+      return info
+    } else {
+      var url = EndPoint + Operation 
+      + "?ServiceKey=" + ServiceKey 
+      + "&HPID=" + hospitalSummaryInfo.hpId
+      var details = http.getUrl(url,{format: 'xmljs'})
+
+      var item = details.response.body.items.item
+
+      var dgidldList = new Array();
+      console.log(details.response)
+      var originDNList = item.dgidIdName.split(",");
+
+      for(var i=0; i<treatmentList.length; i++){
+
+        if(item.dutyName.includes(treatmentList[i])){
+          dgidldList[i] = true;
+        }else{
+          for(var j=0; j<originDNList.length; j++){
+            if(treatmentList[i] == originDNList[j]){
+              dgidldList[i] = true;
+              break
+            }else{
+              dgidldList[i] = false;
+            }
           }
         }
       }
+      info['point'] = {
+        latitude : item.wgs84Lat,
+        longitude : item.wgs84Lon,
+        $id : null,
+        $type : "viv.geo.GeoPoint"
+      }
+      info['dutyAddr'] = item.dutyAddr
+      info['dutyName'] = item.dutyName
+      info['dgidIdName'] = dgidldList
+      info['dutyTel1'] = item.dutyTel1
+      info['startTime'] = hospitalSummaryInfo.startTime
+      info['endTime'] = hospitalSummaryInfo.endTime
+      info['currentPosition'] = currentPosition
+      info['url'] = 'https://search.naver.com/search.naver?query=' + info['dutyName']
+      info['mapUrl'] = item.dutyName
     }
-    info['point'] = {
-      latitude : item.wgs84Lat,
-      longitude : item.wgs84Lon,
-      $id : null,
-      $type : "viv.geo.GeoPoint"
-    }
-    info['dutyAddr'] = item.dutyAddr
-    info['dutyName'] = item.dutyName
-    info['dgidIdName'] = dgidldList
-    info['dutyTel1'] = item.dutyTel1
-    info['startTime'] = hospitalSummaryInfo.startTime
-    info['endTime'] = hospitalSummaryInfo.endTime
-    info['currentPosition'] = currentPosition
-    info['url'] = 'https://search.naver.com/search.naver?query=' + info['dutyName']
-    info['mapUrl'] = item.dutyName
+
   }
+  
     return info
 
     

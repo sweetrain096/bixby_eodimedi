@@ -12,4 +12,8 @@ structure (HospitalSummaryInfo) {
     type (EndTime)
     min (Required) max (One)
   }
+  property(isPharmacy){
+    type(Pharmacy)
+    min (Optional) max (One)
+  }
 }

@@ -17,6 +17,10 @@
       type(Baby)
       min (Optional) max (One)
     }
+    input(pharmacy){    // 약국이니?
+      type(Pharmacy)
+      min (Optional) max (One)
+    }
 
   }
 

@@ -3,13 +3,15 @@ var fail = require('fail')
 var EndPoint = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/"
 var Operation = "getHsptlMdcncLcinfoInqire"
 var BabyOperation = "getBabyLcinfoInqire"
+var PharmacyEndPoint = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/"
+var PharmacyOperation = "getParmacyLcinfoInqire"
 var ServiceKey = "Z6lJuu3urgG5yS0Gsn67Vc7jF4RBEpoMneik3qshCxF%2FoQDSri4aC8TThqkniotYQ%2Flgpc23f6ByJ6Sp0uPvBw%3D%3D"
 var pageNo = 1
 var num = 50
 
 
 
-module.exports.function = function getHospitalList(position, baby) {
+module.exports.function = function getHospitalList(position, baby, pharmacy) {
   const console = require("console")
   var url = ""
   if (baby == true) {
@@ -19,6 +21,12 @@ module.exports.function = function getHospitalList(position, baby) {
       + "&WGS84_LAT=" + position['myPos']['latitude']
       + "&pageNo=" + pageNo
       + "&numOfRows=" + num
+  } else if (pharmacy == true){
+    url = PharmacyEndPoint + PharmacyOperation 
+      + "?Serv iceKey=" + ServiceKey 
+      + "&WGS84_LON=" + position['myPos']['longitude']
+      + "&WGS84_LAT=" + position['myPos']['latitude']
+
   } else {
     url = EndPoint + Operation
       + "?ServiceKey=" + ServiceKey
@@ -53,24 +61,45 @@ module.exports.function = function getHospitalList(position, baby) {
     // results.push(info)
   } else if (item.dutyName) {
     let info = {}
+    if (pharmacy == true){    // 약국 처리
+      var stime = item.startTime.substring(0,2) + ":" + item.startTime.substring(2,4)
+      var etime = item.endTime.substring(0,2) + ":" + item.endTime.substring(2,4)
+      if (stime.charAt(0)==0 && stime.charAt(1)!=0){
+        stime = " " + stime.substring(1,5)
+      }
+      if(etime.charAt(0)==0 && etime.charAt(1)!=0){
+        etime = " " + etime.substr(1,5)
+      }
+
+      info['pStartTime'] = stime
+      info['pEndTime'] = etime
+      info['isPharmacy'] = true
+
+    } else{   // 약국 아닐때
+      info['dutyDivName'] = item.dutyDivName
+      info['endTime'] = item.endTime
+      info['startTime'] = item.startTime
+    }
+    
     info['dutyName'] = item.dutyName
     info['distance'] = item.distance
-    info['dutyDivName'] = item.dutyDivName
     info['hpid'] = item.hpid
     info['dutyTel1'] = item.dutyTel1
-    info['endTime'] = item.endTime
-    info['startTime'] = item.startTime
 
     results.push(info)
   } else {
     for (i in item) {
       let info = {}
+      if (pharmacy == false){
+        info['dutyDivName'] = item[i].dutyDivName
+      } else{
+        info['isPharmacy'] = true
+      }
+
       info['dutyName'] = item[i].dutyName
       info['distance'] = item[i].distance
-      info['dutyDivName'] = item[i].dutyDivName
       info['hpid'] = item[i].hpid
       info['dutyTel1'] = item[i].dutyTel1
-
 
       var stime = item[i].startTime.substring(0, 2) + ":" + item[i].startTime.substring(2, 4)
       var etime = item[i].endTime.substring(0, 2) + ":" + item[i].endTime.substring(2, 4)
