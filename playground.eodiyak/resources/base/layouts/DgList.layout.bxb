@@ -7,6 +7,19 @@ layout-macro-def (DgList) {
 	}
 	content {
 		cell-card {
+			slot1 {
+				if (resultsum.dutyDivName == '의원') { 
+					image {
+						shape (Square)
+						url ("/icon/small.png")
+					}
+				} else {
+					image {
+						shape (Square)
+						url ("/icon/hospital.png")
+					}
+				}
+			}
 			slot2 {
 				content {
 					primary ("#{value(resultsum.dutyName)}")

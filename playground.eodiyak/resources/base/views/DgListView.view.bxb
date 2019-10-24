@@ -12,4 +12,13 @@ input-view {
 			}
 		}
 	}
+	conversation-drivers {
+		conversation-driver {
+			template ("가까운 병원 알려줘")
+		}
+		conversation-driver {
+			template ("가까운 약국 알려줘")
+		}
+	}
+	
 }
