@@ -24,6 +24,36 @@ var treatmentList = new Array(
   "마취통증의학과", "구강악안면외과", "한의원"
 )
 
+function makeDgididNameList(originData, hosName){ //원본DgidIdName, 병원이름
+  var dgList = new Array();
+
+  if(originData != undefined){
+    var spl = originData.split(",")
+    for(var i=0; i<treatmentList.length; i++){
+      if(hosName.includes(treatmentList[i])){
+        dgList[i] = true;
+      }else{
+        dgList[i]= false;
+        for(var j=0; j<spl.length; j++){
+          if(treatmentList[i] == spl[j]){
+            dgList[i] = true;
+            break
+          }
+        }
+      }
+    }
+  }else{
+    for(var i=0; i<treatmentList.length; i++){
+      if(hosName.includes(treatmentList[i])){
+        dgList[i] = true;
+      }else{
+        dgList[i] = false;
+      }
+    }
+  }
+  return dgList
+}
+
 module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentPosition) {
   let info = {}
   if (hospitalSummaryInfo.isPharmacy != true){ // 병원
@@ -33,23 +63,6 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
 
       var details = http.getUrl(url,{format: 'xmljs'})
       var item = details.response.body.items.item
-      var dgidldList = new Array();
-      var originDNList = item.dgidIdName.split(",")
-
-      for(var i=0; i<treatmentList.length; i++){
-        if(item.dutyName.includes(treatmentList[i])) { 
-          dgidldList[i] = true 
-        } else{
-          for(var j=0; j<originDNList.length; j++){
-            if(treatmentList[i] == originDNList[j]){
-              dgidldList[i] = true
-              break
-            }else{
-              dgidldList[i] = false
-            }
-          }
-        }
-      }
 
       info['point'] = {
         latitude : item.wgs84Lat,
@@ -59,7 +72,7 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
       }
       info['dutyAddr'] = item.dutyAddr
       info['dutyName'] = item.dutyName
-      info['dgidIdName'] = dgidldList
+      info['dgidIdName'] = makeDgididNameList(item.dgidIdName, item.dutyName)
       info['dutyTel1'] = item.dutyTel1
       info['startTime'] = hospitalSummaryInfo.startTime
       info['endTime'] = hospitalSummaryInfo.endTime

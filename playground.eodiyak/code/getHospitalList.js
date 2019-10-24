@@ -9,6 +9,19 @@ var ServiceKey = secret.get('servicekey')
 var pageNo = 1
 var num = 50
 
+function cuttingTime(time){
+  var console = require("console")
+  if(time == null){
+    time = "알수없음"
+    console.log("this is Exception :: dutytime null")
+  }else{
+    time = time.substring(0,2) + ":" + time.substring(2,4)
+    if(time.charAt(0)==0 && time.charAt(1)!=0){
+      time= " " + time.substring(1,5)
+    }
+  }
+  return time
+}
 
 
 module.exports.function = function getHospitalList(position, baby, dgName) {
@@ -52,13 +65,8 @@ module.exports.function = function getHospitalList(position, baby, dgName) {
   } else if (item.dutyName) { // 검색결과가 1개일 때,
     let info = {}
     
-    var stime = item.startTime.substring(0,2) + ":" + item.startTime.substring(2,4)
-    if(stime.charAt(0)==0 && stime.charAt(1)!=0) stime = " " + stime.substring(1,5)
-    info['startTime'] = stime
-
-    var etime = item.endTime.substring(0,2) + ":" + item.endTime.substring(2,4)
-    if(etime.charAt(0)==0 && etime.charAt(1)!=0) etime = " " + etime.substr(1,5)
-    info['endTime'] = etime
+    info['startTime'] = cuttingTime(item.startTime)
+    info['endTime'] = cuttingTime(item.endTime)
     
     if (pharmacy != true) { // 병원 리스트 1개일때
       info['dutyDivName'] = item.dutyDivName
@@ -91,13 +99,8 @@ module.exports.function = function getHospitalList(position, baby, dgName) {
       info['hpid'] = item[i].hpid
       info['dutyTel1'] = item[i].dutyTel1
 
-      var stime = item[i].startTime.substring(0, 2) + ":" + item[i].startTime.substring(2, 4)
-      if (stime.charAt(0) == 0 && stime.charAt(1) != 0) stime = stime.substring(1, 5)
-      info['startTime'] = stime
-
-      var etime = item[i].endTime.substring(0, 2) + ":" + item[i].endTime.substring(2, 4)
-      if (etime.charAt(0) == 0 && etime.charAt(1) != 0) etime = etime.substr(1, 5)
-      info['endTime'] = etime
+      info['startTime'] = cuttingTime(item[i].startTime)
+    info['endTime'] = cuttingTime(item[i].endTime)
 
       results.push(info)
     }
