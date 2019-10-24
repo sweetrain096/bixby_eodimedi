@@ -12,109 +12,91 @@ var num = 50
 
 
 module.exports.function = function getHospitalList(position, baby, pharmacy) {
-  const console = require("console")
-  var url = ""
-  if (baby == true) {
-    url = EndPoint + BabyOperation
-      + "?ServiceKey=" + ServiceKey
-      + "&WGS84_LON=" + position['myPos']['longitude']
-      + "&WGS84_LAT=" + position['myPos']['latitude']
-      + "&pageNo=" + pageNo
-      + "&numOfRows=" + num
-  } else if (pharmacy == true){
-    url = PharmacyEndPoint + PharmacyOperation 
-      + "?Serv iceKey=" + ServiceKey 
-      + "&WGS84_LON=" + position['myPos']['longitude']
-      + "&WGS84_LAT=" + position['myPos']['latitude']
-
+  var ep = ""
+  var oper = ""
+  if (baby != true && pharmacy != true ) { //일반병원 호출
+    ep = EndPoint
+    oper = Operation
+  } else if (baby == true) { //달빛병원 호출
+    ep = EndPoint
+    oper =BabyOperation
+  } else if (pharmacy == true){ //약국 호출
+    ep = PharmacyEndPoint
+    oper = PharmacyOperation
   } else {
-    url = EndPoint + Operation
-      + "?ServiceKey=" + ServiceKey
-      + "&WGS84_LON=" + position['myPos']['longitude']
-      + "&WGS84_LAT=" + position['myPos']['latitude']
-      + "&pageNo=" + pageNo
-      + "&numOfRows=" + num
+    throw fail.checkedError('무언가 잘못되었다..', 'ErrorSomehings', {}) 
   }
-  let results = new Array
 
+  var url = ep + oper
+    + "?ServiceKey=" + ServiceKey
+    + "&WGS84_LON=" + position['myPos']['longitude']
+    + "&WGS84_LAT=" + position['myPos']['latitude']
+    + "&pageNo=" + pageNo
+    + "&numOfRows=" + num
 
   var hList = http.getUrl(url, { format: 'xmljs' })
-
   var response = hList.response
   var resultCode = response.header.resultCode
 
+  let results = new Array // 리턴될 변수 선언
+  
   if ( resultCode != 00 ) {
     throw fail.checkedError('API 서버가 터졌을때 나오는 ERROR', 'ErrorNotWorking', {})
   }
 
   var item = response.body.items.item
-  if (item == undefined) {
+  if (item == undefined) { // 검색은 성공적으로 성공하였지만 병원목록이 0개이다.
     throw fail.checkedError('검색결과가 0개일때 나오는 ERROR', 'ErrorNoResults', {})
-    // let info = {}
-    // info['dutyName'] = "null"
-    // info['distance'] = "null"
-    // info['dutyDivName'] = "null"
-    // info['hpid'] = "null"
-    // info['dutyTel1'] = "null"
-    // info['endTime'] = "null"
-    // info['startTime'] = "null"
-    // results.push(info)
-  } else if (item.dutyName) {
+  } else if (item.dutyName) { // 검색결과가 1개일 때,
     let info = {}
-    if (pharmacy == true){    // 약국 처리
-      var stime = item.startTime.substring(0,2) + ":" + item.startTime.substring(2,4)
-      var etime = item.endTime.substring(0,2) + ":" + item.endTime.substring(2,4)
-      if (stime.charAt(0)==0 && stime.charAt(1)!=0){
-        stime = " " + stime.substring(1,5)
-      }
-      if(etime.charAt(0)==0 && etime.charAt(1)!=0){
-        etime = " " + etime.substr(1,5)
-      }
-
-      info['startTime'] = stime
-      info['endTime'] = etime
-      info['isPharmacy'] = true
-
-    } else{   // 약국 아닐때
-      info['dutyDivName'] = item.dutyDivName
-      info['endTime'] = item.endTime
-      info['startTime'] = item.startTime
-      info['isPharmacy'] = false
-    }
     
+    var stime = item.startTime.substring(0,2) + ":" + item.startTime.substring(2,4)
+    if(stime.charAt(0)==0 && stime.charAt(1)!=0) stime = " " + stime.substring(1,5)
+    info['startTime'] = stime
+
+    var etime = item.endTime.substring(0,2) + ":" + item.endTime.substring(2,4)
+    if(etime.charAt(0)==0 && etime.charAt(1)!=0) etime = " " + etime.substr(1,5)
+    info['endTime'] = etime
+    
+    if (pharmacy != true) { // 병원 리스트 1개일때
+      info['dutyDivName'] = item.dutyDivName
+      info['isPharmacy'] = false
+    } else if (pharmacy == true) { // 약국 리스트 1개일때  
+      info['isPharmacy'] = true
+    } else {
+      throw fail.checkedError('무언가 잘못되었다..', 'ErrorSomehings', {})
+    }
     info['dutyName'] = item.dutyName
     info['distance'] = item.distance
     info['hpid'] = item.hpid
     info['dutyTel1'] = item.dutyTel1
-    console.log(info)
+
     results.push(info)
-  } else {
+  } else  {
     for (i in item) {
       let info = {}
-      console.log(pharmacy)
-      if (pharmacy == true){
-        info['isPharmacy'] = true
-      } else{
+
+      if(pharmacy != true) { // 병원
         info['dutyDivName'] = item[i].dutyDivName
         info['isPharmacy'] = false
+      } else if(pharmacy == true) { // 약국
+        info['isPharmacy'] = true
+      } else {
+        throw fail.checkedError('무언가 잘못되었다..', 'ErrorSomehings', {})
       }
-
       info['dutyName'] = item[i].dutyName
       info['distance'] = item[i].distance
       info['hpid'] = item[i].hpid
       info['dutyTel1'] = item[i].dutyTel1
 
       var stime = item[i].startTime.substring(0, 2) + ":" + item[i].startTime.substring(2, 4)
-      var etime = item[i].endTime.substring(0, 2) + ":" + item[i].endTime.substring(2, 4)
-      if (stime.charAt(0) == 0 && stime.charAt(1) != 0) {
-        stime = stime.substring(1, 5)
-      }
-      if (etime.charAt(0) == 0 && etime.charAt(1) != 0) {
-        etime = etime.substr(1, 5)
-      }
-      info['endTime'] = etime
+      if (stime.charAt(0) == 0 && stime.charAt(1) != 0) stime = stime.substring(1, 5)
       info['startTime'] = stime
-      console.log(info)
+
+      var etime = item[i].endTime.substring(0, 2) + ":" + item[i].endTime.substring(2, 4)
+      if (etime.charAt(0) == 0 && etime.charAt(1) != 0) etime = etime.substr(1, 5)
+      info['endTime'] = etime
+
       results.push(info)
     }
   }
