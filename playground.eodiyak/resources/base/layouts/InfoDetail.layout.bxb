@@ -38,6 +38,7 @@ layout-macro-def (InfoDetail) {
 							}
 						}
 					}
+					
 				}
 				
 				split-input-cell {

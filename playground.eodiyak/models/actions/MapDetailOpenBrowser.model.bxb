@@ -1,5 +1,5 @@
-action (MapDetailOpenBrowser) {
-  description (URL을 통하여 카카오 맵 app-lauch를 실행)
+action (MapOpenBrowser) {
+  description (URL을 통하여 카카오 맵 app-lauch를 실행 - 검색 화면을 보여준다.)
   type(Constructor)
   collect {
     input(hospitalInfo){

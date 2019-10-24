@@ -60,5 +60,9 @@ endpoints {
       accepted-inputs (hospitalInfo)
       local-endpoint ("mapOpenBrowser.js")
     }
+    action-endpoint (MapDetailOpenBrowser){
+      accepted-inputs (hospitalInfo)
+      local-endpoint ("mapDetailOpenBrowser.js")
+    }
   }
 }
