@@ -1,4 +1,4 @@
-action (MapDetailOpenBrowser) {
+action (MapOpenBrowser) {
   description (URL을 통하여 카카오 맵 app-lauch를 실행)
   type(Constructor)
   collect {
