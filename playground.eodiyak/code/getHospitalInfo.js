@@ -80,5 +80,42 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
     info['mapUrl'] = item.dutyName
   }
     return info
+
+    
+  // let Apointlat = '36.355064'
+  // let Apointlong = '127.298356'
+
+  // let Bpointlat = '37.492711'
+  // let Bpointlong = '127.046315'
+
+
+  // var tmapkey = secret.get('tmapkey')
+  // var tmapurl = 'https://apis.openapi.sk.com/tmap/routes'
+
+  // let params = { version: 1 }
+
+  // let options = {
+  //   format: 'json',
+  //   headers: {
+  //     appKey: tmapkey
+  //   },
+  //   query: {
+  //     totalValue: 2,
+  //     endX: Apointlong, // 128
+  //     endY: Apointlat, // 36
+  //     startX: Bpointlong,
+  //     startY: Bpointlat,
+  //   }
+  // }
+
+
+  // let tmapreq = http.postUrl(tmapurl, params, options).features[0].properties
+
+  // totalDistance:154959
+  // totalTime:7688
+  // totalFare:10100
+  // taxiFare:144100
+
+
 }
 

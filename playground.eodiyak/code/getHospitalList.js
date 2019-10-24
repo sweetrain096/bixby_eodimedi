@@ -1,6 +1,7 @@
 var http = require('http')
+var fail = require('fail')
 var EndPoint = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/"
-var Operation = "getHsptlMdcncLcinfoInqire"
+var Operation = "getHsptlMdcncLcinfoInqire11211"
 var BabyOperation = "getBabyLcinfoInqire"
 var ServiceKey = "Z6lJuu3urgG5yS0Gsn67Vc7jF4RBEpoMneik3qshCxF%2FoQDSri4aC8TThqkniotYQ%2Flgpc23f6ByJ6Sp0uPvBw%3D%3D"
 var pageNo = 1
@@ -28,18 +29,28 @@ module.exports.function = function getHospitalList(position, baby) {
   }
   let results = new Array
 
+
   var hList = http.getUrl(url, { format: 'xmljs' })
-  var item = hList.response.body.items.item
+
+  var response = hList.response
+  var resultCode = response.header.resultCode
+
+  if ( resultCode != 00 ) {
+    throw fail.checkedError('API 서버가 터졌을때 나오는 ERROR', 'ErrorNotWorking', {})
+  }
+
+  var item = response.body.items.item
   if (item == undefined) {
-    let info = {}
-    info['dutyName'] = "null"
-    info['distance'] = "null"
-    info['dutyDivName'] = "null"
-    info['hpid'] = "null"
-    info['dutyTel1'] = "null"
-    info['endTime'] = "null"
-    info['startTime'] = "null"
-    results.push(info)
+    throw fail.checkedError('검색결과가 0개일때 나오는 ERROR', 'ErrorNoResults', {})
+    // let info = {}
+    // info['dutyName'] = "null"
+    // info['distance'] = "null"
+    // info['dutyDivName'] = "null"
+    // info['hpid'] = "null"
+    // info['dutyTel1'] = "null"
+    // info['endTime'] = "null"
+    // info['startTime'] = "null"
+    // results.push(info)
   } else if (item.dutyName) {
     let info = {}
     info['dutyName'] = item.dutyName
@@ -74,43 +85,6 @@ module.exports.function = function getHospitalList(position, baby) {
       results.push(info)
     }
   }
-
-  let Apointlat = '36.355064'
-  let Apointlong = '127.298356'
-
-  let Bpointlat = '37.492711'
-  let Bpointlong = '127.046315'
-
-
-  // var tmapkey = secret.get('tmapkey')
-  // var tmapurl = 'https://apis.openapi.sk.com/tmap/routes'
-
-  // let params = { version: 1 }
-
-  // let options = {
-  //   format: 'json',
-  //   headers: {
-  //     appKey: tmapkey
-  //   },
-  //   query: {
-  //     totalValue: 2,
-  //     endX: Apointlong, // 128
-  //     endY: Apointlat, // 36
-  //     startX: Bpointlong,
-  //     startY: Bpointlat,
-  //   }
-  // }
-
-
-  // let tmapreq = http.postUrl(tmapurl, params, options).features[0].properties
-
-  // totalDistance:154959
-  // totalTime:7688
-  // totalFare:10100
-  // taxiFare:144100
-
-
-
-
+  
   return results
 }
