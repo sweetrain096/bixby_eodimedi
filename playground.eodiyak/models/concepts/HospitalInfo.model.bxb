@@ -20,7 +20,12 @@ structure (HospitalInfo) {
 		type (DgidIdName)
 		min (Optional) max (Many)
 	}
-
+	
+  property(dgNameText){
+    type(DgNameText)
+    min (Optional) max (One)
+  }
+	
 	property (dutyTel1) {
 		type (DutyTel1)
 		min (Required) max (One)

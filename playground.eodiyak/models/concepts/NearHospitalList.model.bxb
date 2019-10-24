@@ -25,6 +25,10 @@ structure (NearHospitalList) {
 		type (DgidIdName)
 		min (Optional) max (Many)
 	}
+  property(dgNameText){
+    type(DgNameText)
+    min (Optional) max (One)
+  }
   property (hpid) {
     type (HpID)
     min (Required) max (Many)
