@@ -71,29 +71,32 @@ module.exports.function = function getHospitalList(position, baby, pharmacy) {
         etime = " " + etime.substr(1,5)
       }
 
-      info['pStartTime'] = stime
-      info['pEndTime'] = etime
+      info['startTime'] = stime
+      info['endTime'] = etime
       info['isPharmacy'] = true
 
     } else{   // 약국 아닐때
       info['dutyDivName'] = item.dutyDivName
       info['endTime'] = item.endTime
       info['startTime'] = item.startTime
+      info['isPharmacy'] = false
     }
     
     info['dutyName'] = item.dutyName
     info['distance'] = item.distance
     info['hpid'] = item.hpid
     info['dutyTel1'] = item.dutyTel1
-
+    console.log(info)
     results.push(info)
   } else {
     for (i in item) {
       let info = {}
-      if (pharmacy == false){
-        info['dutyDivName'] = item[i].dutyDivName
-      } else{
+      console.log(pharmacy)
+      if (pharmacy == true){
         info['isPharmacy'] = true
+      } else{
+        info['dutyDivName'] = item[i].dutyDivName
+        info['isPharmacy'] = false
       }
 
       info['dutyName'] = item[i].dutyName
@@ -111,6 +114,7 @@ module.exports.function = function getHospitalList(position, baby, pharmacy) {
       }
       info['endTime'] = etime
       info['startTime'] = stime
+      console.log(info)
       results.push(info)
     }
   }

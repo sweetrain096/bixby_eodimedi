@@ -1,10 +1,16 @@
-var http = require('http')
+ var http = require('http')
 
 var EndPoint = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/"
 var Operation = "getHsptlBassInfoInqire"
 var PharmacyEndPoint = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/"
 var PharmacyOperation = "getParmacyBassInfoInqire"
 var ServiceKey = "Z6lJuu3urgG5yS0Gsn67Vc7jF4RBEpoMneik3qshCxF%2FoQDSri4aC8TThqkniotYQ%2Flgpc23f6ByJ6Sp0uPvBw%3D%3D"
+
+
+var tmapkey = secret.get('tmapkey')
+var tmapurl = 'https://apis.openapi.sk.com/tmap/routes'
+
+let params = { version: 1 }
 
 var treatmentList = new Array(
   "내과", "소아청소년과", "이비인후과",
@@ -57,6 +63,28 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
         info['currentPosition'] = currentPosition
         info['url'] = 'https://search.naver.com/search.naver?query=' + info['dutyName']
         info['mapUrl'] = item.dutyName
+
+        let Startlat = currentPosition.latitude
+        let Startlon = currentPosition.longitude
+
+        let Endlat = item.wgs84Lat
+        let Endlon = item.wgs84Lon
+
+        let options = {
+          format: 'json',
+          headers: {
+              appKey: tmapkey
+          },
+          query: {
+              totalValue: 1,
+              endX: Startlon, // 128
+              endY: Startlat, // 36
+              startX: Endlon,
+              startY: Endlat,
+          }
+        }
+        let tmapreq = http.postUrl(tmapurl, params, options).features[0].properties.totalTime
+        info['time'] = parseInt(tmapreq/60)
       }
 
 
@@ -120,46 +148,44 @@ module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentP
       info['currentPosition'] = currentPosition
       info['url'] = 'https://search.naver.com/search.naver?query=' + info['dutyName']
       info['mapUrl'] = item.dutyName
-    }
 
+      let Startlat = currentPosition.latitude
+      let Startlon = currentPosition.longitude
+
+      let Endlat = item.wgs84Lat
+      let Endlon = item.wgs84Lon
+
+      let options = {
+        format: 'json',
+        headers: {
+            appKey: tmapkey
+        },
+        query: {
+            totalValue: 1,
+            endX: Startlon, // 128
+            endY: Startlat, // 36
+            startX: Endlon,
+            startY: Endlat,
+        }
+      }
+      let tmapreq = http.postUrl(tmapurl, params, options).features[0].properties.totalTime
+      info['time'] = parseInt(tmapreq/60)
+    }
   }
   
     return info
 
     
-  // let Apointlat = '36.355064'
-  // let Apointlong = '127.298356'
-
-  // let Bpointlat = '37.492711'
-  // let Bpointlong = '127.046315'
 
 
-  // var tmapkey = secret.get('tmapkey')
-  // var tmapurl = 'https://apis.openapi.sk.com/tmap/routes'
-
-  // let params = { version: 1 }
-
-  // let options = {
-  //   format: 'json',
-  //   headers: {
-  //     appKey: tmapkey
-  //   },
-  //   query: {
-  //     totalValue: 2,
-  //     endX: Apointlong, // 128
-  //     endY: Apointlat, // 36
-  //     startX: Bpointlong,
-  //     startY: Bpointlat,
-  //   }
-  // }
 
 
-  // let tmapreq = http.postUrl(tmapurl, params, options).features[0].properties
 
-  // totalDistance:154959
-  // totalTime:7688
-  // totalFare:10100
-  // taxiFare:144100
+
+
+
+  
+
 
 
 }

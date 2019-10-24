@@ -18,9 +18,9 @@ layout-macro-def (InfoDetail) {
 					style (Detail_M_Soft)
 				}
 				
-        
+				
 				map-card{
-					aspect-ratio(4:3)
+					aspect-ratio(21:9)
 					markers{
 						marker{
 							geo(detail.point)
@@ -39,11 +39,12 @@ layout-macro-def (InfoDetail) {
 						}
 					}
 				}
+				
 				split-input-cell {
 					left {
 						input-cell {
 							label {
-								template ("병원 운영 시간")
+								template ("운영 시간")
 							}
 							value {
 								template ("#{value(detail.startTime)} ~ #{value(detail.endTime)}") // Standard
@@ -53,15 +54,15 @@ layout-macro-def (InfoDetail) {
 					right {
 						input-cell {
 							label {
-								template ("병원까지 소요 시간")
+								template ("자차 이동 시간")
 							}
 							value {
-								template ("10분")
+								template ("#{value(detail.time)}분")
 							}
 						}
 					}
 				}
-
+				
 				if(detail.dutyTel1 != ''){
 					cell-card {
 						slot1 {
@@ -95,7 +96,7 @@ layout-macro-def (InfoDetail) {
 						
 						slot2 {
 							content{
-								primary("#{value(detail.mapUrl)} 까지 길 찾기")
+								primary("가는 길 찾기")
 							}
 						}
 						on-click {
@@ -108,7 +109,7 @@ layout-macro-def (InfoDetail) {
 				}
 				paragraph {
 					value ("진료 과목")
-          
+					
 				}
 				
 				hbox {
