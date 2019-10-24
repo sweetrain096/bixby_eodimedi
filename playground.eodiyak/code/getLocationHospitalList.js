@@ -16,69 +16,96 @@ var treatmentList = new Array(
   "마취통증의학과", "구강안면외과"
 )
 
+function computeDistance(startCoords, destCoords) {
+    var startLatRads = degreesToRadians(startCoords.latitude);
+    var startLongRads = degreesToRadians(startCoords.longitude);
+    var destLatRads = degreesToRadians(destCoords.latitude);
+    var destLongRads = degreesToRadians(destCoords.longitude);
 
-module.exports.function = function getLocationHospitalList (position, locationName1, locationName2) {
-  /* 여기 파라미터 position이 아래와 같이 넘어온다
-  myPos
-    latitude:37.492711
-    longitude:127.046315
-    $id:null
-    $type:todoc.eodiyak.MyPos
-  $id:null
-  $type:todoc.eodiyak.MyPosition
-  ---
-  그래서 슈바 바로 position을 넘겨주지 말고 position.myPos로 넘겨줘야한다.
-  */
-  
+    var Radius = 6371; //지구의 반경(km)
+    var distance = Math.acos(Math.sin(startLatRads) * Math.sin(destLatRads) + 
+                    Math.cos(startLatRads) * Math.cos(destLatRads) *
+                    Math.cos(startLongRads - destLongRads)) * Radius;
+
+    return distance;
+}
+
+function degreesToRadians(degrees) {
+    radians = (degrees * Math.PI)/180;
+    return radians;
+}
+
+function cuttingTime(time){
+  var console = require("console")
+  if(time == null){
+    time = "알수없음"
+    console.log("this is Exception :: dutytime null")
+  }else{
+    time = time.substring(0,2) + ":" + time.substring(2,4)
+    if(time.charAt(0)==0 && time.charAt(1)!=0){
+      time= " " + time.substring(1,5)
+    }
+  }
+  return time
+}
+
+module.exports.function = function getLocationHospitalList (position, locationName1, locationName2) {  
   const console = require("console")
 
   var enlocation1 = encodeURI(locationName1)
   var enlocation2 = encodeURI(locationName2)
-
-  console.log("========thisisshowtime!========")
-  console.log(position)
-  console.log("===============================")
+  
+  var today = new Date();
+  var day = today.getDay();
 
   var url = EndPoint + Operation 
   + "?ServiceKey=" + ServiceKey 
   + "&Q0=" + enlocation1
   + "&Q1=" + enlocation2
+  + "&QT= " + day
   + "&pageNo=1"
   + "&numOfRows=10"
 
   var details = http.getUrl(url,{format: 'xmljs'})
   var item = details.response.body.items.item
-  console.log("api response : ", details)
 
   var result = new Array() 
 
   for(var i =0; i<item.length; i++){
+    console.log(item[i])
     var obj = new Object();
-    let info = {}
     let url = ""
-    info = {
+    let info = {
       latitude : item[i].wgs84Lat,
       longitude : item[i].wgs84Lon,
       $id : null,
       $type : "viv.geo.GeoPoint"
     }
-    obj.point = info
+    obj.point = info // 병원이 존재하는 좌표
+    obj.currentPosition = position.myPos // 사용자의 좌표
     obj.dutyAddr = item[i].dutyAddr
     obj.dutyName = item[i].dutyName
     obj.dgidIdName = item[i].dgidIdName
     obj.dutyTel1 = item[i].dutyTel1
-    obj.startTime = "tmpdata"
-    obj.endTime = "tmpdata"
-    obj.currentPosition = position.myPos
-    obj.distance = "tmpdata"
-    obj.dutyDivName = "tmpdata"
+
+    ////////////////오늘의 진료시간을 알아내기위함
+    var sidx = "dutyTime" + day + "s"
+    var eidx = "dutyTime" + day + "c"
+    var sTime = (item[i][sidx] != undefined)?item[i][sidx]:null
+    var eTime = (item[i][eidx] != undefined)?item[i][eidx]:null
+    sTime = cuttingTime(sTime)
+    eTime = cuttingTime(eTime)
+    obj.startTime = sTime
+    obj.endTime = eTime    
+
+    var posdistance = computeDistance(info,position.myPos)
+    obj.distance = posdistance.toFixed(2)
+    obj.dutyDivName = (item[i].dutyDivNam!=undefined)?item[i].dutyDivNam:"null" //없는경우가 있다.
     obj.mapUrl = item.dutyName
     url = 'https://search.naver.com/search.naver?query=' + item.dutyName
     obj.url = url
     result.push(obj);
   }
-  console.log("result : ",result)
-
   
   return result
   //getDgHospitalInfoList와 똑같은 형식으로 출력해주세요!!!!!
