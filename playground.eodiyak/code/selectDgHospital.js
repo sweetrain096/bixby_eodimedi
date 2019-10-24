@@ -20,6 +20,7 @@ module.exports.function = function selectDgHospital (hospital) {
   obj.currentPosition = hospital.currentPosition
   obj.url = hospital.url
   obj.mapUrl = hospital.dutyName
+  obj.time = hospital.time
 
   console.log(obj)
   

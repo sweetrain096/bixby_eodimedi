@@ -4,6 +4,11 @@ var EndPoint = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/"
 var Operation = "getHsptlMdcncListInfoInqire"
 var ServiceKey = "K6sYWvqebVyngpczytPk5eOtSHyZapagbhcTDE31E6hsk57L5V8cJdQKn033Fvj4QU7m6jfDg7evWZLIgCHPBw%3D%3D"
 
+var tmapkey = secret.get('tmapkey')
+var tmapurl = 'https://apis.openapi.sk.com/tmap/routes'
+
+let params = { version: 1 }
+
 var treatmentList = new Array(
   "내과", "소아청소년", "이비인후과",
   "안과", "치과", "피부과",
@@ -104,6 +109,32 @@ module.exports.function = function getLocationHospitalList (position, locationNa
     obj.mapUrl = item.dutyName
     url = 'https://search.naver.com/search.naver?query=' + item.dutyName
     obj.url = url
+
+
+    let Startlat = position.myPos.latitude
+    let Startlon = position.myPos.longitude
+    console.log(Startlat)
+
+    let Endlat = item[i].wgs84Lat
+    let Endlon = item[i].wgs84Lon
+    console.log(Endlat)
+
+    let options = {
+      format: 'json',
+      headers: {
+          appKey: tmapkey
+      },
+      query: {
+          totalValue: 1,
+          endX: Startlon, // 128
+          endY: Startlat, // 36
+          startX: Endlon,
+          startY: Endlat,
+      }
+    }
+    let tmapreq = http.postUrl(tmapurl, params, options).features[0].properties.totalTime
+    obj.time = parseInt(tmapreq/60)
+
     result.push(obj);
   }
   

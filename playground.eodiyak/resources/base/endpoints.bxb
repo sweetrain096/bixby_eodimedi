@@ -17,7 +17,7 @@ endpoints {
       local-endpoint ("getCurrentPosition.js")
     }
     action-endpoint (GetHospitalList){
-      accepted-inputs (position, baby)
+      accepted-inputs (position, baby, pharmacy)
       local-endpoint ("getHospitalList.js")
     }
     action-endpoint (SelectHospital){
@@ -52,28 +52,12 @@ endpoints {
       accepted-inputs (hospital)
       local-endpoint ("getLocationHospitalInfo.js")
     }
-    action-endpoint (GetPharmacyList){
-      accepted-inputs (position)
-      local-endpoint ("getPharmacyList.js")
-    }
-    action-endpoint (SelectPharmacy){
-      accepted-inputs (pharmacy)
-      local-endpoint ("selectPharmacy.js")
-    }
-    action-endpoint (GetPharmacyInfo){
-      accepted-inputs (pharmacySummaryInfo, currentPosition)
-      local-endpoint ("getPharmacyInfo.js")
-    }
     action-endpoint (OpenBrowser) {
       accepted-inputs (url, dutyTel1)
       local-endpoint ("OpenBrowser.js")
     }
-    action-endpoint (POpenBrowser) {
-      accepted-inputs (purl, pDutyTel1)
-      local-endpoint ("POpenBrowser.js")
-    }
     action-endpoint (MapOpenBrowser){
-      accepted-inputs (myPos, hospitalInfo)
+      accepted-inputs (hospitalInfo)
       local-endpoint ("mapOpenBrowser.js")
     }
   }

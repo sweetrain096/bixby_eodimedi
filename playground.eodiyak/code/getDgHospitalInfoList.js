@@ -3,6 +3,12 @@ var EndPoint = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/"
 var Operation = "getHsptlBassInfoInqire"
 var ServiceKey = "K6sYWvqebVyngpczytPk5eOtSHyZapagbhcTDE31E6hsk57L5V8cJdQKn033Fvj4QU7m6jfDg7evWZLIgCHPBw%3D%3D"
 
+
+var tmapkey = secret.get('tmapkey')
+var tmapurl = 'https://apis.openapi.sk.com/tmap/routes'
+
+let params = { version: 1 }
+
 var treatmentList = new Array(
   "내과", "소아청소년과", "이비인후과",
   "안과", "치과", "피부과",
@@ -103,6 +109,28 @@ module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgNa
 
         console.log("url", url)
         console.log("obj", obj)
+
+        let Startlat = currentPosition.latitude
+        let Startlon = currentPosition.longitude
+
+        let Endlat = item.wgs84Lat
+        let Endlon = item.wgs84Lon
+
+        let options = {
+          format: 'json',
+          headers: {
+              appKey: tmapkey
+          },
+          query: {
+              totalValue: 1,
+              endX: Startlon, // 128
+              endY: Startlat, // 36
+              startX: Endlon,
+              startY: Endlat,
+          }
+        }
+        let tmapreq = http.postUrl(tmapurl, params, options).features[0].properties.totalTime
+        obj.time = parseInt(tmapreq/60)
         result.push(obj);
     }
   }
