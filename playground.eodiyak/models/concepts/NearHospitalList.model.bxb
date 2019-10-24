@@ -1,5 +1,14 @@
 structure (NearHospitalList) {
   description (근처 병원 리스트)
+
+  property(point) {
+		type(Hospoint)
+		min (Optional) max (One)
+	}
+  property (dutyAddr) {
+		type (DutyAddr)
+		min (Optional) max (One)
+	}
   property (dutyName) { /// 
     type (DutyName)
     min (Required) max (Many)
@@ -12,6 +21,10 @@ structure (NearHospitalList) {
     type (DutyDivName)
     min (Optional) max (Many)
   }
+  property (dgidIdName) {
+		type (DgidIdName)
+		min (Optional) max (Many)
+	}
   property (hpid) {
     type (HpID)
     min (Required) max (Many)
@@ -32,4 +45,21 @@ structure (NearHospitalList) {
     type(Pharmacy)
     min (Optional) max (One)
   }
+  property (currentPosition) {
+		type (MyPos)
+		min (Optional) max (One)
+	}
+
+	property (url) {
+		type (URL)
+		min (Optional) max (One)
+	}
+	property (mapUrl){
+		type(MapUrl)
+		min (Optional) max (One)
+	}
+	property (time){
+		type(Time)
+		min (Optional) max (One)
+	}
 }
