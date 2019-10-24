@@ -1,5 +1,5 @@
 train (t-e1cu10o8er208sebodhemzoes) {
   utterance ("[g:GetHospitalInfo] 가까운 {[g:Pharmacy] (약국)[v:Pharmacy:true]} 알려줘")
-  plan (Y+BkkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xgwyqYHBqTmoy3GQGOVRZv9TEIpicT2ZxCR5HgaXFUKUDMhKLchOTK3GKczAwMjAxMDOwMLAysDGwA/kMQBGQGEyEkYEBLAbBPEDMDGSxg3WyAwA=)
-  last-modified (1571900641150)
+  enabled (false)
+  last-modified (1571902899357)
 }
