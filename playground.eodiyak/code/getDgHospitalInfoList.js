@@ -37,8 +37,8 @@ module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgNa
       console.log(nearHospitalList[i])
       console.log("-------")
 
+      // 사용자가 찾는 병원인가?
       var flag = false;
-
       if( item.dgidIdName != undefined){
         if(item.dgidIdName.includes(",")){
           var originDNList = item.dgidIdName.split(",");
@@ -61,10 +61,34 @@ module.exports.function = function getDgHospitalInfoList (nearHospitalList, dgNa
           $id : null,
           $type : "viv.geo.GeoPoint"
         }
+
+        var dgList = new Array();
+        if(item.dgidIdName != undefined){
+          originDNList = item.dgidIdName.split(",")
+          for(var k=0; k<treatmentList.length; k++){
+            if(item.dutyName.includes(treatmentList[k])){
+              dgList[k] = true;
+            }else{
+              for(var j=0; j<originDNList.length; j++){
+                if(treatmentList[k] == originDNList[j]){
+                  dgList[k] = true;
+                  break
+                }else{
+                  dgList[k] = false;
+                }
+              }
+            }
+          }
+        }else{
+          for(var k=0; k<25; k++){
+            dgList.push(false);
+          }
+        }
+
         obj.point = info
         obj.dutyAddr = item.dutyAddr
         obj.dutyName = item.dutyName
-        obj.dgidIdName = item.dgidIdName
+        obj.dgidIdName = dgList
         obj.dutyTel1 = item.dutyTel1
         obj.startTime = nearHospitalList[i].startTime[0]
         obj.endTime = nearHospitalList[i].endTime[0]
