@@ -7,35 +7,64 @@ layout-macro-def (NearResultSum) {
 	}
 	content {
 		cell-card {
-			
 			slot1 {
-				if (resultsum.dutyDivName == '의원') { 
-					image {
-						shape (Square)
-						url ("/icon/small.png")
+
+			}
+			
+			slot2 {
+				if ("resultsum.isPharmacy == true") {
+					content {
+						primary ("#{value(resultsum.dutyName)}")
+						// secondary ("#{value(resultsum.dutyDivName)} / #{value(resultsum.distance)} km")
+						secondary ("영업시간 : #{value(resultsum.startTime)} ~ #{value(resultsum.endTime)}")
 					}
 				} else {
-					image {
-						shape (Square)
-						url ("/icon/hospital.png")
+					content {
+						primary ("#{value(resultsum.dutyName)}")
+						// secondary ("#{value(resultsum.dutyDivName)} / #{value(resultsum.distance)} km")
+						secondary ("#{value(resultsum.dutyDivName)} / #{value(resultsum.startTime)} ~ #{value(resultsum.endTime)}")
+						// secondary ("#{value(resultsum.startTime)} ~ #{value(resultsum.endTime)} / #{value(resultsum.dutyDivName)}")
+						// secondary ("#{value(resultsum.dutyDivName)} / #{value(resultsum.distance)} km")
 					}
 				}
 			}
-			slot2 {
-				content {
-					primary ("#{value(resultsum.dutyName)}")
-					secondary ("#{value(resultsum.dutyDivName)} / #{value(resultsum.startTime)} ~ #{value(resultsum.endTime)}")
-				}
-			}
-			
 			slot3 {
 				label {
 					valign (Middle)
 					value {
 						template ("#{value(resultsum.distance)} km")
+						// template ("#{value(resultsum.startTime)} ~ #{value(resultsum.endTime)}")
+						// template ("#{value(resultsum.startTime)} ~ #{value(resultsum.endTime)}")
 					}
 				}
 			}
+			
 		}
+		// title-card {
+		// 	title-area {
+		// 		halign (Start)
+		// 		slot1 {
+		// 			text {
+		// 				value {
+		// 					template ("#{value(resultsum.dutyName)}")
+		// 				}
+		// 			}
+		// 		}
+		// 		slot2 {
+		// 			paragraph {
+		// 				value {
+		// 					template ("#{value(resultsum.dutyDivName)}")
+		// 				}
+		// 			}
+		// 		}
+		// 		slot3 {
+		// 			paragraph {
+		// 				value {
+		// 					template ("#{value(resultsum.startTime)}~#{value(resultsum.endTime)}")
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// }
 	}
 }
