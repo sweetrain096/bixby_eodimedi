@@ -41,10 +41,8 @@ function degreesToRadians(degrees) {
 }
 
 function cuttingTime(time){
-  var console = require("console")
   if(time == null){
     time = "알수없음"
-    console.log("this is Exception :: dutytime null")
   }else{
     time = time.substring(0,2) + ":" + time.substring(2,4)
     if(time.charAt(0)==0 && time.charAt(1)!=0){
@@ -93,8 +91,13 @@ function getDgiddData(hpid){
     + "&numOfRows=10"
   
   var details = http.getUrl(url,{format: 'xmljs'})
-  var item = details.response.body.items.item
-  return item.dgidIdName
+  //API SERVER ERROR 발생시를 대비한 분기처리
+  if(details.response != undefined){
+    var item = details.response.body.items.item
+    return item.dgidIdName
+  }else{
+    return ""
+  }
 }
 
 module.exports.function = function getLocationHospitalList (position, locationName1, locationName2) {  
@@ -112,7 +115,7 @@ module.exports.function = function getLocationHospitalList (position, locationNa
   + "&Q1=" + enlocation2
   + "&QT= " + day
   + "&pageNo=1"
-  + "&numOfRows=50"
+  + "&numOfRows=10"
 
   var details = http.getUrl(url,{format: 'xmljs'})
   var item = details.response.body.items.item
