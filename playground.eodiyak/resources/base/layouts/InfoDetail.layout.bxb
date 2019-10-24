@@ -38,7 +38,12 @@ layout-macro-def (InfoDetail) {
 							}
 						}
 					}
-					
+					on-click {
+						intent {
+							goal: MapDetailOpenBrowser
+							value: $expr(detail.mapUrl)
+						}
+					}
 				}
 				
 				split-input-cell {
