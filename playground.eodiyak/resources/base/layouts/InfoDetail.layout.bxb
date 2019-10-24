@@ -100,7 +100,7 @@ layout-macro-def (InfoDetail) {
 						}
 						on-click {
 							intent {
-								goal: OpenBrowser
+								goal: MapOpenBrowser
 								value: $expr(detail.mapUrl)
 							}
 						}
