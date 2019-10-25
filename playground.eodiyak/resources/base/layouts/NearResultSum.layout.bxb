@@ -33,7 +33,7 @@ layout-macro-def (NearResultSum) {
 						shape (Square)
 						url ("/icon/hospital_EG.png")
 					}
-				} else-if (resultsum.dutyDivName == '약국' || exists(resultsum.isPharmacy) && resultsum.isPharmacy == true) {
+				} else-if (resultsum.dutyDivName == '약국' || exists(resultsum.dgNameText) && resultsum.dgNameText == '약국' ) {
 					image {
 						shape (Square)
 						url ("/icon/hospital_H.png")
@@ -60,7 +60,7 @@ layout-macro-def (NearResultSum) {
 					content {
 						primary ("#{value(resultsum.dutyName)}")
 						// secondary ("#{value(resultsum.dutyDivName)} / #{value(resultsum.distance)} km")
-						secondary ("영업시간 : #{value(resultsum.startTime)} ~ #{value(resultsum.endTime)}")
+						secondary ("운영 시간 : #{value(resultsum.startTime)} ~ #{value(resultsum.endTime)}")
 					}
 				} else {
 					content {
