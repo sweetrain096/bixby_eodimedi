@@ -45,10 +45,6 @@ structure (NearHospitalList) {
     type (EndTime)
     min (Required) max (Many)
   }
-  property (isPharmacy){
-    type(Pharmacy)
-    min (Optional) max (One)
-  }
   property (currentPosition) {
 		type (MyPos)
 		min (Optional) max (One)
