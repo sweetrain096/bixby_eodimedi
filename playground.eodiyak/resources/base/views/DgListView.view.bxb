@@ -1,11 +1,12 @@
 input-view {
 	match : DgHospitalInfoList (this)
 	message {
-		if ("exists(this.dgidIdName)") {
-      template ("현재 진료중인 병원의 정보입니다.")
-    } else {
-      template ("현재 열려있는 약국의 정보입니다.")
-    }
+		// if ("exists(this.dgNameText)") {
+    //   template ("현재 진료중인 #{value(this.dgNameText)}의 정보입니다.")
+    // } else {
+    //   template ("현재 진료중인 병원의 정보입니다.")
+    // }
+		template ()
 	}
 	render {
 		selection-of (this) {

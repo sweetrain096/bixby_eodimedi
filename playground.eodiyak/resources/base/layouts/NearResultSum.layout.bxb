@@ -21,7 +21,7 @@ layout-macro-def (NearResultSum) {
 				}
 			}
 			slot2 {
-				if ("resultsum.isPharmacy == true") {
+				if ("resultsum.dgNameText == '약국'") {
 					content {
 						primary ("#{value(resultsum.dutyName)}")
 						// secondary ("#{value(resultsum.dutyDivName)} / #{value(resultsum.distance)} km")

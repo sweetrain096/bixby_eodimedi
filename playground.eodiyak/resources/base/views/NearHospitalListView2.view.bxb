@@ -1,10 +1,10 @@
 input-view {
 	match : NearHospitalList (this)
 	message {
-		if ("this.isPharmacy == true") {
-      template ("현재 열려있는 약국의 정보입니다.")      
+		if ("exists(this.dgNameText)") {
+      template ("선택하신 #{value(this.dgNameText)}의 정보입니다.")
     } else {
-			template ("현재 진료중인 병원의 정보입니다.")
+      template ("선택하신 병원의 정보입니다.")
     }
 	}
 	render {
@@ -18,7 +18,7 @@ input-view {
 			}
 		}
 	}
-		conversation-drivers {
+	conversation-drivers {
 		conversation-driver {
 			template ("가까운 내과 알려줘")
 		}
