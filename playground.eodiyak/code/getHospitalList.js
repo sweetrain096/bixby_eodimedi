@@ -113,7 +113,7 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
     flag = 2
   }
 
-  var url = ep + oper + "?ServiceKey=" + ServiceKey + "123"
+  var url = ep + oper + "?ServiceKey=" + ServiceKey
   // 3 일때만 추가적인 작업을 하면된다
   url += "&WGS84_LON=" + position['myPos']['longitude']
     + "&WGS84_LAT=" + position['myPos']['latitude']
