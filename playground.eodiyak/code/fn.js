@@ -1,4 +1,5 @@
-var fail = require('./fail')
+var fail = require('fail')
+var db = require('./db')
 
 module.exports.errorHandling = function errorHandling(data) {
   if (data.OpenAPI_ServiceResponse != undefined && data.OpenAPI_ServiceResponse.cmmMsgHeader.returnReasonCode == 30)
@@ -10,7 +11,7 @@ module.exports.errorHandling = function errorHandling(data) {
 
 module.exports.makeDgididNameList = function makeDgididNameList(originData, hosName){ //원본DgidIdName, 병원이름
   var dgList = new Array();
-
+  var treatmentList = db.treatmentList
   if(originData != undefined){
     var spl = originData.split(",")
     for(var i=0; i<treatmentList.length; i++){
@@ -104,7 +105,7 @@ module.exports.computeDistance = function computeDistance(startCoords, destCoord
     return distance.toFixed(2);
 }
 
-module.exports.degreesToRadians = function degreesToRadians(degrees) {
+function degreesToRadians(degrees) {
     radians = (degrees * Math.PI)/180;
     return radians;
 }

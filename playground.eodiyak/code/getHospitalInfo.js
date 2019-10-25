@@ -13,9 +13,6 @@ var tMapUrl = 'https://apis.openapi.sk.com/tmap/routes'
 
 let params = { version: 1 }
 
-var treatmentList = db.treatmentList
-
-
 module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentPosition) {
   let info = {}
   console.log(hospitalSummaryInfo.dgNameText)

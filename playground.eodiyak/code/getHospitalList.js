@@ -138,7 +138,7 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
   // 가까운 병원과 지역구 병원 리스트는 여기까지만 한다
   if(!isLocal) fn.sortArr(results)
   if (flag == 1 || flag ==3) return results
-
+  console.log(results)
   // results에는 근처에 있는 모든 병원의 정보가 담겨있다. 여기서 포문을 돌려서 가져온 후, 포함된다면 처리하면된다.
 
   let answer = new Array()
