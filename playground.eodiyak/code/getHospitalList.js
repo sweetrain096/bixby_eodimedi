@@ -1,123 +1,179 @@
 var http = require('http')
 var fail = require('fail')
+var console = require('console')
+
+var db = require('./db.js')
+var fn = require('./fn.js')
+
 var EndPoint = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/"
-var Operation = "getHsptlMdcncLcinfoInqire"
-var BabyOperation = "getBabyLcinfoInqire"
 var PharmacyEndPoint = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/"
+
+var Operation = "getHsptlMdcncLcinfoInqire"
+var DetailOperation = "getHsptlBassInfoInqire"
+var BabyOperation = "getBabyLcinfoInqire"
 var PharmacyOperation = "getParmacyLcinfoInqire"
-var ServiceKey = "Z6lJuu3urgG5yS0Gsn67Vc7jF4RBEpoMneik3qshCxF%2FoQDSri4aC8TThqkniotYQ%2Flgpc23f6ByJ6Sp0uPvBw%3D%3D"
+var LocationOperation = "getHsptlMdcncListInfoInqire"
+
+var ServiceKey = secret.get('servicekey')
+
 var pageNo = 1
-var num = 50
+var num = 30
+
+var tmapkey = secret.get('tmapkey')
+var tmapurl = 'https://apis.openapi.sk.com/tmap/routes'
+
+let params = { version: 1 }
+
+var options = {
+  format: 'xmljs',
+  //cacheTime : 0
+};
+
+var treatmentList = db.treatmentList
 
 
 
-module.exports.function = function getHospitalList(position, baby, pharmacy) {
-  const console = require("console")
-  var url = ""
-  if (baby == true) {
-    url = EndPoint + BabyOperation
-      + "?ServiceKey=" + ServiceKey
-      + "&WGS84_LON=" + position['myPos']['longitude']
-      + "&WGS84_LAT=" + position['myPos']['latitude']
-      + "&pageNo=" + pageNo
-      + "&numOfRows=" + num
-  } else if (pharmacy == true){
-    url = PharmacyEndPoint + PharmacyOperation 
-      + "?Serv iceKey=" + ServiceKey 
-      + "&WGS84_LON=" + position['myPos']['longitude']
-      + "&WGS84_LAT=" + position['myPos']['latitude']
+module.exports.function = function getHospitalList(position, baby, dgName, locality, locationName) {
+  var ep = ""
+  var oper = ""
+  var flag = 0
+  var isLocal = (locality != undefined)?locality:false //가까운곳을 찾는 것인가?
+  var date = new Date()
+  var day = date.getDay(); //오늘 무슨 요일인지
+  // flag == 0 ERROR
+  // flag == 1 병원,달빛병원,약국
+  // flag == 2 내과,치과 등
+  // flag == 3 지역으로 찾기
 
-  } else {
-    url = EndPoint + Operation
-      + "?ServiceKey=" + ServiceKey
-      + "&WGS84_LON=" + position['myPos']['longitude']
-      + "&WGS84_LAT=" + position['myPos']['latitude']
-      + "&pageNo=" + pageNo
-      + "&numOfRows=" + num
-  }
-  let results = new Array
-
-
-  var hList = http.getUrl(url, { format: 'xmljs' })
-
-  var response = hList.response
-  var resultCode = response.header.resultCode
-
-  if ( resultCode != 00 ) {
-    throw fail.checkedError('API 서버가 터졌을때 나오는 ERROR', 'ErrorNotWorking', {})
-  }
-
-  var item = response.body.items.item
-  if (item == undefined) {
-    throw fail.checkedError('검색결과가 0개일때 나오는 ERROR', 'ErrorNoResults', {})
-    // let info = {}
-    // info['dutyName'] = "null"
-    // info['distance'] = "null"
-    // info['dutyDivName'] = "null"
-    // info['hpid'] = "null"
-    // info['dutyTel1'] = "null"
-    // info['endTime'] = "null"
-    // info['startTime'] = "null"
-    // results.push(info)
-  } else if (item.dutyName) {
-    let info = {}
-    if (pharmacy == true){    // 약국 처리
-      var stime = item.startTime.substring(0,2) + ":" + item.startTime.substring(2,4)
-      var etime = item.endTime.substring(0,2) + ":" + item.endTime.substring(2,4)
-      if (stime.charAt(0)==0 && stime.charAt(1)!=0){
-        stime = " " + stime.substring(1,5)
-      }
-      if(etime.charAt(0)==0 && etime.charAt(1)!=0){
-        etime = " " + etime.substr(1,5)
-      }
-
-      info['startTime'] = stime
-      info['endTime'] = etime
-      info['isPharmacy'] = true
-
-    } else{   // 약국 아닐때
-      info['dutyDivName'] = item.dutyDivName
-      info['endTime'] = item.endTime
-      info['startTime'] = item.startTime
-      info['isPharmacy'] = false
+  if(isLocal){
+    if (baby == true) { //달빛병원 호출
+      ep = EndPoint
+      oper = BabyOperation
+      flag = 1
+    } else if (dgName == '병원') { //일반병원 호출
+      ep = EndPoint
+      oper = Operation
+      flag = 1
+    } else if (dgName == '약국') { //약국 호출
+      ep = PharmacyEndPoint
+      oper = PharmacyOperation
+      flag = 1
+    } else { // 내과,치과 등등 다른 병원들을 호출 할 때,
+      ep = EndPoint
+      oper = Operation
+      flag = 2
     }
-    
+  }else{
+    ep = EndPoint
+    oper = LocationOperation
+    flag = 3
+  }
+
+  console.log("flag : ", flag)
+
+  var url = ep + oper + "?ServiceKey=" + ServiceKey
+  if(isLocal){
+    url += "&WGS84_LON=" + position['myPos']['longitude']
+      + "&WGS84_LAT=" + position['myPos']['latitude']
+      + "&pageNo=" + pageNo
+      + "&numOfRows=" + num
+  }else{
+    var locData = fn.extractArea(locationName)
+    if(locData.length==2){
+      url += "&Q0=" + locData[0]
+        +"&Q1=" + locData[1]
+        + "&pageNo=" + pageNo
+        + "&numOfRows=" + num
+    }else if(locData.length==1){
+      url += "&Q0=" + locData[0]
+        + "&pageNo=" + pageNo
+        + "&numOfRows=" + num
+    }else{
+      //지역정보를 하나도 못찾았을 경우의 throw를 만들어줘야한다
+    }
+  }
+
+  var searchRes = http.getUrl(url, options)
+  fn.errorHandling(searchRes)
+  let results = new Array // 리턴될 변수 선언
+
+  var item = searchRes.response.body.items.item
+
+  if (item == undefined) { // 검색은 성공적으로 성공하였지만 병원목록이 0개이다.
+    throw fail.checkedError('검색결과가 0개일때 나오는 ERROR', 'ErrorNoResults', {})
+  }
+
+  else if (item.dutyName) { // 검색결과가 1개일 때,
+    let info = {}
+
+    info['dgNameText'] = dgName
+    info['startTime'] = (isLocal)?fn.timeFormat(item.startTime):fn.timeFormat(fn.extreactTime(item, day).stime)
+    info['endTime'] = (isLocal)?fn.timeFormat(item.endTime):fn.timeFormat(fn.extreactTime(item, day).etime)
     info['dutyName'] = item.dutyName
-    info['distance'] = item.distance
+    info['distance'] = (isLocal)?item.distance:fn.computeDistance(fn.extractPos(item), position['myPos'])
     info['hpid'] = item.hpid
     info['dutyTel1'] = item.dutyTel1
-    console.log(info)
+
+    if ('약국' != dgName) info['dutyDivName'] = item.dutyDivName
+
     results.push(info)
-  } else {
+  } else { // 검색결과가 여러개라면????
     for (i in item) {
       let info = {}
-      console.log(pharmacy)
-      if (pharmacy == true){
-        info['isPharmacy'] = true
-      } else{
-        info['dutyDivName'] = item[i].dutyDivName
-        info['isPharmacy'] = false
-      }
 
+      info['dgNameText'] = dgName
       info['dutyName'] = item[i].dutyName
-      info['distance'] = item[i].distance
+      info['distance'] = (isLocal)?item[i].distance:fn.computeDistance(fn.extractPos(item[i]), position['myPos'])
       info['hpid'] = item[i].hpid
       info['dutyTel1'] = item[i].dutyTel1
+      info['startTime'] = (isLocal)?fn.timeFormat(item[i].startTime):fn.timeFormat(fn.extreactTime(item[i], day).stime)
+      info['endTime'] = (isLocal)?fn.timeFormat(item[i].endTime):fn.timeFormat(fn.extreactTime(item[i], day).etime)
 
-      var stime = item[i].startTime.substring(0, 2) + ":" + item[i].startTime.substring(2, 4)
-      var etime = item[i].endTime.substring(0, 2) + ":" + item[i].endTime.substring(2, 4)
-      if (stime.charAt(0) == 0 && stime.charAt(1) != 0) {
-        stime = stime.substring(1, 5)
-      }
-      if (etime.charAt(0) == 0 && etime.charAt(1) != 0) {
-        etime = etime.substr(1, 5)
-      }
-      info['endTime'] = etime
-      info['startTime'] = stime
-      console.log(info)
+      if ('약국' != dgName) info['dutyDivName'] = item[i].dutyDivName
+      
+
       results.push(info)
     }
   }
-  
-  return results
+  // 가까운 병원과 지역구 병원 리스트는 여기까지만 한다
+  if(!isLocal) fn.sortArr(results)
+  if (flag == 1 || flag ==3) return results
+  console.log(results)
+  // results에는 근처에 있는 모든 병원의 정보가 담겨있다. 여기서 포문을 돌려서 가져온 후, 포함된다면 처리하면된다.
+
+  let answer = new Array()
+
+  for (let i = 0; i < results.length; i++) {
+    // 사용자가 찾는 병원인가?
+    var tag = false;
+
+    var DgNameList = db.DgNames[results[i].hpid]
+
+    if ( DgNameList == undefined ) continue
+    
+    for (var k = 0; k < DgNameList.length; k++) {
+      if (DgNameList[k] == dgName && results[i].dutyName.indexOf("요양병원") == -1) tag = true;
+    }
+
+    if (tag) {
+      let info = {}
+      info['dgNameText'] = dgName
+      info['startTime'] = results[i].startTime
+      info['endTime'] = results[i].endTime
+      info['dutyName'] = results[i].dutyName
+      info['distance'] = results[i].distance
+      info['hpid'] = results[i].hpid
+      info['dutyTel1'] = results[i].dutyTel1
+      if ('약국' != dgName) info['dutyDivName'] = results[i].dutyDivName
+      
+      answer.push(info);
+    }
+  }
+
+  if (answer.length == 0) {
+    throw fail.checkedError('검색결과가 0개일때 나오는 ERROR', 'ErrorNoResults', {})
+  }
+
+  return answer
 }
+

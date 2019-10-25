@@ -1,16 +1,21 @@
 result-view {
-  match : HospitalInfo (this)
+  match : HospitalInfo (hosInfo)
     /// concepts의 HospitalInfo에서 정의된 것 매치
   
   message {
-    template ("선택하신 병원의 정보입니다.")
+    if ("exists(hosInfo.dgNameText)") {
+      template ("선택하신 #{value(hosInfo.dgNameText)}의 정보입니다.")
+    } else {
+      template ("선택하신 병원의 정보입니다.")
+    }
+    
   }
 
   render {
     layout {
       layout-macro (InfoDetail) {
         param (detail) {
-          expression (this)
+          expression (hosInfo)
         }
       }
     }

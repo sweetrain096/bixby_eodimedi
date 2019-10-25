@@ -1,5 +1,5 @@
 train (t-054vzkkz5wq531tksgywnpsmm) {
-  utterance ("[g:GetDgHospitalInfo] 가까운 {[g:DgName] (내과)[v:DgName]} 알려줘")
-  plan (Y+BikCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BHlXNPLXFJR1GAT7Mcqlxwak5qMpJ+BgVUeVSTfTKLSxiUCVgPViSCboxfYm4qDlFhVFHfyoD8YnR3+qUmFsEsAVvAycDIwMTAzMDCwMrAxsDOwAEUYUARYwVCRrAYBPMwQAAzkAfSASQB)
-  last-modified (1571881259762)
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (가까운)[v:Locality:true]} {[g:DgName] (내과)[v:DgName]} 알려줘")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1571912170720)
 }
