@@ -15,6 +15,24 @@ var AreaData = {
   제주: ["제주시", "서귀포시"]
 }
 
+var AreaMapping={
+  서울:"서울특별시",
+  부산:"부산광역시",
+  대구:"대구광역시",
+  인천:"인천광역시",
+  광주:"광주광역시",
+  대전:"대전광역시",
+  울산:"울산광역시",
+  세종:"세종특별자치시",
+  경기:"경기",
+  강원:"강원",
+  충청:"충청",
+  전라:"전라",
+  경상:"경상",
+  제주:"제주"
+}
+
+
 var treatmentList = new Array(
   "내과", "소아청소년과", "이비인후과",
   "안과", "치과", "피부과",
@@ -35,7 +53,7 @@ var DgNames = {
   B1600626: ["침구과", "한방내과", "한방부인과", "한방소아과", "한방신경정신과"]
 }
 
-
+module.exports.AreaMapping = AreaMapping
 module.exports.AreaData = AreaData
 module.exports.treatmentList = treatmentList
 module.exports.DgNames = DgNames
