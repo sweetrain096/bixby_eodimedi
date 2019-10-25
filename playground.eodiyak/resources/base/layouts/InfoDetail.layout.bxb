@@ -117,7 +117,7 @@ layout-macro-def (InfoDetail) {
 				// value ("#{value(detail.dgidIdName.hasOwnProperty())}")
 				
 				// }
-				if ("exists(detail.dgidIdName)") {
+				if ("detail.dgNameText != '약국'") {
 					paragraph {
 						value ("진료 과목")
 						
