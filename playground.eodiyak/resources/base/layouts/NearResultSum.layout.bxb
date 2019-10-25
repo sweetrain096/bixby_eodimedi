@@ -8,15 +8,50 @@ layout-macro-def (NearResultSum) {
 	content {
 		cell-card {
 			slot1 {
-				if (resultsum.dutyDivName == '의원') { 
+				if (resultsum.dutyDivName == '상급종합병원' || resultsum.dutyDivName=='종합병원') { 
 					image {
 						shape (Square)
 						url ("/icon/hospital_A.png")
 					}
-				} else {
+				} else-if (resultsum.dutyDivName == '병원' || resultsum.dutyDivName=='군 병원') {
 					image {
 						shape (Square)
 						url ("/icon/hospital_B.png")
+					}
+				} else-if (resultsum.dutyDivName == '의원' || resultsum.dutyDivName=='군 의원') {
+					image {
+						shape (Square)
+						url ("/icon/hospital_C.png")
+					}
+				} else-if (resultsum.dutyDivName == '요양병원') {
+					image {
+						shape (Square)
+						url ("/icon/hospital_D.png")
+					}
+				} else-if (resultsum.dutyDivName == '한방병원' || resultsum.dutyDivName == '한의원' || resultsum.dutyDivName=='군 한의원') {
+					image {
+						shape (Square)
+						url ("/icon/hospital_EG.png")
+					}
+				} else-if (resultsum.dutyDivName == '약국' || exists(resultsum.isPharmacy) && resultsum.isPharmacy == true) {
+					image {
+						shape (Square)
+						url ("/icon/hospital_H.png")
+					}
+				} else-if (resultsum.dutyDivName == '치과병원' || resultsum.dutyDivName=='치과의원') {
+					image {
+						shape (Square)
+						url ("/icon/hospital_MN.png")
+					}
+				} else-if (resultsum.dutyDivName == '119구급대' || resultsum.dutyDivName=='중앙응급의료센터' || resultsum.dutyDivName == '응급의료지원센터') {
+					image {
+						shape (Square)
+						url ("/icon/hospital_TYZ.png")
+					}
+				} else {
+					image {
+						shape (Square)
+						url ("/icon/hospital_I.png")
 					}
 				}
 			}
