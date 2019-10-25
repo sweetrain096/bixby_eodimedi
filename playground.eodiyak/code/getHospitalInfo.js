@@ -56,6 +56,7 @@ function makeDgididNameList(originData, hosName){ //원본DgidIdName, 병원이�
 
 module.exports.function = function getHospitalInfo (hospitalSummaryInfo,currentPosition) {
   let info = {}
+  info['dgNameText']= hospitalSummaryInfo.dgNameText
   if (hospitalSummaryInfo.isPharmacy != true){ // 병원
       var url = EndPoint + Operation 
       + "?ServiceKey=" + ServiceKey 

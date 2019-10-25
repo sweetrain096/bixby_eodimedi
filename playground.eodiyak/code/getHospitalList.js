@@ -1,5 +1,6 @@
 var http = require('http')
 var fail = require('fail')
+var db = require('./db.js')
 var console = require('console')
 var EndPoint = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/"
 var PharmacyEndPoint = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/"
@@ -19,28 +20,19 @@ var tmapurl = 'https://apis.openapi.sk.com/tmap/routes'
 
 let params = { version: 1 }
 
-var treatmentList = new Array(
-  "내과", "소아청소년과", "이비인후과",
-  "안과", "치과", "피부과",
-  "가정의학과", "산부인과", "비뇨기과",
-  "외과", "정형외과", "성형외과",
-  "흉부외과", "재활의학과", "응급의학과",
-  "정신건강의학과", "신경과", "신경외과",
-  "영상의학과", "치료방사선과", "핵의학과",
-  "해부병리과", "임상병리과", "요양병원",
-  "마취통증의학과", "구강악안면외과", "한의원"
-)
-
 var options = {
   format: 'xmljs',
-  cachetime: 0
+  //cacheTime : 0
 };
 
+var treatmentList = db.treatmentList
+
+
 function ErrorHandling(data) {
-  if ( data.OpenAPI_ServiceResponse != undefined && data.OpenAPI_ServiceResponse.cmmMsgHeader.returnReasonCode == 30 ) 
+  if (data.OpenAPI_ServiceResponse != undefined && data.OpenAPI_ServiceResponse.cmmMsgHeader.returnReasonCode == 30)
     throw fail.checkedError('API 서버가 터졌을때 나오는 ERROR', 'ErrorNotWorking', {})
-  if (data.response != undefined && data.response.header.resultCode != 00) 
-    throw fail.checkedError('API 서버가 터졌을때 나오는 ERROR', 'ErrorNotWorking', {})  
+  if (data.response != undefined && data.response.header.resultCode != 00)
+    throw fail.checkedError('API 서버가 터졌을때 나오는 ERROR', 'ErrorNotWorking', {})
 }
 
 
@@ -92,9 +84,6 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
   // flag == 1 병원,달빛병원,약국
   // flag == 2 내과,치과 등
 
-
-  console.log(locality)
-  console.log(locationName)
   if (baby == true) { //달빛병원 호출
     ep = EndPoint
     oper = BabyOperation
@@ -113,7 +102,7 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
     flag = 2
   }
 
-  var url = ep + oper + "?ServiceKey=" + ServiceKey + "123"
+  var url = ep + oper + "?ServiceKey=" + ServiceKey
   // 3 일때만 추가적인 작업을 하면된다
   url += "&WGS84_LON=" + position['myPos']['longitude']
     + "&WGS84_LAT=" + position['myPos']['latitude']
@@ -166,88 +155,39 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
 
   // results에는 근처에 있는 모든 병원의 정보가 담겨있다. 여기서 포문을 돌려서 가져온 후, 포함된다면 처리하면된다.
 
-  let result = new Array()
-  if (results.length == 1) {
-    var detailUrl = EndPoint + DetailOperation
-      + "?ServiceKey=" + ServiceKey
-      + "&HPID=" + results[0].hpid
+  let answer = new Array()
 
-    var details = http.getUrl(detailUrl, options)
-    ErrorHandling(details)
-    if (details != undefined) {   
-      var item = details.response.body.items.item
-      var tag = false;
-      if (item.dgidIdName != undefined) { // dgidNmae이 하나도 없는 병원일 경우 예외처리
-        if (item.dgidIdName.includes(",")) {
-          var originDNList = item.dgidIdName.split(",");
-          for (var k = 0; k < originDNList.length; k++) {
-            if (originDNList[k] == dgName && item.dutyName.indexOf("요양병원") == -1) tag = true;
-          }
-        } else {
-          if (item.dgidIdName == dgName && item.dutyName.indexOf("요양병원") == -1) tag = true;
-        }
-      }
+  for (let i = 0; i < results.length; i++) {
+    // 사용자가 찾는 병원인가?
+    var tag = false;
 
-      if (tag) {
-        console.log(item)
-        let info = {}
-        info['dgNameText'] = dgName
-        info['startTime'] = results[0].startTime
-        info['endTime'] = results[0].endTime
-        info['dutyName'] = item.dutyName
-        info['distance'] = results[0].distance
-        info['hpid'] = item.hpid
-        info['dutyTel1'] = item.dutyTel1
-        if ('약국' != dgName) info['dutyDivName'] = results[0].dutyDivName
-        else if ('약국' == dgName) info['isPharmacy'] = true
-        result.push(info);
-      }
-    }
-  } else {
-    for (let i = 0; i < results.length; i++) {
-      var detailUrl = EndPoint + DetailOperation
-        + "?ServiceKey=" + ServiceKey
-        + "&HPID=" + results[i].hpid
-      var details = http.getUrl(detailUrl, options)
-      ErrorHandling(details)
-      if (details == undefined) {
-        continue
-      }
-      var item = details.response.body.items.item
+    var DgNameList = db.DgNames[results[i].hpid]
 
-      // 사용자가 찾는 병원인가?
-      var tag = false;
-      if (item.dgidIdName != undefined) { // dgidNmae이 하나도 없는 병원일 경우 예외처리
-        if (item.dgidIdName.includes(",")) {
-          var originDNList = item.dgidIdName.split(",");
-          for (var k = 0; k < originDNList.length; k++) {
-            if (originDNList[k] == dgName && item.dutyName.indexOf("요양병원") == -1) tag = true;
-          }
-        } else {
-          if (item.dgidIdName == dgName && item.dutyName.indexOf("요양병원") == -1) tag = true;
-        }
-      }
-
-      if (tag) {
-        let info = {}
-        info['dgNameText'] = dgName
-        info['startTime'] = results[i].startTime
-        info['endTime'] = results[i].endTime
-        info['dutyName'] = item.dutyName
-        info['distance'] = results[i].distance
-        info['hpid'] = item.hpid
-        info['dutyTel1'] = item.dutyTel1
-        if ('약국' != dgName) info['dutyDivName'] = results[i].dutyDivName
-        else if ('약국' == dgName) info['isPharmacy'] = true
-        result.push(info);
-      }
+    if ( DgNameList == undefined ) continue
+    
+    for (var k = 0; k < DgNameList.length; k++) {
+      if (DgNameList[k] == dgName && results[i].dutyName.indexOf("요양병원") == -1) tag = true;
     }
 
+    if (tag) {
+      let info = {}
+      info['dgNameText'] = dgName
+      info['startTime'] = results[i].startTime
+      info['endTime'] = results[i].endTime
+      info['dutyName'] = results[i].dutyName
+      info['distance'] = results[i].distance
+      info['hpid'] = results[i].hpid
+      info['dutyTel1'] = results[i].dutyTel1
+      if ('약국' != dgName) info['dutyDivName'] = results[i].dutyDivName
+      else if ('약국' == dgName) info['isPharmacy'] = true
+      answer.push(info);
+    }
   }
-  if ( result.length == 0 ) {
-    throw fail.checkedError('검색결과가 0개일때 나오는 ERROR', 'ErrorNoResults', {})
-  } 
 
-  return result
+  if (answer.length == 0) {
+    throw fail.checkedError('검색결과가 0개일때 나오는 ERROR', 'ErrorNoResults', {})
+  }
+
+  return answer
 }
 
