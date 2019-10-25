@@ -36,6 +36,14 @@ var options = {
   cachetime: 0
 };
 
+function ErrorHandling(data) {
+  if ( data.OpenAPI_ServiceResponse != undefined && data.OpenAPI_ServiceResponse.cmmMsgHeader.returnReasonCode == 30 ) 
+    throw fail.checkedError('API 서버가 터졌을때 나오는 ERROR', 'ErrorNotWorking', {})
+  if (data.response != undefined && data.response.header.resultCode != 00) 
+    throw fail.checkedError('API 서버가 터졌을때 나오는 ERROR', 'ErrorNotWorking', {})  
+}
+
+
 function makeDgididNameList(originData, hosName) { //원본DgidIdName, 병원이름
   var dgList = new Array();
 
@@ -105,19 +113,15 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
     flag = 2
   }
 
-
-  var url = ep + oper + "?ServiceKey=" + ServiceKey
+  var url = ep + oper + "?ServiceKey=" + ServiceKey + "123"
   // 3 일때만 추가적인 작업을 하면된다
   url += "&WGS84_LON=" + position['myPos']['longitude']
     + "&WGS84_LAT=" + position['myPos']['latitude']
     + "&pageNo=" + pageNo
     + "&numOfRows=" + num
 
-
-
   var searchRes = http.getUrl(url, options)
-  if (searchRes.response.header.resultCode != 00) throw fail.checkedError('API 서버가 터졌을때 나오는 ERROR', 'ErrorNotWorking', {})
-
+  ErrorHandling(searchRes)
   let results = new Array // 리턴될 변수 선언
 
   var item = searchRes.response.body.items.item
@@ -167,8 +171,9 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
     var detailUrl = EndPoint + DetailOperation
       + "?ServiceKey=" + ServiceKey
       + "&HPID=" + results[0].hpid
+
     var details = http.getUrl(detailUrl, options)
-    if (searchRes.response.header.resultCode != 00) throw fail.checkedError('API 서버가 터졌을때 나오는 ERROR', 'ErrorNotWorking', {})
+    ErrorHandling(details)
     if (details != undefined) {   
       var item = details.response.body.items.item
       var tag = false;
@@ -204,7 +209,7 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
         + "?ServiceKey=" + ServiceKey
         + "&HPID=" + results[i].hpid
       var details = http.getUrl(detailUrl, options)
-      if (details.response.header.resultCode != 00) throw fail.checkedError('API 서버가 터졌을때 나오는 ERROR', 'ErrorNotWorking', {})
+      ErrorHandling(details)
       if (details == undefined) {
         continue
       }
