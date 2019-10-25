@@ -1,0 +1,3 @@
+text (Wgs84Lat) { // 이건 위도입니다아아아.
+  description (병원의 위도좌표)
+}

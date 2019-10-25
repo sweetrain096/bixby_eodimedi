@@ -1,0 +1,5 @@
+train (t-e1cu10o8er208sebodhemzoes) {
+  utterance ("[g:GetHospitalInfo] 가까운 {[g:Pharmacy] (약국)[v:Pharmacy:true]} 알려줘")
+  enabled (false)
+  last-modified (1571902899357)
+}

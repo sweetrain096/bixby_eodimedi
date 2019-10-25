@@ -1,0 +1,31 @@
+input-view {
+	match : DgHospitalInfoList (this)
+	message {
+		// if ("exists(this.dgNameText)") {
+    //   template ("현재 진료중인 #{value(this.dgNameText)}의 정보입니다.")
+    // } else {
+    //   template ("현재 진료중인 병원의 정보입니다.")
+    // }
+		template ()
+	}
+	render {
+		selection-of (this) {
+			where-each (item) {
+				layout-macro (DgList){
+					param (resultsum) {
+						expression(item)
+					}
+				}
+			}
+		}
+	}
+	conversation-drivers {
+		conversation-driver {
+			template ("가까운 병원 알려줘")
+		}
+		conversation-driver {
+			template ("가까운 약국 알려줘")
+		}
+	}
+	
+}

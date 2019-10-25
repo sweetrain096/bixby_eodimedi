@@ -1,0 +1,22 @@
+action (GetHospitalInfo) {
+  description (병원 정보를 찾는다.)
+  type(Search)
+  collect {
+    input (hospitalSummaryInfo) {
+      type (HospitalSummaryInfo)
+      min (Required) max (One)
+      default-init{
+        intent{
+          goal: SelectHospital
+        }
+      }
+    }
+    // hpId, hpName, hpTel, hpAddr, hpEndTime
+    input(currentPosition){
+      type(MyPos)
+      min (Required) max (One)
+    }
+
+  }
+  output (HospitalInfo)
+}

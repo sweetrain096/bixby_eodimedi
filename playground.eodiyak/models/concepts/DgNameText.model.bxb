@@ -1,0 +1,3 @@
+text (DgNameText) {
+  description (진료 목록 text로 표시)
+}

@@ -1,0 +1,20 @@
+capsule-info {
+  display-name (어디약)
+  // developer-name (todoc)
+  // icon-asset (/images/eodiyak_logo.png)
+  // description (병원과 약국 정보를 알 수 있습니다.)
+  // search-keywords {
+  //   keyword (병원검색)
+  //   keyword (병원)
+  //   keyword (약국)
+  //   keyword (약국검색)
+  // }
+  dispatch-name (어디약)
+  // dispatch-aliases {
+  //   alias (병원정보 검색)
+  //   alias (병원검색)
+  //   alias (병원 검색)
+  //   alias (약국 검색)
+  //   alias (약국검색)
+  // }
+}

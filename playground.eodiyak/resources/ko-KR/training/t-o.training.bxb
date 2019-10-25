@@ -1,0 +1,5 @@
+train (t-oua7bfho3y705vkg310da9ntv) {
+  utterance ("[g:GetHospitalInfo] {[g:LocationName] (대전 서구)[v:LocationName]} {[g:DgName] (병원)[v:DgName]} 알려줘")
+  plan (Y+BmkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xgwyqYHBqTmoy3GQGOVRZv9TEIpicT2ZxCR5HgaVFUKVd0v0Sc1NxiKL53Sc/ObEkMz+PoBwXAyMDEwMzAwsDKwMbAzsDBwMnUIwBKAoSh4myAUUZGRjA4hDMA8WsQB5MFxOQxQkA)
+  last-modified (1571912264102)
+}

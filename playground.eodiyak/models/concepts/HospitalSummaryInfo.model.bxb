@@ -1,0 +1,19 @@
+structure (HospitalSummaryInfo) {
+  description (병원 요약 정보)
+  property (hpId) {
+    type (HpID)
+    min (Required) max (One)
+  }
+  property (startTime) {
+    type (StartTime)
+    min (Required) max (One)
+  }
+  property (endTime) {
+    type (EndTime)
+    min (Required) max (One)
+  }
+  property(dgNameText){
+    type(DgNameText)
+    min (Optional) max (One)
+  }
+}

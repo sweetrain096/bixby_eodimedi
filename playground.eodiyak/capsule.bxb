@@ -1,13 +1,29 @@
 capsule {
-  id (playground.eodiyak)
+  id (todoc.eodiyak)
   version (0.1.0)
   format (3)
   targets {
-    target (bixby-mobile-en-US)
+    target (bixby-mobile-ko-KR)
   }
   runtime-flags {
+    no-filtering-with-validation
+    modern-default-view-behavior
     concepts-inherit-super-type-features
     modern-prompt-rejection
     support-halt-effect-in-computed-inputs
+  }
+  capsule-imports{
+    import(viv.geo){
+      as(geo)
+      version(9.21.0)
+    }
+    import (viv.entity) {
+      as (entity)
+      version (3.21.0)
+    }
+  }
+  // 사용자의 정보를 얻기 위한 permissions(위치 등)
+  permissions{
+    user-profile-access
   }
 }

@@ -1,0 +1,37 @@
+result-view{
+ match: MyPosition(myPosition){
+   from-output: GetCurrentPosition
+ }
+ 
+ message{
+   template ("당신의 현재 위치")
+ }
+
+ render{
+   layout{
+     section{
+       content{
+         map-card{
+           markers{
+             marker{
+              geo(myPosition.myPos)
+              width(15)
+              height(20)
+              anchor-x(5)
+              anchor-y(15)
+              rotation(0)
+            }
+           }
+           title-area{
+             slot1{
+               text{
+                 value("#{value(myPosition.myPos)}")
+               }
+             }
+           }
+         }
+       }
+     }
+   }
+ }
+}

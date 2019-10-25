@@ -1,0 +1,6 @@
+train (t-vr9g4wx05z39wvb7jx1etm6q9) {
+  utterance ("[g:GetLocationHospitalInfo] {[g:LocationName2] (유성구)[v:LocationName2]} 병원 알려줘")
+  plan (Y+BgkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ1BFlXNPLfHJT04syczPQ1GGzwg5VLng1JzU5BKXdJgaBgVUeYQMSLdPZnEJEY4AK5NGVQZT45eYm2qEX5KdgZGBiYGZgYWBlYENyGNA4TOC+RDMA8TMQBYbWA8bAA==)
+  enabled (false)
+  last-modified (1571903319989)
+}

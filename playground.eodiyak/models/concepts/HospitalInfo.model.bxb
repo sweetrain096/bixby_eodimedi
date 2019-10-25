@@ -1,0 +1,61 @@
+structure (HospitalInfo) {
+	description (병원의 정보들)
+
+	property(point) {
+		type(Hospoint)
+		min (Required) max (One)
+	}
+	
+	property (dutyAddr) {
+		type (DutyAddr)
+		min (Required) max (One)
+	}
+
+	property (dutyName) {
+		type (DutyName)
+		min (Required) max (One)
+	}
+
+	property (dgidIdName) {
+		type (DgidIdName)
+		min (Optional) max (Many)
+	}
+	
+  property(dgNameText){
+    type(DgNameText)
+    min (Optional) max (One)
+  }
+	
+	property (dutyTel1) {
+		type (DutyTel1)
+		min (Required) max (One)
+	}
+
+	property (startTime) {			// 병원 마감시간
+		type (StartTime)
+		min (Required) max (One)
+	}
+
+	property (endTime) {			// 병원 마감시간
+		type (EndTime)
+		min (Required) max (One)
+	}
+
+	property (currentPosition) {
+		type (MyPos)
+		min (Required) max (One)
+	}
+
+	property (url) {
+		type (URL)
+		min (Required) max (One)
+	}
+	property (mapUrl){
+		type(MapUrl)
+		min (Optional) max (One)
+	}
+	property (time){
+		type(Time)
+		min (Optional) max (One)
+	}
+}

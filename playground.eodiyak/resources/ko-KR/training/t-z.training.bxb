@@ -1,0 +1,11 @@
+train (t-zscs90mcq1t2l0pvao3w7gp64) {
+  utterance ("[g:GetLocationHospitalInfo] {[g:LocationName1] (대전광역시)[v:LocationName1]} {[g:LocationName2] (유성구)[v:LocationName2]} 병원 알려줘")
+  plan (Y+BikCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ1BFlXNPLfHJT04syczPQ1GGzwg5VLng1JzU5BKXdJgaBgVUeYQMSLdPZnEJEY4AK5NGVQZT45eYm2pItqQRfklOBkYGJgZmBhYGVgY2BnYGDqAIA4oYK1CMESwGwTxQzArkwXQwAVkcAA==)
+  enabled (false)
+  last-modified (1571903320803)
+}
+train (t-zzj2emyw8pw5de11b02uz2xgn) {
+  utterance ("[g:GetHospitalInfo] {[g:LocationName] (서울 강남구)[v:LocationName]} {[g:DgName] (병원)[v:DgName]} 알려줘")
+  plan (Y+BmkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xgwyqYHBqTmoy3GQGOVRZv9TEIpicT2ZxCR5HgaVFUKVd0v0Sc1NxiKL53Sc/ObEkMz+PoBwXAyMDEwMzAwsDKwMbAzsDBwMnUIwBKAoSh4myAUUZGRjA4hDMA8WsQB5MFxOQxQkA)
+  last-modified (1571912442404)
+}

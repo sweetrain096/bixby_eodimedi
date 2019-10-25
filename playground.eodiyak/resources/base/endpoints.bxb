@@ -12,5 +12,35 @@ endpoints {
     //     method (__HTTP_METHOD_USED__)
     //   }
     // }
+    action-endpoint (GetCurrentPosition){
+      accepted-inputs (point)
+      local-endpoint ("Point/getCurrentPosition.js")
+    }
+    action-endpoint (GetHospitalList){
+      accepted-inputs (position, baby, dgName, locality, locationName)
+      local-endpoint ("getHospitalList.js")
+    }
+    action-endpoint (SelectHospital){
+      accepted-inputs (hospital, selectNum)
+      local-endpoint ("selectHospital.js")
+    }
+
+    action-endpoint (GetHospitalInfo){
+      accepted-inputs (hospitalSummaryInfo, currentPosition)
+      local-endpoint ("getHospitalInfo.js")
+    }
+
+    action-endpoint (OpenBrowser) {
+      accepted-inputs (url, dutyTel1)
+      local-endpoint ("subApi/OpenBrowser.js")
+    }
+    action-endpoint (MapOpenBrowser){
+      accepted-inputs (hospitalInfo)
+      local-endpoint ("subApi/mapOpenBrowser.js")
+    }
+    action-endpoint (MapDetailOpenBrowser){
+      accepted-inputs (hospitalInfo)
+      local-endpoint ("subApi/mapDetailOpenBrowser.js")
+    }
   }
 }

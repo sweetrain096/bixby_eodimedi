@@ -1,0 +1,66 @@
+ action (GetHospitalList) {
+  description (주변 병원 목록을 가져온다.)
+  type(Constructor)
+
+  collect {
+    computed-input (position){  // 현재 위치 찾기
+      type(MyPosition)          // MyPosition concept
+      min (Required) max (One)  // 내 위치는 하나. 꼭 필요함
+      compute{
+        intent{
+          goal: MyPosition          // 내 위치 출력
+          route: GetCurrentPosition // GetCurrentPosition action 사용
+        }
+      }
+    }
+    input(locality){
+      type(Locality)
+      min (Optional) max (One)
+    }
+    input(locationName){
+      type(LocationName)
+      min (Optional) max (One)
+    }
+    input(baby){    // 달빛병원이니?
+      type(Baby)
+      min (Optional) max (One)
+    }
+    input(dgName){
+      type(DgName)
+      min (Optional) max (One)
+    }
+
+  }
+
+  output (NearHospitalList) {
+    throws {
+      error (ErrorNotWorking) {
+        on-catch {
+          halt {
+            dialog {
+              template ("현재 서버가 작동하지 않습니다..")
+            }
+          }
+        }
+      }
+      error (ErrorNoResults) {
+        on-catch {
+          halt {
+            dialog {
+              template ("현재 주변에 진료중인 병원이 없습니다.")
+            }
+          }
+        }
+      }
+      error (ErrorSomehings) {
+        on-catch {
+          halt {
+            dialog {
+              template ("무언가 잘못되었습니다.")
+            }
+          }
+        }
+      }      
+    }
+  }
+}
