@@ -2,12 +2,13 @@ action (SelectHospital) {
   description (유저가 병원을 선택하도록 한다)
   type(Constructor)
   collect {
-    input (hospital) {
+    computed-input (hospital) {
       type (NearHospitalList)
       min (Required) max (One)
-      default-init{
+      compute{
         intent{
-          goal: GetHospitalList
+          goal: NearHospitalList
+          route: GetHospitalList
         }
       }
     }
