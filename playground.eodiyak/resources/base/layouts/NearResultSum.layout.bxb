@@ -8,9 +8,18 @@ layout-macro-def (NearResultSum) {
 	content {
 		cell-card {
 			slot1 {
-
+				if (resultsum.dutyDivName == '의원') { 
+					image {
+						shape (Square)
+						url ("/icon/hospital_A.png")
+					}
+				} else {
+					image {
+						shape (Square)
+						url ("/icon/hospital_B.png")
+					}
+				}
 			}
-			
 			slot2 {
 				if ("resultsum.isPharmacy == true") {
 					content {
