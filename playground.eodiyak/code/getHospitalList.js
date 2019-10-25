@@ -75,7 +75,8 @@ function TimeFormat(time) {
   return time
 }
 
-module.exports.function = function getHospitalList(position, baby, dgName) {
+
+module.exports.function = function getHospitalList(position, baby, dgName, locality, locationName) {
   var ep = ""
   var oper = ""
   var flag = 0
@@ -83,6 +84,9 @@ module.exports.function = function getHospitalList(position, baby, dgName) {
   // flag == 1 병원,달빛병원,약국
   // flag == 2 내과,치과 등
 
+
+  console.log(locality)
+  console.log(locationName)
   if (baby == true) { //달빛병원 호출
     ep = EndPoint
     oper = BabyOperation
