@@ -1,0 +1,80 @@
+train (t-93rtslmnxk59pk43dvea5kzrj) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (주변)[v:Locality:true]} {[g:DgName] (비뇨기과)[v:DgName]} 알려줘")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572182309055)
+}
+train (t-95coxfc1eonp49ufmgb0yuc97) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (가까운)[v:Locality:true]} {[g:DgName] (핵의학과)[v:DgName]} 정보 검색")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572182027811)
+}
+train (t-97fwqox4gf6cjbgju8v9rtsjw) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (근처)[v:Locality:true]} {[g:DgName] (가정의학과)[v:DgName]} 보여줘")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572182096772)
+}
+train (t-98hwjlymwswggbnxo1gy421ui) {
+  utterance ("[g:GetHospitalInfo] {[g:LocationName] (서울특별시 강남구)[v:LocationName]}에 {[g:DgName] (치과)[v:DgName]} 알려줘")
+  plan (Y+BmkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xgwyqYHBqTmoy3GQGOVRZv9TEIpicT2ZxCR5HgaVFUKVd0v0Sc1NxiKL53Sc/ObEkMz+PoBwXAyMDEwMzAwsDKwMbAzsDBwMnUIwBKAoSh4myAUUZGRjA4hDMA8WsQB5MFxOQxQkA)
+  last-modified (1572182775561)
+}
+train (t-99255i2lg413jxk729ck4egtc) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (주변)[v:Locality:true]}에 있는 {[g:DgName] (병원)[v:DgName]} 알려줘")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572182732410)
+}
+train (t-9asm8wti578ryfh43eaphps8u) {
+  utterance ("[g:GetHospitalInfo] {[g:LocationName] (대구광역시 유성구 봉명동)[v:LocationName]}에 있는 {[g:DgName] (소아청소년과)[v:DgName]} 검색")
+  plan (Y+BmkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xgwyqYHBqTmoy3GQGOVRZv9TEIpicT2ZxCR5HgaVFUKVd0v0Sc1NxiKL53Sc/ObEkMz+PoBwXAyMDEwMzAwsDKwMbAzsDBwMnUIwBKAoSh4myAUUZGRjA4hDMA8WsQB5MFxOQxQkA)
+  last-modified (1572183366046)
+}
+train (t-9ciy98k7dlmd38uhvpzhq81sb) {
+  utterance ("[g:GetHospitalInfo] {[g:LocationName] (광주광역시)[v:LocationName]}의 {[g:DgName] (병원)[v:DgName]} 알려줘")
+  plan (Y+BmkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xgwyqYHBqTmoy3GQGOVRZv9TEIpicT2ZxCR5HgaVFUKVd0v0Sc1NxiKL53Sc/ObEkMz+PoBwXAyMDEwMzAwsDKwMbAzsDBwMnUIwBKAoSh4myAUUZGRjA4hDMA8WsQB5MFxOQxQkA)
+  last-modified (1572183454448)
+}
+train (t-9cnhy77dbrtzw5c2eaxz69rph) {
+  utterance ("[g:GetHospitalInfo] {[g:LocationName] (광주광역시)[v:LocationName]}의 {[g:DgName] (병원)[v:DgName]} 정보 알려줘")
+  plan (Y+BmkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xgwyqYHBqTmoy3GQGOVRZv9TEIpicT2ZxCR5HgaVFUKVd0v0Sc1NxiKL53Sc/ObEkMz+PoBwXAyMDEwMzAwsDKwMbAzsDBwMnUIwBKAoSh4myAUUZGRjA4hDMA8WsQB5MFxOQxQkA)
+  last-modified (1572183427645)
+}
+train (t-9czgpdi9kn92fr9kn0q01zlpz) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (가까운)[v:Locality:true]} {[g:DgName] (신경외과)[v:DgName]} 정보 알려줘")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572182419239)
+}
+train (t-9fq80hd8hblg5xrpduk27t9pb) {
+  utterance ("[g:GetHospitalInfo] {[g:LocationName] (대전시 대덕구)[v:LocationName]}에 있는 {[g:DgName] (가정의학과)[v:DgName]} 보여줘")
+  plan (Y+BmkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xgwyqYHBqTmoy3GQGOVRZv9TEIpicT2ZxCR5HgaVFUKVd0v0Sc1NxiKL53Sc/ObEkMz+PoBwXAyMDEwMzAwsDKwMbAzsDBwMnUIwBKAoSh4myAUUZGRjA4hDMA8WsQB5MFxOQxQkA)
+  last-modified (1572182823506)
+}
+train (t-9hhswvigutiqrzhxtdozi2zb4) {
+  utterance ("[g:GetHospitalInfo] {[g:LocationName] (광주광역시)[v:LocationName]}에 있는 {[g:DgName] (산부인과)[v:DgName]} 보여줘")
+  plan (Y+BmkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xgwyqYHBqTmoy3GQGOVRZv9TEIpicT2ZxCR5HgaVFUKVd0v0Sc1NxiKL53Sc/ObEkMz+PoBwXAyMDEwMzAwsDKwMbAzsDBwMnUIwBKAoSh4myAUUZGRjA4hDMA8WsQB5MFxOQxQkA)
+  last-modified (1572183165327)
+}
+train (t-9nsrmyafw47010mv9c5vhz8qi) {
+  utterance ("[g:GetHospitalInfo] {[g:LocationName] (서울특별시 강남구)[v:LocationName]}에 있는 {[g:DgName] (외과)[v:DgName]} 정보 보여줘")
+  plan (Y+BmkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xgwyqYHBqTmoy3GQGOVRZv9TEIpicT2ZxCR5HgaVFUKVd0v0Sc1NxiKL53Sc/ObEkMz+PoBwXAyMDEwMzAwsDKwMbAzsDBwMnUIwBKAoSh4myAUUZGRjA4hDMA8WsQB5MFxOQxQkA)
+  last-modified (1572183253355)
+}
+train (t-9o1sfkg22pnt1a7qiytmqv89x) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (여기)[v:Locality:true]} {[g:DgName] (구강악안면외과)[v:DgName]} 찾아줘")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572181981233)
+}
+train (t-9o42otua8s9qyyiyz4lafigmo) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (근처)[v:Locality:true]} {[g:DgName] (약국)[v:DgName]} 찾아줘")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572182690339)
+}
+train (t-9sjx4lvx1xoypm7xilch2wkdu) {
+  utterance ("[g:GetHospitalInfo] {[g:LocationName] (제주특별시 강속구)[v:LocationName]}에 {[g:DgName] (성형외과)[v:DgName]} 찾아줘")
+  plan (Y+BmkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xgwyqYHBqTmoy3GQGOVRZv9TEIpicT2ZxCR5HgaVFUKVd0v0Sc1NxiKL53Sc/ObEkMz+PoBwXAyMDEwMzAwsDKwMbAzsDBwMnUIwBKAoSh4myAUUZGRjA4hDMA8WsQB5MFxOQxQkA)
+  last-modified (1572183155374)
+}
+train (t-9y0vpjd43w3ptdfxw11eu4lfq) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (주변)[v:Locality:true]} {[g:DgName] (소아청소년과)[v:DgName]} 검색")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572182646981)
+}

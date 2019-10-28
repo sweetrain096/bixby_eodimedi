@@ -1,5 +1,50 @@
-train (t-ky5i96y5772y8go29klnd0gxq) {
-  utterance ("[g:GetHospitalInfo] {[g:Locality] (가까운)[v:Locality:true]} {[g:DgName] (병원)[v:DgName]} 알려줘")
+train (t-k1sz44l1oj0dwbdyslxx8wym4) {
+  utterance ("[g:GetHospitalInfo] {[g:LocationName] (광주광역시)[v:LocationName]}에 {[g:DgName] (피부과)[v:DgName]} 찾아줘")
+  plan (Y+BmkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xgwyqYHBqTmoy3GQGOVRZv9TEIpicT2ZxCR5HgaVFUKVd0v0Sc1NxiKL53Sc/ObEkMz+PoBwXAyMDEwMzAwsDKwMbAzsDBwMnUIwBKAoSh4myAUUZGRjA4hDMA8WsQB5MFxOQxQkA)
+  last-modified (1572183314018)
+}
+train (t-k954wti3u1a9kpjsa02r5mvpe) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (근처)[v:Locality:true]}에 있는 {[g:DgName] (신경외과)[v:DgName]} 알려줘")
   plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
-  last-modified (1571983056754)
+  last-modified (1572182414874)
+}
+train (t-kik8684gxkpzno2bxh6sh2i4j) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (주변)[v:Locality:true]}에 {[g:DgName] (소아청소년과)[v:DgName]} 정보 검색")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572182595547)
+}
+train (t-kkrisqjkuxtk5zk3kr9f8zcoz) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (주변)[v:Locality:true]}의 {[g:DgName] (소아청소년과)[v:DgName]} 정보 검색")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572182596019)
+}
+train (t-klxt5yqf3kfadwihjwwe20qll) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (근처)[v:Locality:true]}에 있는 {[g:DgName] (약국)[v:DgName]} 정보 찾아줘")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572182695979)
+}
+train (t-kr1auw4qmuatsicfd2vit2o2s) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (여기)[v:Locality:true]}의 {[g:DgName] (성형외과)[v:DgName]} 찾아줘")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572182421536)
+}
+train (t-ku1pl079i6h250iqrd9g3mpzh) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (근처)[v:Locality:true]}에 {[g:DgName] (치료방사선과)[v:DgName]} 정보 검색해줘")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572182137316)
+}
+train (t-kv5a7uzo4aje6wsy04css5l19) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (주변)[v:Locality:true]}의 {[g:DgName] (정형외과)[v:DgName]} 검색해줘")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572182489822)
+}
+train (t-kw9g59w9vvh1yzf7rh464ivhi) {
+  utterance ("[g:GetHospitalInfo] {[g:LocationName] (서구)[v:LocationName]}의 {[g:DgName] (임상병리과)[v:DgName]} 정보 알려줘")
+  plan (Y+BmkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xgwyqYHBqTmoy3GQGOVRZv9TEIpicT2ZxCR5HgaVFUKVd0v0Sc1NxiKL53Sc/ObEkMz+PoBwXAyMDEwMzAwsDKwMbAzsDBwMnUIwBKAoSh4myAUUZGRjA4hDMA8WsQB5MFxOQxQkA)
+  last-modified (1572182895464)
+}
+train (t-kxdskwlnfl77mbde1x5mylcys) {
+  utterance ("[g:GetHospitalInfo] {[g:LocationName] (대전시 대덕구)[v:LocationName]}의 {[g:DgName] (가정의학과)[v:DgName]} 정보 보여줘")
+  plan (Y+BmkCrJT8lP1kvNT8msTMzW88gvLsgsSczxzEvLZ5BFlXNPLUGRVsSuNbg0NzexqBKsRBhViW9lQH4xgwyqYHBqTmoy3GQGOVRZv9TEIpicT2ZxCR5HgaVFUKVd0v0Sc1NxiKL53Sc/ObEkMz+PoBwXAyMDEwMzAwsDKwMbAzsDBwMnUIwBKAoSh4myAUUZGRjA4hDMA8WsQB5MFxOQxQkA)
+  last-modified (1572182825265)
 }
