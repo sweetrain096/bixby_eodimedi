@@ -13,6 +13,7 @@ var DetailOperation = "getHsptlBassInfoInqire"
 var BabyOperation = "getBabyLcinfoInqire"
 var PharmacyOperation = "getParmacyLcinfoInqire"
 var LocationOperation = "getHsptlMdcncListInfoInqire"
+var HpidOperation = "getHsptlBassInfoInqire"
 
 var ServiceKey = secret.get('servicekey')
 
@@ -44,7 +45,8 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
   // flag == 1 병원,달빛병원,약국
   // flag == 2 내과,치과 등
   // flag == 3 지역으로 찾기
-
+  console.log("============================hyocode2")
+  console.log("locality : ", locality , "locationName : ", locationName)
   if(isLocal){
     if (baby == true) { //달빛병원 호출
       ep = EndPoint
@@ -92,8 +94,9 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
       //지역정보를 하나도 못찾았을 경우의 throw를 만들어줘야한다
     }
   }
-
+  console.log(url)
   var searchRes = http.getUrl(url, options)
+  console.log(searchRes)
   fn.errorHandling(searchRes)
   let results = new Array // 리턴될 변수 선언
 
@@ -136,7 +139,7 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
     }
   }
   // 가까운 병원과 지역구 병원 리스트는 여기까지만 한다
-  if(!isLocal) fn.sortArr(results)
+  if(!isLocal) results = fn.sortArr(results)
   if (flag == 1 || flag ==3) return results
   console.log(results)
   // results에는 근처에 있는 모든 병원의 정보가 담겨있다. 여기서 포문을 돌려서 가져온 후, 포함된다면 처리하면된다.
@@ -144,12 +147,23 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
   let answer = new Array()
 
   for (let i = 0; i < results.length; i++) {
+    console.log("this is hyo code")
     // 사용자가 찾는 병원인가?
     var tag = false;
 
     var DgNameList = db.DgNames[results[i].hpid]
 
-    if ( DgNameList == undefined ) continue
+    // db.js에 없는 병원을 찾으려고 했던것이다.
+    if ( DgNameList == undefined ){
+      var hpurl = ep + HpidOperation + "?ServiceKey=" + ServiceKey
+        + "&HPID=" + results[i].hpid
+        + "&pageNo=1"
+        + "&numOfRows=1"
+
+      var sr = http.getUrl(hpurl, options)
+      fn.errorHandling(sr)
+      DgNameList = sr.response.body.items.item.dgidIdName.split(",")
+    }
     
     for (var k = 0; k < DgNameList.length; k++) {
       if (DgNameList[k] == dgName && results[i].dutyName.indexOf("요양병원") == -1) tag = true;
