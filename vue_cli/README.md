@@ -1,5 +1,19 @@
 # vue_cli
 
+## 개발 목적
+
++ vue cli를 통한 간단한 웹 앱 구현을 목표로 한다.
+
+
+
+
+
+
+
+
+
+
+
 ## Project setup
 ```
 yarn install
@@ -19,6 +33,3 @@ yarn build
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
