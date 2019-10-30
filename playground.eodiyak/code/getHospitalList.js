@@ -46,9 +46,8 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
   // flag == 2 내과,치과 등
   // flag == 3 지역으로 찾기
 
-  dgName = (dgName!=undefined)?dgName.replace(/ /gi, ""):""
-  console.log("this is hyo test 3 : ", dgName)
-  
+  dgName = (dgName!=undefined)?dgName.replace(/ /gi, ""):"" //중간띄어쓰기 처리
+
   if(isLocal){
     if (baby == true) { //달빛병원 호출
       ep = EndPoint
@@ -96,9 +95,7 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
       //지역정보를 하나도 못찾았을 경우의 throw를 만들어줘야한다
     }
   }
-  console.log(url)
   var searchRes = http.getUrl(url, options)
-  console.log(searchRes)
   fn.errorHandling(searchRes)
   let results = new Array // 리턴될 변수 선언
 
