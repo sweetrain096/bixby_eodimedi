@@ -1,6 +1,6 @@
 capsule {
   id (todoc.eodiyak)
-  version (0.1.0)
+  version (1.0.0)
   format (3)
   targets {
     target (bixby-mobile-ko-KR)
@@ -20,6 +20,36 @@ capsule {
     import (viv.entity) {
       as (entity)
       version (3.21.0)
+    }
+  }
+  store-sections {
+    section (HealthAndFitness) {
+      visibility-constraints { // used to limit which store sections your capsule can be seen in
+        country-constraints { //one of the constraint options
+          allowed-list {
+            allow (KR)
+          }
+        }
+        device-class-constraints {
+          allowed-list {
+            allow (bixby-mobile)
+          }
+        }
+      }
+    }
+    section (Local) {
+      visibility-constraints { // used to limit which store sections your capsule can be seen in
+        country-constraints { //one of the constraint options
+          allowed-list {
+            allow (KR)
+          }
+        }
+        device-class-constraints {
+          allowed-list {
+            allow (bixby-mobile)
+          }
+        }
+      }
     }
   }
   // 사용자의 정보를 얻기 위한 permissions(위치 등)

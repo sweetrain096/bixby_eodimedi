@@ -1,4 +1,4 @@
-vocab (DgName) {
+vocab (LocationName) {
   "대전광역시"
   "유성구"
   "서구"
