@@ -26,7 +26,7 @@ train (t-0fcmuxncriipzs63cw25jkbv7) {
 train (t-0hf0nrl15j2vfxm1nohavf15e) {
   utterance ("[g:GetHospitalInfo] {[g:Locality] (여기)[v:Locality:true]}에 {[g:DgName] (임상병리과)[v:DgName]} 알려줘")
   plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
-  last-modified (1572182141012)
+  last-modified (1572403258592)
 }
 train (t-0k4jp1kygb0gdub5eweek6s6s) {
   utterance ("[g:GetHospitalInfo] {[g:LocationName] (서울특별시 강남구)[v:LocationName]} {[g:DgName] (외과)[v:DgName]} 보여줘")

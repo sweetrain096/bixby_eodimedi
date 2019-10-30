@@ -68,3 +68,8 @@ train (t-auz97n9os3z3xoh2tues4s01o) {
   plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
   last-modified (1572182558994)
 }
+train (t-azco0g7636fcrvyl54ky2r9qs) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (근처)[v:Locality:true]} {[g:DgName] (구강 악 안면 외과)[v:DgName]} 검색해줘")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572411236956)
+}

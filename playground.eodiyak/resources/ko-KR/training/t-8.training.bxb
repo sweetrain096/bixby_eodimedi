@@ -3,6 +3,11 @@ train (t-80c4jgnedjm86dxy0pwzt6zln) {
   plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
   last-modified (1572182645259)
 }
+train (t-80mzofh5192xbhym1pw2uco67) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (근처)[v:Locality:true]} {[g:DgName] (구강악 안면 외과)[v:DgName]} 찾아줘")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572411238869)
+}
 train (t-82bl95p439ur2scyquzrfur1g) {
   utterance ("[g:GetHospitalInfo] {[g:Locality] (근처)[v:Locality:true]}에 {[g:DgName] (안과)[v:DgName]} 검색")
   plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
@@ -32,6 +37,11 @@ train (t-8jdg95z2cswlx6wyp61bvd81k) {
   utterance ("[g:GetHospitalInfo] {[g:Locality] (여기)[v:Locality:true]}에 {[g:DgName] (이비인후과)[v:DgName]} 검색해줘")
   plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
   last-modified (1572182302020)
+}
+train (t-8oqqdpwh2hffwqdl0xzl697tk) {
+  utterance ("[g:GetHospitalInfo] {[g:Locality] (여기)[v:Locality:true]} {[g:DgName] (구강악안면 외과)[v:DgName]} 보여줘")
+  plan (fY7RCoJAEEWvlpbVW9FDVNAP+BVBBSaBX7DoFkvahLs97N+3WQYD2cPAzDl3hsEYC0MF5bGkQllxjfek78qI8nA7E1bc7aRhevN7NXtUlahtE5nyyNGeSGPJYSZLmX8vY81tKkXdukRp8+epRs+43l5SUckOOuc0oVyUythOPoIHHz30ESDEAENEjsHRF29p6KgHNPxdk08Fbmq3fNdFTw==)
+  last-modified (1572411238188)
 }
 train (t-8r6f0d82rgq9rkgtu3vk3vc25) {
   utterance ("[g:GetHospitalInfo] {[g:Locality] (여기)[v:Locality:true]} {[g:DgName] (핵의학과)[v:DgName]} 검색")
