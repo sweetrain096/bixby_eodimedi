@@ -4,6 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
+    <BottomButton/>
     <router-view/>
   </div>
 </template>
@@ -30,3 +31,14 @@
   color: #42b983;
 }
 </style>
+<script>
+// @ is an alias to /src
+import BottomButton from '@/components/App/BottomButton.vue'
+
+export default {
+  name: 'app',
+  components: {
+    BottomButton
+  }
+}
+</script>

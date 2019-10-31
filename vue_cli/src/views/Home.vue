@@ -1,17 +1,22 @@
 <template>
-  <div class="home">
-    <BottomButton/>
+  <div>
+    <Map/>
+    <HospitalList/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import BottomButton from '@/components/home/BottomButton.vue'
+import HospitalList from '@/components/Home/List.vue'
+import Map from '@/components/Home/Map.vue'
 
 export default {
-  name: 'home',
-  components: {
-    BottomButton
+  components:{
+    HospitalList,
+    Map
   }
 }
 </script>
+
+<style scoped>
+
+</style>
