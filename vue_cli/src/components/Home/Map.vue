@@ -1,73 +1,66 @@
 <template>
-<div id="dmap">
-  <div id="map" class="Map"></div>
-</div>
-  
+  <div id="dmap">
+    <div id="map" class="Map"></div>
+  </div>
 </template>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aa0a6e1d29e59a3ef4e379174688985d"></script>
 <script>
 export default {
-  data(){
-    return{
-      pos: {
-        lat: "",
-        lon: ""
-      }
-    }
+  data() {
+    return {};
   },
   methods: {
-    getLocation: function(){
-      let currentPosition;
-      window.navigator.geolocation.getCurrentPosition(this.success, this.error, currentPosition);
-    },
-    success: function(pos){
-      let crd = pos.coords;
-      this.pos.lat = crd.latitude;
-      this.pos.lon = crd.longitude;
-      // console.log(crd);
-    },
-    error: function(err){
-      console.warn('ERROR(' + err.code + '): ' + err.message);
-    },
-    getMap: function(){
-      console.log(this.pos)
-      var that = this
-      var temp = that.pos.lat
-      if (this.pos){
-        console.log('##', temp)
+    async drawMap() {
+      let myPos;
+      if (window.navigator.geolocation) {
+        window.navigator.geolocation.getCurrentPosition(
+          position => {
+            this.myMap(position);
+          },
+          error => {
+            let position = {
+              coords: {
+                latitude: 37,
+                longitude: 128
+              }
+            };
+            this.myMap(position);
+
+            alert("위치 정보를 허용해주세요.");
+          }
+        );
+      } else {
+        alert("GPS를 지원하지 않습니다.");
       }
-      var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-        mapOption = { 
-          center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-          level: 3 // 지도의 확대 레벨
-        };
-      var map = new kakao.maps.Map(mapContainer, mapOption); 
     },
-
-
+    async myMap(position) {
+      let mapContainer = document.getElementById("map"); // 지도를 표시할 div
+      let myPos = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      };
+      let mapOption = {
+        center: new kakao.maps.LatLng(myPos.latitude, myPos.longitude), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+      };
+      let map = new kakao.maps.Map(mapContainer, mapOption);
+    }
   },
   mounted() {
-    this.getLocation();
-    this.getMap();
+    this.drawMap();
   }
-}
-
-// var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-  
-//   mapOption = { 
-//     center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-//     level: 3 // 지도의 확대 레벨
-//   };
-
+};
 </script>
 
 <style scoped>
-  .Map{
-    width: 90%;
-    height: 200px;
-    background-color: green;
-    margin: auto;
-    margin-bottom: 30px;
-  }
+.Map {
+  width: 90%;
+  height: 200px;
+  background-color: green;
+  margin: auto;
+  margin-bottom: 30px;
+}
 </style>
+
+
