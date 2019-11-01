@@ -3,15 +3,28 @@
     <ol>
       <li><a href="#">A병원</a></li>
       <li><a href="#">B병원</a></li>
-      <li><a href="#">C병원</a></li>
+      <li v-on:click='ttest'><a href="#">C병원</a></li>
     </ol>
   </div>
 
 </template>
 
 <script>
-export default {
+import * as fn from "../../fn.js"
+import * as db from "../../db.js"
 
+export default {
+  data(){
+    return {
+      fn,db,
+    }
+  },
+  methods:{
+    ttest : function(){
+      alert("this is test")
+      fn.thisistest()
+    }
+  }
 }
 </script>
 
