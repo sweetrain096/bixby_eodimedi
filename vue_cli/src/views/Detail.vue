@@ -1,13 +1,18 @@
 <template>
-  <Detail/>
+  <div>
+    <DutyCommon/>
+    <HospitalSubject/>
+  </div>
 </template>
 
 <script>
-import Detail from '@/components/Detail/Detail.vue'
+import DutyCommon from '@/components/Detail/DutyCommon.vue'
+import HospitalSubject from '@/components/Detail/HospitalSubject.vue'
 
 export default {
     components: {
-        Detail
+        DutyCommon,
+        HospitalSubject
     }
 }
 </script>
