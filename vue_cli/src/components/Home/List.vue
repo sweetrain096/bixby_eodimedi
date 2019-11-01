@@ -1,7 +1,7 @@
 <template>
   <div id="hospitalList" class="list-type">
     <ol>
-      <li><a href="#">A병원</a></li>
+      <li><a href="detail">A병원</a></li>
       <li><a href="#">B병원</a></li>
       <li><a href="#">C병원</a></li>
     </ol>
