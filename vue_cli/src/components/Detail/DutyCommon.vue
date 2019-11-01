@@ -1,7 +1,9 @@
 <template>
-  <div id="detail">
-    <div class="detailMap">
-        여기에 지도가 들어갈거야!
+  <div id="dutyCommon">
+    <p class="hospitalName">최경호가정의학과의원</p>
+    <p class="hospitalAddress">대전광역시 유성구 학하중앙로59번길 5-3 (덕명동, 호연빌딩)</p>
+    <div id="dmap">
+        <div id="map" class="Map"></div>
     </div>
     <div class="time">
         <div class="runTime">
@@ -24,20 +26,89 @@
   </div>
 </template>
 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aa0a6e1d29e59a3ef4e379174688985d"></script>
 <script>
 export default {
+  data(){
+    return{
+      pos: {
+        lat: "",
+        lon: ""
+      }
+    }
+  },
+  methods: {
+    getLocation: function(){
+      let currentPosition;
+      window.navigator.geolocation.getCurrentPosition(this.success, this.error, currentPosition);
+    },
+    success: function(pos){
+      let crd = pos.coords;
+      this.pos.lat = crd.latitude;
+      this.pos.lon = crd.longitude;
+      // console.log(crd);
+    },
+    error: function(err){
+      console.warn('ERROR(' + err.code + '): ' + err.message);
+    },
+    getMap: function(){
+      console.log(this.pos)
+      var that = this
+      var temp = that.pos.lat
+      if (this.pos){
+        console.log('##', temp)
+      }
+      var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        mapOption = { 
+          center: new kakao.maps.LatLng(36.34599697710344, 127.3016960888486), // 지도의 중심좌표
+          level: 3 // 지도의 확대 레벨
+        };
+      var map = new kakao.maps.Map(mapContainer, mapOption); 
+    },
 
+
+  },
+  mounted() {
+    this.getLocation();
+    this.getMap();
+  }
 }
+
+// var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+  
+//   mapOption = { 
+//     center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+//     level: 3 // 지도의 확대 레벨
+//   };
+
 </script>
 
 <style>
-  .detailMap {
+  .hospitalName {
     width: 90%;
-    height: 200px;
-    border-radius: 10px;
-    background-color: grey;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(108, 110, 112);
+    text-align: left;
     margin: auto;
     margin-bottom: 10px;
+  }
+
+  .hospitalAddress {
+    width: 90%;
+    font-size: 15px;
+    color: lightgrey;
+    text-align: left;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+
+  .Map{
+    width: 90%;
+    height: 200px;
+    background-color: green;
+    margin: auto;
+    margin-bottom: 30px;
   }
 
   .time {
@@ -47,7 +118,6 @@ export default {
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
-    /* text-align:left; */
   }
 
   .runTime {
@@ -94,7 +164,7 @@ export default {
     width: 90%;
     height: 60px;
     margin: auto;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     background-color:rgba(40, 48, 116, 0.65);
     display: flex;    
     justify-content: space-between;    
@@ -129,5 +199,4 @@ export default {
     display: inline-block;
     text-align: left;
   }
-
 </style>
