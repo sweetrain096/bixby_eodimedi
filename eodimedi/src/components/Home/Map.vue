@@ -8,7 +8,8 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+    };
   },
   methods: {
     async drawMap() {

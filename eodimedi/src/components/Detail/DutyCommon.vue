@@ -1,10 +1,12 @@
 <template>
   <div id="dutyCommon">
+    
     <p class="hospitalName">최경호가정의학과의원</p>
     <p class="hospitalAddress">대전광역시 유성구 학하중앙로59번길 5-3 (덕명동, 호연빌딩)</p>
-    <div id="dmap">
+    <!-- <div id="dmap">
         <div id="map" class="Map"></div>
-    </div>
+    </div> -->
+    <DetailMap></DetailMap>
     <div class="time">
         <div class="runTime">
             <div id="runTimeText">운영 시간</div>
@@ -26,9 +28,15 @@
   </div>
 </template>
 
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aa0a6e1d29e59a3ef4e379174688985d"></script>
 <script>
+import DetailMap from '@/components/Detail/DetailMap.vue'
+
 export default {
+  components: {
+    DetailMap
+  },
   data(){
     return{
       pos: {
@@ -69,8 +77,8 @@ export default {
 
   },
   mounted() {
-    this.getLocation();
-    this.getMap();
+    // this.getLocation();
+    // this.getMap();
   }
 }
 
