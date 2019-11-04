@@ -8,12 +8,18 @@
       </div>
       <BottomButton/>
     </div>
-    
-    <router-view/>
+    <router-view />
+    <BottomButton />
+    <div class="bottombuttonlayout"></div>
   </div>
 </template>
 
 <style>
+.bottombuttonlayout {
+  position: relative;
+  height: 60px;
+  z-index: -1;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -53,11 +59,31 @@ export default {
     }
   },
   methods: {
+    setCurrentPosition() {
+      if (window.navigator.geolocation) {
+        window.navigator.geolocation.getCurrentPosition(
+          position => {
+            let currentPosition = {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            };
+            console.log(position)
+            this.$store.commit("setCurrentPosition", currentPosition);
+          },
+          error => {
+            alert('error');
+          }
+        );
+      } else {
+        alert("GPS를 지원하지 않습니다.");
+      }
+    },
     loadLoading: function(){
       setTimeout(() => {this.loading = false}, 1000)
     }
   },
-  mounted(){
+  mounted () {
+    this.setCurrentPosition()
     this.loadLoading();
   }
   // mounted() {
