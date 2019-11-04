@@ -19,7 +19,6 @@
 export default {
   data() {
     return {
-      cnt: 0,
       treatment1: [
         "내과",
         "안과",
@@ -59,6 +58,10 @@ export default {
 </script>
 
 <style>
+#hospitalSubject {
+  height: 285px;
+}
+
 .medicalSubject {
   width: 90%;
   font-size: 18px;
