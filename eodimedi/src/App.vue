@@ -4,12 +4,18 @@
       <router-link to="/">Home</router-link>|
       <router-link to="/about">About</router-link>
     </div>
-    <BottomButton />
     <router-view />
+    <BottomButton />
+    <div class="bottombuttonlayout"></div>
   </div>
 </template>
 
 <style>
+.bottombuttonlayout {
+  position: relative;
+  height: 60px;
+  z-index: -1;
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -49,16 +55,20 @@ export default {
               latitude: position.coords.latitude,
               longitude: position.coords.longitude
             };
+            console.log(position)
             this.$store.commit("setCurrentPosition", currentPosition);
           },
           error => {
-            alert(error);
+            alert('error');
           }
         );
       } else {
         alert("GPS를 지원하지 않습니다.");
       }
     }
+  },
+  mounted () {
+    this.setCurrentPosition()
   }
 };
 </script>

@@ -13,7 +13,7 @@ const state = {
   // mutations
   const mutations = {
       setCurrentPosition(state, payload) {
-          state.currentPosition = payload.coords
+          state.currentPosition = payload
       }
   }
   
