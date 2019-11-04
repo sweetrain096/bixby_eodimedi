@@ -12,6 +12,11 @@
     <button class="button" @click="goRoute('moon')">
       <i class="fas fa-search icon"></i>달빛 병원
     </button>
+    // <router-link to="/subject" style="text-decoration: none !important;">
+    //  <button class="button">
+    //    <i class="fas fa-search icon"></i>달빛 병원
+    //  </button>
+    // </router-link>
   </div>
 </template>
 
@@ -32,8 +37,9 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 60px;
-  background-color: #10becb;
+  height: 70px;
+  background-color: #10BECB;
+  z-index: 2;
 }
 .button {
   width: 25%;

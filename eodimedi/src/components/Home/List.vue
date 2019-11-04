@@ -1,21 +1,35 @@
 <template>
   <div id="hospitalList" class="list-type">
-    <ol v-for="(item, idx) in dataList" :key="idx">
+    <!-- <ol v-for="(item, idx) in dataList" :key="idx">
       <li>
         <a prevent @click="getDetail">{{ item.name }}</a>
-      </li>
+      </li> -->
+    <ol>
+      <li><a href="detail">A병원</a></li>
+      <li><a href="#">B병원</a></li>
+      <li v-on:click='tmpfunc'><a href="#">C병원</a></li>
     </ol>
   </div>
 </template>
 
 <script>
+import * as fn from "../../fn.js"
+import * as db from "../../db.js"
+
 export default {
   data() {
     return {
-      dataList: []
+      dataList: [],
+      fn,db,
+      myPos : {},
+      url: "",
+      hosList : [],
     };
   },
   methods: {
+    async tmpfunc(){
+      console.log("this is test",  this.hosList)
+    },
     getList() {
       let hoslist = [{ name: "A병원" }, { name: "B병원" }, { name: "C병원" }];
       this.dataList.push(...hoslist);
@@ -26,8 +40,13 @@ export default {
   },
   mounted() {
     this.getList();
+  },
+    created : function() {
+    this.hosList = fn.getHosList(fn.getMyPos(), 1, "")
+
   }
 };
+
 </script>
 
 <style scoped>
