@@ -17,14 +17,16 @@
             <div id="realTimeByCar">10분</div>
         </div>
     </div>
-    <div class="call">
-        <button class="callImg">
-            <i class="fas fa-phone-alt phone"></i>
-        </button>
-        <div class="callText">
-            123-4567-8900
-        </div>
-    </div>
+    <a href="tel:010-5399-3731" style="text-decoration: none !important;">
+      <div class="call">
+          <button class="callImg">
+              <i class="fas fa-phone-alt phone"></i>
+          </button>
+          <div class="callText">
+              123-4567-8900
+          </div>
+      </div>
+    </a>
   </div>
 </template>
 
@@ -183,6 +185,8 @@ export default {
   .callImg {
     height: 40px;
     width: 40px;
+    border: 0;
+    outline: 0;
     border-radius: 50%;
     display: inline-block;
     margin: 10px 15px 10px 15px;
