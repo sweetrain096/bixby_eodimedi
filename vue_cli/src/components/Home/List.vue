@@ -3,7 +3,7 @@
     <ol>
       <li><a href="detail">A병원</a></li>
       <li><a href="#">B병원</a></li>
-      <li v-on:click='ttest'><a href="#">C병원</a></li>
+      <li v-on:click='tmpfunc'><a href="#">C병원</a></li>
     </ol>
   </div>
 
@@ -17,18 +17,21 @@ export default {
   data(){
     return {
       fn,db,
+      myPos : {},
+      url: "",
+      hosList : [],
     }
   },
   methods:{
-    ttest : function(){
-      alert("this is test")
-      fn.thisistest()
-    }
+    async tmpfunc(){
+      console.log("this is test",  this.hosList)
+    },
   },
-  mounted() {},
-  computed() {},
-  created () {
-    fn.thisistest();
+  mounted() {
+  },
+  created : function() {
+    this.hosList = fn.getHosList(fn.getMyPos(), 1, "")
+
   },
 }
 </script>
