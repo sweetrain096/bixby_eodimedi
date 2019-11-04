@@ -4,10 +4,12 @@
 
     <div class="imgCellContainer">
 
-      <div class="imgCell">
-        <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
-        <p>내과</p>
-      </div>
+      <router-link to="/detail" style="text-decoration: none !important;">
+        <div class="imgCell">
+          <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+          <p>내과</p>
+        </div>
+      </router-link>
 
       <div class="imgCell">
         <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
@@ -47,6 +49,21 @@
       <div class="imgCell">
         <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
         <p>한의원</p>
+      </div>
+
+      <div class="imgCell">
+        <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+        <p>후보1</p>
+      </div>
+
+      <div class="imgCell">
+        <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+        <p>후보2</p>
+      </div>
+
+      <div class="imgCell">
+        <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+        <p>후보3</p>
       </div>
 
     </div>
