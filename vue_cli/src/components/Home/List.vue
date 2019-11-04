@@ -24,7 +24,12 @@ export default {
       alert("this is test")
       fn.thisistest()
     }
-  }
+  },
+  mounted() {},
+  computed() {},
+  created () {
+    fn.thisistest();
+  },
 }
 </script>
 
