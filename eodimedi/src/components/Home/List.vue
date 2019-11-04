@@ -3,15 +3,36 @@
     <ol>
       <li><a href="detail">A병원</a></li>
       <li><a href="#">B병원</a></li>
-      <li><a href="#">C병원</a></li>
+      <li v-on:click='tmpfunc'><a href="#">C병원</a></li>
     </ol>
   </div>
 
 </template>
 
 <script>
-export default {
+import * as fn from "../../fn.js"
+import * as db from "../../db.js"
 
+export default {
+  data(){
+    return {
+      fn,db,
+      myPos : {},
+      url: "",
+      hosList : [],
+    }
+  },
+  methods:{
+    async tmpfunc(){
+      console.log("this is test",  this.hosList)
+    },
+  },
+  mounted() {
+  },
+  created : function() {
+    this.hosList = fn.getHosList(fn.getMyPos(), 1, "")
+
+  },
 }
 </script>
 
