@@ -3,13 +3,13 @@
     <p class="medicalSubject">진료과목</p>
     <div class="subject">
       <div class="firstSubject">
-        <p v-for="item in treatment1" v-bind:key="item">{{ item }}</p>
+        <p class="subjectList" v-for="item in treatment1" v-bind:key="item">{{ item }}</p>
       </div>
       <div class="secondSubject">
-        <p v-for="item in treatment2" v-bind:key="item">{{ item }}</p>
+        <p class="subjectList" v-for="item in treatment2" v-bind:key="item">{{ item }}</p>
       </div>
       <div class="thirdSubject">
-        <p v-for="item in treatment3" v-bind:key="item">{{ item }}</p>
+        <p class="subjectList" v-for="item in treatment3" v-bind:key="item">{{ item }}</p>
       </div>
     </div>
   </div>
@@ -86,6 +86,14 @@ export default {
   margin: 0px 0px 0px -10px;
   color: lightcoral;
   font-weight: bold;
+}
+
+.subjectList {
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  word-wrap:normal;
+  width:100%;
+  overflow:hidden;
 }
 
 .secondSubject {
