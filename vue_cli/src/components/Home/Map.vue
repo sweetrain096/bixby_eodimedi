@@ -26,7 +26,6 @@ export default {
               }
             };
             this.myMap(position);
-
             alert("위치 정보를 허용해주세요.");
           }
         );
@@ -62,5 +61,3 @@ export default {
   margin-bottom: 30px;
 }
 </style>
-
-

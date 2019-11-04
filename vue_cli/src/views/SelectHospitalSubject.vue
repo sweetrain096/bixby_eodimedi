@@ -1,5 +1,5 @@
 <template>
-  <div id="hospitalSubject">
+  <div id="popularHospitalSubject">
     <p class="medicalSubject">진료과목</p>
     <div class="subject">
       <div class="firstSubject">
@@ -19,6 +19,7 @@
 export default {
   data() {
     return {
+      cnt: 0,
       treatment1: [
         "내과",
         "안과",
@@ -58,11 +59,7 @@ export default {
 </script>
 
 <style>
-#hospitalSubject {
-  height: 285px;
-}
-
-.medicalSubject {
+.popularHospitalSubject {
   width: 90%;
   font-size: 18px;
   font-weight: bold;
