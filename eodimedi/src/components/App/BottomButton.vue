@@ -6,17 +6,14 @@
     <button class="button" @click="goRoute('pharmacy')">
       <i class="fas fa-search icon"></i>약국 찾기
     </button>
-    <button class="button" @click="goRoute('divhospital')">
-      <i class="fas fa-search icon"></i>진료 과목
-    </button>
+    <router-link to="/subject" style="text-decoration: none !important;">
+      <button class="button" @click="goRoute('divhospital')">
+        <i class="fas fa-search icon"></i>진료 과목
+      </button>
+    </router-link>
     <button class="button" @click="goRoute('moon')">
       <i class="fas fa-search icon"></i>달빛 병원
     </button>
-    // <router-link to="/subject" style="text-decoration: none !important;">
-    //  <button class="button">
-    //    <i class="fas fa-search icon"></i>달빛 병원
-    //  </button>
-    // </router-link>
   </div>
 </template>
 
