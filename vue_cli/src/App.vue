@@ -1,10 +1,14 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <Loading v-show="loading"/>
+    <div id="page" v-show="!loading">
+      <div id="nav">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link>
+      </div>
+      <BottomButton/>
     </div>
-    <BottomButton/>
+    
     <router-view/>
   </div>
 </template>
@@ -33,12 +37,33 @@
 </style>
 <script>
 // @ is an alias to /src
+import Loading from '@/components/App/Loading.vue'
 import BottomButton from '@/components/App/BottomButton.vue'
+
 
 export default {
   name: 'app',
   components: {
-    BottomButton
+    Loading,
+    BottomButton,
+  },
+  data() {
+    return {
+      loading: true
+    }
+  },
+  methods: {
+    loadLoading: function(){
+      setTimeout(() => {this.loading = false}, 1000)
+    }
+  },
+  mounted(){
+    this.loadLoading();
   }
+  // mounted() {
+  //   loadingAjaxRequest.then(res =>{
+  //     this.loading = false
+  //   })
+  // }
 }
 </script>
