@@ -1,9 +1,11 @@
 <template>
   <div>
+    <!-- {{ $route.params }}<br>
     {{ $route.params.hpid}}<br>
     {{ $route.params.routename}}<br>
     {{ $route.params.longitude}}<br>
-    {{ $route.params.latitude}}<br>
+    {{ $route.params.latitude}}<br> -->
+    <!-- {{res}} -->
     <DutyCommon />
     <HospitalSubject />
   </div>
@@ -38,13 +40,17 @@ export default {
         vars.ServiceKey +
         "&HPID=" +
         this.$route.params.hpid;
-      api.get(url).then(res => {
-        console.log(res);
-      });
-    }
+        api.get(url).then(res => {
+          this.$store.commit('setInfoDetail', res)
+          console.log(res);
+        });
+      }
   },
   mounted() {
     this.callDetail();
+  },
+  destroyed() {
+    this.$store.commit('stateClear')
   }
 };
 </script>

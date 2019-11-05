@@ -11,7 +11,10 @@ export default new Vuex.Store({
   },
   mutations: {
     setInfoDetail(state, info) {
-      state.infoDetail = info
+      state.infoDetail = info.data.response.body.items.item
+    },
+    stateClear(state) {
+      state.infoDetail = []
     }
   },
   actions: {},

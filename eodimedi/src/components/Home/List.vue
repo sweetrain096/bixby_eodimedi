@@ -4,7 +4,7 @@
       <li>
         <a @click="getDetail(listitem)">{{ listitem.dutyName }}</a>
         <!-- {{ routename }} -->
-        {{ listitem }}
+        <!-- {{ listitem }} -->
       </li>
     </ol>
   </div>
