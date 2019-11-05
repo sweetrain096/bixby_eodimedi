@@ -17,7 +17,7 @@
 <style>
 .bottombuttonlayout {
   position: relative;
-  height: 60px;
+  height: 70px;
   z-index: -1;
 }
 #app {
@@ -67,7 +67,6 @@ export default {
               latitude: position.coords.latitude,
               longitude: position.coords.longitude
             };
-            console.log(position)
             this.$store.commit("setCurrentPosition", currentPosition);
           },
           error => {

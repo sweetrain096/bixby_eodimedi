@@ -1,42 +1,79 @@
 <template>
   <div>
-    <Map/>
-    <HospitalList/>
-    <div>{{ currentPosition }}</div>
+    <Map />
+    <list-component />
+    <div>{{dataList}}</div>
   </div>
 </template>
 
 <script>
-import HospitalList from '@/components/Home/List.vue'
-import Map from '@/components/Home/Map.vue'
+  import ListComponent from '@/components/Home/List.vue'
+  import Map from '@/components/Home/Map.vue'
+  import * as vars from '@/services/vars.js'
+  import callListData from '@/services/callListData.js'
+  import api from '@/services/api.js'
 
-export default {
-  components:{
-    HospitalList,
-    Map
-  },
-  computed : {
-    routeName () {
-      return this.$route.params.type
+  export default {
+    data() {
+      return {
+        dataList: []
+      }
     },
-    currentPosition () {
-      return this.$store.state.currentPosition
-    }
-  },
-  methods : {
-    checkRoute () {
-      console.log(this.routeName)
-    }
-  },
-  mounted () {
-    this.checkRoute()
-  },
-  watch : {
-    routeName (to, from) {
-      console.log(to)
+    components: {
+      ListComponent,
+      Map
+    },
+    computed: {
+      routeName() {
+        return this.$route.params.type
+      },
+      currentPosition() {
+        return this.$store.state.currentPosition
+      },
+
+    },
+    methods: {
+      startList() {
+        if (window.navigator.geolocation) {
+          window.navigator.geolocation.getCurrentPosition(
+            position => {
+              let url = vars.EndPoint + vars.Operation + "?" +
+                "key=" + vars.ServiceKey +
+                "&lon=" + position.coords.longitude +
+                "&lat=" + position.coords.latitude +
+                "&page=" + vars.pageNo +
+                "&row=" + vars.numOfRows
+
+              api.get(url)
+                .then((res) => {
+                  let payloadData = res.data.response.body.items
+                  if (payloadData.item.length > 1) {
+                    this.dataList.push(...payloadData.item)
+                  } else if (payloadData) {
+                    this.dataList.push(payloadData.item)
+                  } else {
+                    console.log('there is no Hospital')
+                  }
+                })
+            },
+            error => {
+              alert("위치 정보를 허용해주세요.");
+            }
+          );
+        } else {
+          alert("GPS를 지원하지 않습니다.");
+        }
+      }
+    },
+    mounted() {
+      this.startList()
+    },
+    watch: {
+      routeName(to, from) {
+        console.log(to)
+      }
     }
   }
-}
 </script>
 
 <style scoped>
