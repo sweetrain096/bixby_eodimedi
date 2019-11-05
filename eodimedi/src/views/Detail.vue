@@ -1,7 +1,9 @@
 <template>
   <div>
-    {{ $route.params.hpid}}
-    {{ $route.params.routename}}
+    {{ $route.params.hpid}}<br>
+    {{ $route.params.routename}}<br>
+    {{ $route.params.longitude}}<br>
+    {{ $route.params.latitude}}<br>
     <DutyCommon />
     <HospitalSubject />
   </div>
@@ -18,6 +20,31 @@ export default {
   components: {
     DutyCommon,
     HospitalSubject
+  },
+  methods: {
+    checkOpCode() {
+      let routename = this.$route.params.routename;
+      if (routename == "hospital") {
+        return vars.EndPoint + vars.detail;
+      } else if (routename == "pharmacy") {
+        return vars.EndPoint + vars.pdetail;
+      }
+    },
+    callDetail() {
+      let url =
+        this.checkOpCode() +
+        "?" +
+        "key=" +
+        vars.ServiceKey +
+        "&HPID=" +
+        this.$route.params.hpid;
+      api.get(url).then(res => {
+        console.log(res);
+      });
+    }
+  },
+  mounted() {
+    this.callDetail();
   }
 };
 </script>
