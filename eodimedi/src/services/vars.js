@@ -15,4 +15,4 @@ var ServiceKey = "K6sYWvqebVyngpczytPk5eOtSHyZapagbhcTDE31E6hsk57L5V8cJdQKn033Fv
 var pageNo = "1"
 var numOfRows = "50"
 
-export {EndPoint, PharmacyEndPoint, Operation, DetailOperation, BabyOperation, PharmacyOperation, LocationOperation, HpidOperation, ServiceKey, pageNo, numOfRows}
+export {EndPoint, location, detail, plocation, pdetail, BabyOperation, LocationOperation, HpidOperation, ServiceKey, pageNo, numOfRows}
