@@ -39,18 +39,27 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/earlyaccess/jejugothic.css');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap');
+
+li {
+  margin-bottom: 10px;
+}
+
 .list-type {
   width: 80%;
   margin: 0 auto;
+  height: 20px;
 }
 
 .list-type ol {
   counter-reset: li;
   list-style: none;
   *list-style: decimal;
-  font-size: 15px;
-  font-family: "Raleway", sans-serif;
+  font-size: 18px;
   padding: 0;
+  margin: 45px 0px;
+  height: 20px;
 }
 .list-type ol ol {
   margin: 0 0 0 2em;
@@ -59,11 +68,12 @@ export default {
 .list-type a {
   position: relative;
   display: block;
-  padding: 0.4em 0.4em 0.4em 2em;
-  *padding: 0.4em;
+  /* padding: 0.4em 0.4em 0.4em 2em; */
+  padding: 15px;
+  /* *padding: 0.4em; */
   margin: 0.5em 0;
-  background: #93c775;
-  color: #000;
+  background: rgb(227, 239, 240);
+  color: black;
   text-decoration: none;
   -moz-border-radius: 0.3em;
   -webkit-border-radius: 0.3em;

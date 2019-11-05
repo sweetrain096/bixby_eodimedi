@@ -44,7 +44,6 @@ export default {
   background-color: rgba(0, 0, 0, 0);
   border: none;
   border-right: 1px white solid;
-  font-weight: bold;
 }
 .button:hover {
   background-color: rgba(255, 255, 255, 0.6);
