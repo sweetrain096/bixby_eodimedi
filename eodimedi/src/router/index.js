@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Detail from '../views/Detail.vue'
-import SelectHospitalSubject from '../views/SelectHospitalSubject.vue'
+import Home from '@/views/Home.vue'
+import Detail from '@/views/Detail.vue'
+import SelectHospitalSubject from '@/views/SelectHospitalSubject.vue'
 
 Vue.use(VueRouter)
 
