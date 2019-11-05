@@ -67,7 +67,6 @@ export default {
               latitude: position.coords.latitude,
               longitude: position.coords.longitude
             };
-            console.log(position)
             this.$store.commit("setCurrentPosition", currentPosition);
           },
           error => {
