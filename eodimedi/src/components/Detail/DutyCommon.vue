@@ -1,60 +1,72 @@
 <template>
   <div id="dutyCommon">
-    <!-- <p>{{dataInfo}}</p> -->
-    <!-- <p class="hospitalName">{{detailInfo.dutyName}}</p>
-    <p class="hospitalAddress">{{detailInfo.dutyAddr}}</p>
-    <div id="dmap">
-        <div id="map" class="Map"></div>
-    </div> -->
-    <!-- <DetailMap v-bind:position="postLocation"></DetailMap>
-    <div class="time">
-        <div class="runTime">
-            <div id="runTimeText">운영 시간</div>
-            <div id="realRunTime">09:00 ~ 18:00</div>
+    <!-- <p>aaaa{{dataInfo.data.response.body.items.item}}</p> -->
+    <p class="hospitalName">{{dataInfo.dutyName}}</p>
+    <p class="hospitalAddress">{{dataInfo.dutyAddr}}</p>
+    <DetailMap />
+    <div class="timeAndTel">
+      <div class="runTime">
+        <button class="clockImg">
+          <i class="far fa-clock clock"></i>
+        </button>
+        <div class="realRunTime">{{timeFormat(dataInfo.dutyTime1s)}} ~ {{timeFormat(dataInfo.dutyTime1c)}}</div>
         </div>
-        <div class="timeByCar">
-            <div id="timeByCarText">전화 번호</div>
-            <div id="realTimeByCar">{{detailInfo.dutyTel1}}</div>
+      <div class="call">
+        <button class="callImg">
+            <i class="fas fa-phone-alt phone"></i>
+        </button>
+        <div class="callText">
+            {{dataInfo.dutyTel1}}
         </div>
-    </div> -->
-
+      </div>
+    </div>
   </div>
 </template>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aa0a6e1d29e59a3ef4e379174688985d"></script>
 <script>
+import DetailMap from "@/components/Detail/DetailMap.vue";
 export default {
-  data(){
-    return{
-    }
+  data() {
+    return {};
+  },
+  components: {
+    DetailMap
   },
   computed: {
-    dataInfo () {
-      return this.$store.state.infoDetail
+    dataInfo() {
+      return this.$store.state.infoDetail;
     }
   },
   methods: {
+    timeFormat(time) {
+      if (time == null) {
+        time = "알 수 없음";
+      } else {
+        time = time.substring(0, 2) + ":" + time.substring(2, 4);
+      }
+      return time;
+    }
     // infoDetail
     // postLocation () {
     //   console.log('postLocation', this.detailInfo.wgs84Lat)
-    //   return {latitude: this.detailInfo.wgs84Lat, longitude: this.detailInfo.wgs84Lon}
+    //   return {latitude: this.dataInfo.data.response.body.items.item.wgs84Lat, longitude: this.dataInfo.data.response.body.items.item.wgs84Lon}
     // }
-  // },
-  // methods: {
-  //   getLocation: function(){
-      
-  //     let currentPosition;
-  //     window.navigator.geolocation.getCurrentPosition(this.success, this.error, currentPosition);
-  //   },
-  //   success: function(pos){
-  //     let crd = pos.coords;
-  //     this.pos.lat = crd.latitude;
-  //     this.pos.lon = crd.longitude;
-  //     // console.log(crd);
-  //   },
-  //   error: function(err){
-  //     console.warn('ERROR(' + err.code + '): ' + err.message);
-  //   },
+    // methods: {
+    //   getLocation: function(){
+
+    //     let currentPosition;
+    //     window.navigator.geolocation.getCurrentPosition(this.success, this.error, currentPosition);
+    //   },
+    //   success: function(pos){
+    //     let crd = pos.coords;
+    //     this.pos.lat = crd.latitude;
+    //     this.pos.lon = crd.longitude;
+    //     // console.log(crd);
+    //   },
+    //   error: function(err){
+    //     console.warn('ERROR(' + err.code + '): ' + err.message);
+    //   },
     // getMap: function(){
     //   console.log(this.pos)
     //   var that = this
@@ -62,34 +74,31 @@ export default {
     //   if (this.pos){
     //     console.log('##', temp)
     //   }
-    //   var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    //     mapOption = { 
+    //   var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    //     mapOption = {
     //       center: new kakao.maps.LatLng(detailInfo.wgs84Lon, detailInfo.wgs84Lat), // 지도의 중심좌표
     //       level: 3 // 지도의 확대 레벨
     //     };
-    //   var map = new kakao.maps.Map(mapContainer, mapOption); 
+    //   var map = new kakao.maps.Map(mapContainer, mapOption);
     // },
-
-
   },
   mounted() {
-    console.log('detailData', this.detailInfo)
+    console.log("detailData", this.detailInfo);
     // this.getLocation();
     // this.getMap();
   }
-}
+};
 
-// var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-  
-//   mapOption = { 
+// var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+
+//   mapOption = {
 //     center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
 //     level: 3 // 지도의 확대 레벨
 //   };
-
 </script>
 
 <style>
-  .hospitalName {
+.hospitalName {
     width: 90%;
     font-size: 5vw;
     font-weight: bold;
@@ -209,4 +218,5 @@ export default {
 	  margin-right:auto;
     border: 0.5px solid rgb(238, 238, 238);
   }
+
 </style>

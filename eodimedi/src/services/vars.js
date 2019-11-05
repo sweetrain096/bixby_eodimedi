@@ -1,6 +1,6 @@
 
 
-var EndPoint = "http://a6e02f6d.ngrok.io/"
+var EndPoint = "http://901c017d.ngrok.io/"
 var location = "location" // opCode1 : 가까운 병원
 var detail = "detail" //hpid를 파라미터로 보내서, 병원 상세정보를 받아옴
 var plocation = "plocation" //opCode2 : 가까운 약국
