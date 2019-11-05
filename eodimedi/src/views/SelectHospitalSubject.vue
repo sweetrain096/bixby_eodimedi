@@ -62,7 +62,7 @@
       </div>
 
       <div class="imgCell">
-        <img class="img" src="https://picsum.photos/55/55" alt="한의원"/>
+        <img class="img" src="../assets/한의원.png" alt="한의원"/>
         <p class="subjectName">한의원</p>
       </div>
 
@@ -97,25 +97,25 @@ export default {
 .imgCellContainer {
   width: 90%;
   display: grid;
-  grid-template-columns: auto auto auto;
-  margin: auto;
+  grid-template-columns: 30vw 30vw 30vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .img {
-  font-size: 5vw;
   text-align: center;
 }
 
 .imgCell {
   /* border: 1px solid rgba(0, 0, 0, 0.8); */
-  padding: 10px;
-  margin: 10px;
+  padding: 1.5vw;
+  margin: 1.5vw;
   font-size: 14px;
   font-weight: bold;
   text-align: center;
 }
 
  .subjectName {
-   font-size: 4vw;
+   font-size: 3.5vw;
  }
 </style>
