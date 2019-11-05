@@ -8,7 +8,7 @@
       </div>
       <BottomButton/>
     </div>
-    <router-view />
+    <router-view :key="$route.path"/>
     <BottomButton />
     <div class="bottombuttonlayout"></div>
   </div>

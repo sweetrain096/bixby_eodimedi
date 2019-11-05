@@ -26,10 +26,10 @@ export default new Router({
             props: true
         },
         {
-            path: '/:type',
+            path: '/search/:type',
             name: 'search',
             component: Home,
-            props: true
+            props: true,
         },
         {
             path: '/subject',

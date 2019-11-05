@@ -1,8 +1,10 @@
 <template>
   <div id="hospitalList" class="list-type">
-    <ol v-for="(item, idx) in dataList" :key="idx">
+    <ol>
       <li>
-        <a prevent @click="getDetail(item)">{{ item.dutyName }}</a>
+        <a @click="getDetail(listitem)">{{ listitem.dutyName }}</a>
+        <!-- {{ routename }}
+        {{ listitem }}-->
       </li>
     </ol>
   </div>
@@ -11,62 +13,26 @@
 <script>
 export default {
   data() {
-    return {
-      dataList: [],
-      myPos: {},
-      url: "",
-      hosList: []
-    };
+    return {};
   },
-  methods: {
-    getList() {
-      let hoslist = [
-        {
-          dutyName: "큰우리요양병원",
-          wgs84Lon: "36.34638685631565",
-          wgs84Lat: "127.29873466968104",
-          dutyAddr: "대전광역시 유성구 학하서로 99",
-          dutyTel1: "042-522-1001"
-        },
-        {
-          dutyName: "최경호가정의학과의원",
-          wgs84Lon: "36.3459943059",
-          wgs84Lat: "127.3016832678",
-          dutyAddr: "대전광역시 유성구 학하중앙로59번길 5-3 (덕명동, 호연빌딩)",
-          dutyTel1: "042-822-7589"
-        },
-        {
-          dutyName: "새봄의원",
-          wgs84Lon: "36.3641513645",
-          wgs84Lat: "127.2899736518",
-          dutyAddr: "대전광역시 유성구 갑동로25번길 53-28",
-          dutyTel1: "042-840-7975"
-        },
-        {
-          dutyName: "세림소아청소년과의원",
-          wgs84Lon: "36.3422872129",
-          wgs84Lat: "127.3036784859",
-          dutyAddr: "대전광역시 유성구 학하서로20번길 21 201호",
-          dutyTel1: "042-528-8275"
-        },
-        {
-          dutyName: "몸편한한의원",
-          wgs84Lon: "36.34190587522547",
-          wgs84Lat: "127.30337847550981",
-          dutyAddr: "대전광역시 유성구 학하남로 9, 2층 (계산동)",
-          dutyTel1: "070-4201-4593"
-        }
-      ];
-      this.dataList.push(...hoslist);
+  props: {
+    listitem: {
+      type: Object
     },
-    getDetail(item) {
-      this.$store.commit("setInfoDetail", item);
-      this.$router.push({ name: "detail", params: { item: item } });
+    routename: {
+      type: String
     }
   },
-  mounted() {
-    this.getList();
-  }
+  methods: {
+    getDetail(it) {
+      let obj = {
+        hpid: it.hpid,
+        routename: this.routename
+      };
+      this.$router.push({ name: "detail", params: obj });
+    }
+  },
+  mounted() {}
 };
 </script>
 
@@ -110,7 +76,7 @@ export default {
 }
 
 .list-type a:before {
-  content: counter(li);
+  /* content: counter(li); */
   counter-increment: li;
   position: absolute;
   left: -1.3em;

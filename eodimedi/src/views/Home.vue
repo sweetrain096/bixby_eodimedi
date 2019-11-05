@@ -1,16 +1,19 @@
 <template>
   <div>
     <Map />
-    <list-component />
-    <div>{{dataList}}</div>
+
+    <div v-for="(listitem, idx) in dataList" :key="idx">
+      <list-component :listitem='listitem' :routename='routeName'/>
+      <!-- {{ listitem}} -->
+    </div>
   </div>
 </template>
 
 <script>
   import ListComponent from '@/components/Home/List.vue'
   import Map from '@/components/Home/Map.vue'
+
   import * as vars from '@/services/vars.js'
-  import callListData from '@/services/callListData.js'
   import api from '@/services/api.js'
 
   export default {
