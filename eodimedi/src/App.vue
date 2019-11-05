@@ -17,7 +17,7 @@
 <style>
 .bottombuttonlayout {
   position: relative;
-  height: 60px;
+  height: 70px;
   z-index: -1;
 }
 #app {

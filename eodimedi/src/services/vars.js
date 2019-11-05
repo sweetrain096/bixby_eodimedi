@@ -1,8 +1,8 @@
 
 
-var EndPoint = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/"
+var EndPoint = "http://c94b6d54.ngrok.io/"
 var PharmacyEndPoint = "http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/"
-var Operation = "getHsptlMdcncLcinfoInqire" // opCode1 : 가까운 병원
+var Operation = "location" // opCode1 : 가까운 병원
 var DetailOperation = "getHsptlBassInfoInqire" //hpid를 파라미터로 보내서, 병원 상세정보를 받아옴
 var BabyOperation = "getBabyLcinfoInqire" // opCode3 : 가까운 달빛병원
 var PharmacyOperation = "getParmacyLcinfoInqire" //opCode2 : 가까운 약국
