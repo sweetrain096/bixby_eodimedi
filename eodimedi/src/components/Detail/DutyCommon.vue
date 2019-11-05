@@ -21,15 +21,9 @@
   </div>
 </template>
 
-
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aa0a6e1d29e59a3ef4e379174688985d"></script>
 <script>
-import DetailMap from '@/components/Detail/DetailMap.vue'
-
 export default {
-  components: {
-    DetailMap
-  },
   data(){
     return{
     }
@@ -97,7 +91,7 @@ export default {
 <style>
   .hospitalName {
     width: 90%;
-    font-size: 18px;
+    font-size: 5vw;
     font-weight: bold;
     color: rgb(108, 110, 112);
     text-align: left;
@@ -107,7 +101,7 @@ export default {
 
   .hospitalAddress {
     width: 90%;
-    font-size: 15px;
+    font-size: 4.1vw;
     color: lightgrey;
     text-align: left;
     margin: auto;
@@ -119,95 +113,100 @@ export default {
     height: 200px;
     background-color: green;
     margin: auto;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
-  .time {
+  .timeAndTel {
     width: 90%;
-    height: 60px;
+    height: 25px;
     margin: auto;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .runTime {
+    height: 25px;
+    display: flex;
+    justify-content: space-between;    
+    color: black;
+    border-right: 2px solid rgb(238, 238, 238);
+  }
+
+  .clockImg {
+    height: 25px;
+    width: 25px;
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
     display: inline-block;
-    border-radius: 10px;
-    text-align: left;
-    width: 48%;
-    padding: 2px;
-    margin: 2px;
-    background-color:rgba(40, 48, 116, 0.65);
+    margin: 0px 5px 0px 0px;
+    padding: 0px 10px 0px 5px;
+    text-align: center;
+    background-color: white;
   }
 
-  .runTime #runTimeText {
+  .clock {
+    margin-top: 5px;
+    font-size: 4vw;
     color: lightgrey;
-    margin: 5px;
-  }
-
-  .runTime #realRunTime {
-    color: white;
-    margin: 5px;
-  }
-
-  .timeByCar {
     display: inline-block;
-    border-radius: 10px;
+    text-align: right;
+  }
+
+  .realRunTime {
+    font-size: 4vw;
+    padding: 0px 2.5vw 1px 0px;
+    margin: 4px 10px 3px 0px;
+    display: inline-block;
     text-align: left;
-    width: 48%;
-    padding: 2px;
-    margin: 2px;
-    background-color:rgba(40, 48, 116, 0.65);
-  }
-
-  .timeByCar #timeByCarText {
-    color: lightgrey;
-    margin: 5px;
-  }
-
-  .timeByCar #realTimeByCar {
-    color: white;
-    margin: 5px;
   }
 
   .call {
-    width: 90%;
-    height: 60px;
-    margin: auto;
-    margin-bottom: 15px;
-    background-color:rgba(40, 48, 116, 0.65);
-    display: flex;    
-    justify-content: space-between;    
-    border-radius: 10px;
-    color: white;
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto; 
+    color: black;
   }
   
   .callImg {
-    height: 40px;
-    width: 40px;
+    height: 25px;
+    width: 25px;
+    border: 0;
+    outline: 0;
     border-radius: 50%;
     display: inline-block;
-    margin: 10px 15px 10px 15px;
-    padding: 0px 10px 0px 0px;
+    margin: 0px 10px 0px 2.5px;
     text-align: center;
-    background-color: green;
+    background-color: white;
   }
 
   .phone{
-    margin-left: 9px;
-    font-size: 20px;
-    color: white;
+    margin-left: 7px;
+    margin-top: 5px;
+    font-size: 4vw;
+    color: lightgrey;
     display: inline-block;
     text-align: right;
   }
 
   .callText {
     width: 90%;
-    font-size: 20px;
-    padding: 12px 10px 12px 0px;
-    margin: 5px 10px 5px 0px;
+    font-size: 4vw;
+    padding: 0px 10px 1px 0px;
+    margin: 4px 10px 3px 0px;
     display: inline-block;
     text-align: left;
+  }
+
+  .thickHr {
+    width: 90%;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    margin-left:auto;
+	  margin-right:auto;
+    border: 0.5px solid rgb(238, 238, 238);
   }
 </style>
