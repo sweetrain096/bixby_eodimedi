@@ -33,11 +33,21 @@
 
     },
     methods: {
+      checkOpCode() {
+        if (this.routeName == 'hospital') {
+          return vars.EndPoint + vars.Operation
+        } else if (this.routeName == 'pharmacy') {
+          return vars.PharmacyEndPoint + vars.PharmacyOperation
+        } else if (this.routeName == 'moon') {
+          return vars.EndPoint + BabyOperation
+        }
+      },
+
       startList() {
         if (window.navigator.geolocation) {
           window.navigator.geolocation.getCurrentPosition(
             position => {
-              let url = vars.EndPoint + vars.Operation + "?" +
+              let url = this.checkOpCode() + "?" +
                 "key=" + vars.ServiceKey +
                 "&lon=" + position.coords.longitude +
                 "&lat=" + position.coords.latitude +
@@ -68,11 +78,7 @@
     mounted() {
       this.startList()
     },
-    watch: {
-      routeName(to, from) {
-        console.log(to)
-      }
-    }
+    watch: {}
   }
 </script>
 
