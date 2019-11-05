@@ -5,8 +5,14 @@ import currentPosition from './modules/currentPosition.js'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    infoDetail : []
+  },
+  mutations: {
+    setInfoDetail(state, info) {
+      state.infoDetail = info
+    }
+  },
   actions: {},
   modules: {
     currentPosition

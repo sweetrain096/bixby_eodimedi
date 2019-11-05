@@ -25,7 +25,7 @@ export default {
   name: "BottomButton",
   methods: {
     goRoute(to) {
-      this.$router.push({ path: `/search/${to}` }, ()=> {});
+      this.$router.push({ path: `/${to}` }, ()=> {});
     }
   }
 };
