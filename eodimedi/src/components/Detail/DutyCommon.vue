@@ -5,30 +5,26 @@
     <div id="dmap">
         <div id="map" class="Map"></div>
     </div>
-    <div class="time">
+    <!-- <hr class="thickHr"> -->
+    <div class="timeAndTel">
       <div class="runTime">
-        <div id="clock">
-          <i class="far fa-clock"></i>
-        </div>
-        <div id="realRunTime">09:00 ~ 18:00</div>
+        <button class="clockImg">
+          <i class="far fa-clock clock"></i>
+        </button>
+        <div class="realRunTime">09:00 ~ 18:00</div>
       </div>
-      <div class="timeByCar">
-        <div id="timeByCarText">
-          <i class="fas fa-car"></i>
+      <a href="tel:010-5399-3731" style="text-decoration: none !important;">
+        <div class="call">
+            <button class="callImg">
+                <i class="fas fa-phone-alt phone"></i>
+            </button>
+            <div class="callText">
+                123-4567-8900
+            </div>
         </div>
-        <div id="realTimeByCar">10분</div>
-      </div>
+      </a>
     </div>
-    <a href="tel:010-5399-3731" style="text-decoration: none !important;">
-      <div class="call">
-          <button class="callImg">
-              <i class="fas fa-phone-alt phone"></i>
-          </button>
-          <div class="callText">
-              123-4567-8900
-          </div>
-      </div>
-    </a>
+    <!-- <hr class="thickHr"> -->
   </div>
 </template>
 
@@ -92,7 +88,7 @@ export default {
 <style>
   .hospitalName {
     width: 90%;
-    font-size: 18px;
+    font-size: 5vw;
     font-weight: bold;
     color: rgb(108, 110, 112);
     text-align: left;
@@ -102,7 +98,7 @@ export default {
 
   .hospitalAddress {
     width: 90%;
-    font-size: 15px;
+    font-size: 4.1vw;
     color: lightgrey;
     text-align: left;
     margin: auto;
@@ -117,63 +113,58 @@ export default {
     margin-bottom: 10px;
   }
 
-  .time {
+  .timeAndTel {
     width: 90%;
-    height: 40px;
+    height: 25px;
     margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .runTime {
+    height: 25px;
+    display: flex;
+    justify-content: space-between;    
+    color: black;
+    border-right: 2px solid rgb(238, 238, 238);
+  }
+
+  .clockImg {
+    height: 25px;
+    width: 25px;
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0px 5px 0px 0px;
+    padding: 0px 10px 0px 5px;
+    text-align: center;
+    background-color: white;
+  }
+
+  .clock {
+    margin-top: 5px;
+    font-size: 4vw;
+    color: lightgrey;
+    display: inline-block;
+    text-align: right;
+  }
+
+  .realRunTime {
+    font-size: 4vw;
+    padding: 0px 2.5vw 1px 0px;
+    margin: 4px 10px 3px 0px;
     display: inline-block;
     text-align: left;
-    width: 48%;
-    padding: 2px;
-    margin: 2px;
-  }
-
-  .runTime #clock {
-    display: inline-block;
-    font-size: 20px;
-    color: blue;
-    margin: 5px;
-  }
-
-  .runTime #realRunTime {
-    display: inline-block;
-    color: black;
-    margin: 5px;
-  }
-
-  .timeByCar {
-    display: inline-block;
-    text-align: left;
-    width: 48%;
-    padding: 2px;
-    margin: 2px;
-  }
-
-  .timeByCar #timeByCarText {
-    display: inline-block;
-    font-size: 20px;
-    color: red;
-    margin: 5px;
-  }
-
-  .timeByCar #realTimeByCar {
-    display: inline-block;
-    color: black;
-    margin: 5px;
   }
 
   .call {
-    width: 90%;
-    height: 40px;
-    margin: auto;
-    margin-bottom: 20px;
+    height: 25px;
     display: flex;
-    justify-content: space-between;    
+    justify-content: space-between;
+    margin: auto; 
     color: black;
   }
   
@@ -184,26 +175,35 @@ export default {
     outline: 0;
     border-radius: 50%;
     display: inline-block;
-    margin: 10px 10px 10px 5px;
-    padding: 0px 10px 0px 0px;
+    margin: 0px 10px 0px 2.5px;
     text-align: center;
-    background-color: green;
+    background-color: white;
   }
 
   .phone{
     margin-left: 7px;
-    font-size: 12.5px;
-    color: white;
+    margin-top: 5px;
+    font-size: 4vw;
+    color: lightgrey;
     display: inline-block;
     text-align: right;
   }
 
   .callText {
     width: 90%;
-    font-size: 16px;
-    padding: 10px 10px 10px 0px;
-    margin: 3px 10px 3px 0px;
+    font-size: 4vw;
+    padding: 0px 10px 1px 0px;
+    margin: 4px 10px 3px 0px;
     display: inline-block;
     text-align: left;
+  }
+
+  .thickHr {
+    width: 90%;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    margin-left:auto;
+	  margin-right:auto;
+    border: 0.5px solid rgb(238, 238, 238);
   }
 </style>
