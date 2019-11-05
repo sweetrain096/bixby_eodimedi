@@ -35,9 +35,9 @@
     methods: {
       checkOpCode() {
         if (this.routeName == 'hospital') {
-          return vars.EndPoint + vars.Operation
+          return vars.EndPoint + vars.location
         } else if (this.routeName == 'pharmacy') {
-          return vars.PharmacyEndPoint + vars.PharmacyOperation
+          return vars.EndPoint + vars.plocation
         } else if (this.routeName == 'moon') {
           return vars.EndPoint + BabyOperation
         }
