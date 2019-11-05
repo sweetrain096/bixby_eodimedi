@@ -12,11 +12,6 @@ const routes = [{
     component: Home
   },
   {
-    path: '/about',
-    name: 'about',
-    component: About,
-  },
-  {
     path: '/detail',
     name: 'detail',
     component: Detail
