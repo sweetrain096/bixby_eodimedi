@@ -5,8 +5,6 @@ import Detail from '@/views/Detail.vue'
 import About from '@/views/About.vue'
 import SelectHospitalSubject from '@/views/SelectHospitalSubject.vue'
 
-
-
 Vue.use(Router)
 
 export default new Router({
@@ -37,6 +35,6 @@ export default new Router({
             path: '/subject',
             name: 'selecthospitalsubject',
             component: SelectHospitalSubject
-          },
+        },
     ]
 })

@@ -1,42 +1,40 @@
 <template>
   <div id="dutyCommon">
-    
     <p class="hospitalName">최경호가정의학과의원</p>
     <p class="hospitalAddress">대전광역시 유성구 학하중앙로59번길 5-3 (덕명동, 호연빌딩)</p>
-    <!-- <div id="dmap">
+    <div id="dmap">
         <div id="map" class="Map"></div>
-    </div> -->
-    <DetailMap></DetailMap>
+    </div>
     <div class="time">
-        <div class="runTime">
-            <div id="runTimeText">운영 시간</div>
-            <div id="realRunTime">09:00 ~ 18:00</div>
+      <div class="runTime">
+        <div id="clock">
+          <i class="far fa-clock"></i>
         </div>
-        <div class="timeByCar">
-            <div id="timeByCarText">차량 이동 시간</div>
-            <div id="realTimeByCar">10분</div>
+        <div id="realRunTime">09:00 ~ 18:00</div>
+      </div>
+      <div class="timeByCar">
+        <div id="timeByCarText">
+          <i class="fas fa-car"></i>
         </div>
+        <div id="realTimeByCar">10분</div>
+      </div>
     </div>
-    <div class="call">
-        <button class="callImg">
-            <i class="fas fa-phone-alt phone"></i>
-        </button>
-        <div class="callText">
-            123-4567-8900
-        </div>
-    </div>
+    <a href="tel:010-5399-3731" style="text-decoration: none !important;">
+      <div class="call">
+          <button class="callImg">
+              <i class="fas fa-phone-alt phone"></i>
+          </button>
+          <div class="callText">
+              123-4567-8900
+          </div>
+      </div>
+    </a>
   </div>
 </template>
 
-
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aa0a6e1d29e59a3ef4e379174688985d"></script>
 <script>
-import DetailMap from '@/components/Detail/DetailMap.vue'
-
 export default {
-  components: {
-    DetailMap
-  },
   data(){
     return{
       pos: {
@@ -77,8 +75,8 @@ export default {
 
   },
   mounted() {
-    // this.getLocation();
-    // this.getMap();
+    this.getLocation();
+    this.getMap();
   }
 }
 
@@ -116,84 +114,85 @@ export default {
     height: 200px;
     background-color: green;
     margin: auto;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
   .time {
     width: 90%;
-    height: 60px;
+    height: 40px;
     margin: auto;
-    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
   }
 
   .runTime {
     display: inline-block;
-    border-radius: 10px;
     text-align: left;
     width: 48%;
     padding: 2px;
     margin: 2px;
-    background-color:rgba(40, 48, 116, 0.65);
   }
 
-  .runTime #runTimeText {
-    color: lightgrey;
+  .runTime #clock {
+    display: inline-block;
+    font-size: 20px;
+    color: blue;
     margin: 5px;
   }
 
   .runTime #realRunTime {
-    color: white;
+    display: inline-block;
+    color: black;
     margin: 5px;
   }
 
   .timeByCar {
     display: inline-block;
-    border-radius: 10px;
     text-align: left;
     width: 48%;
     padding: 2px;
     margin: 2px;
-    background-color:rgba(40, 48, 116, 0.65);
   }
 
   .timeByCar #timeByCarText {
-    color: lightgrey;
+    display: inline-block;
+    font-size: 20px;
+    color: red;
     margin: 5px;
   }
 
   .timeByCar #realTimeByCar {
-    color: white;
+    display: inline-block;
+    color: black;
     margin: 5px;
   }
 
   .call {
     width: 90%;
-    height: 60px;
+    height: 40px;
     margin: auto;
-    margin-bottom: 15px;
-    background-color:rgba(40, 48, 116, 0.65);
-    display: flex;    
+    margin-bottom: 20px;
+    display: flex;
     justify-content: space-between;    
-    border-radius: 10px;
-    color: white;
+    color: black;
   }
   
   .callImg {
-    height: 40px;
-    width: 40px;
+    height: 25px;
+    width: 25px;
+    border: 0;
+    outline: 0;
     border-radius: 50%;
     display: inline-block;
-    margin: 10px 15px 10px 15px;
+    margin: 10px 10px 10px 5px;
     padding: 0px 10px 0px 0px;
     text-align: center;
     background-color: green;
   }
 
   .phone{
-    margin-left: 9px;
-    font-size: 20px;
+    margin-left: 7px;
+    font-size: 12.5px;
     color: white;
     display: inline-block;
     text-align: right;
@@ -201,9 +200,9 @@ export default {
 
   .callText {
     width: 90%;
-    font-size: 20px;
-    padding: 12px 10px 12px 0px;
-    margin: 5px 10px 5px 0px;
+    font-size: 16px;
+    padding: 10px 10px 10px 0px;
+    margin: 3px 10px 3px 0px;
     display: inline-block;
     text-align: left;
   }

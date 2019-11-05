@@ -1,16 +1,71 @@
 <template>
   <div id="popularHospitalSubject">
-    <p class="medicalSubject">진료과목</p>
-    <div class="subject">
-      <div class="firstSubject">
-        <img v-for="image in images" :src="image.url" :alt="image.alt" />{{ item }}
+    <p class="hospitalSubject">진료과목</p>
+
+    <div class="imgCellContainer">
+
+      <router-link to="/detail" style="text-decoration: none !important;">
+        <div class="imgCell">
+          <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+          <p>내과</p>
+        </div>
+      </router-link>
+
+      <div class="imgCell">
+        <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+        <p>외과</p>
       </div>
-      <div class="secondSubject">
-        <img v-for="image in images" :src="image.url" :alt="image.alt" />{{ item }}
+
+      <div class="imgCell">
+        <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+        <p>치과</p>
       </div>
-      <div class="thirdSubject">
-        <img v-for="image in images" :src="image.url" :alt="image.alt" />{{ item }}
+
+      <div class="imgCell">
+        <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+        <p>소아과</p>
       </div>
+
+      <div class="imgCell">
+        <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+        <p>응급실</p>
+      </div>
+
+      <div class="imgCell">
+        <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+        <p>정형외과</p>
+      </div>
+
+      <div class="imgCell">
+        <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+        <p>안과</p>
+      </div>
+
+      <div class="imgCell">
+        <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+        <p>피부과</p>
+      </div>
+
+      <div class="imgCell">
+        <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+        <p>한의원</p>
+      </div>
+
+      <div class="imgCell">
+        <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+        <p>후보1</p>
+      </div>
+
+      <div class="imgCell">
+        <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+        <p>후보2</p>
+      </div>
+
+      <div class="imgCell">
+        <img class="img" src="https://picsum.photos/55/55" alt="랜덤이미지"/>
+        <p>후보3</p>
+      </div>
+
     </div>
   </div>
 </template>
@@ -19,11 +74,6 @@
 export default {
   data() {
     return {
-      images: [
-        { url: 'https://picsum.photos/100', alt: '랜덤이미지'},
-        { url: 'https://picsum.photos/100', alt: '랜덤이미지'},
-        { url: 'https://picsum.photos/100', alt: '랜덤이미지'},
-      ]
     };
   },
 };
@@ -31,43 +81,37 @@ export default {
 
 <style>
 #popularHospitalSubject {
-  height: 100%;
+  /* height: 500px; */
 }
 
-.medicalSubject {
+.hospitalSubject {
   width: 90%;
-  font-size: 18px;
+  font-size: 35px;
   font-weight: bold;
   color: rgb(108, 110, 112);
-  text-align: left;
+  text-align: center;
   margin: auto;
   margin-bottom: 15px;
 }
 
-.subject {
+.imgCellContainer {
   width: 90%;
+  display: grid;
+  grid-template-columns: auto auto auto;
   margin: auto;
-  display: flex;
-  justify-content: space-around;
-  text-align: left;
 }
 
-/*  */
+.img {
+  font-size: 30px;
+  text-align: center;
+}
 
-.firstSubject {
-  width: 25%;
-  margin: 0px 0px 0px -10px;
-  color: lightcoral;
+.imgCell {
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  padding: 10px;
+  margin: 10px;
+  font-size: 14px;
   font-weight: bold;
-}
-
-.secondSubject {
-  width: 25%;
-  color: lightgrey;
-}
-
-.thirdSubject {
-  width: 25%;
-  color: lightgrey;
+  text-align: center;
 }
 </style>
