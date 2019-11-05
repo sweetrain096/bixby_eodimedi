@@ -3,8 +3,8 @@
     <ol>
       <li>
         <a @click="getDetail(listitem)">{{ listitem.dutyName }}</a>
-        <!-- {{ routename }}
-        {{ listitem }}-->
+        <!-- {{ routename }} -->
+        {{ listitem }}
       </li>
     </ol>
   </div>
@@ -27,7 +27,9 @@ export default {
     getDetail(it) {
       let obj = {
         hpid: it.hpid,
-        routename: this.routename
+        routename: this.routename,
+        latitude: it.latitude,
+        longitude: it.longitude
       };
       this.$router.push({ name: "detail", params: obj });
     }

@@ -1,6 +1,6 @@
 <template>
   <div id="dutyCommon">
-    <p>{{dataInfo}}</p>
+    <!-- <p>{{dataInfo}}</p> -->
     <!-- <p class="hospitalName">{{detailInfo.dutyName}}</p>
     <p class="hospitalAddress">{{detailInfo.dutyAddr}}</p>
     <div id="dmap">
