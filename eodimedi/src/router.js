@@ -26,7 +26,7 @@ export default new Router({
             props: true
         },
         {
-            path: '/search/:type',
+            path: '/:type',
             name: 'search',
             component: Home,
             props: true

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <DutyCommon />
+    <DutyCommon/>
     <HospitalSubject />
   </div>
 </template>
@@ -13,14 +13,6 @@ export default {
   components: {
     DutyCommon,
     HospitalSubject
-  },
-  methods: {
-    checkData() {
-      console.log(this.$route.params.dataSet);
-    }
-  },
-  mounted() {
-    this.checkData();
   }
 };
 </script>

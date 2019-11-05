@@ -1,5 +1,6 @@
 <template>
   <div id="dutyCommon">
+    <p>{{dataInfo}}</p>
     <div id="dmap">
         <div id="map" class="Map"></div>
     </div>
@@ -11,63 +12,64 @@
 export default {
   data(){
     return{
-      pos: {
-        lat: "",
-        lon: ""
-      }
     }
   },
-  methods: {
-    getLocation: function(){
-      window.navigator.geolocation.getCurrentPosition(this.success, this.error);
-    },
-    success: function(pos){
-        let crd = pos.coords;
-        this.pos.lat = crd.latitude;
-        this.pos.lon = crd.longitude;
-        this.getMap();
-        // console.log(crd);
-    },
-    error: function(err){
-      console.warn('ERROR(' + err.code + '): ' + err.message);
-    },
-    getMap: function() {
-      var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    //   if (this.pos) {
-        mapOption = { 
-            center: new kakao.maps.LatLng(this.pos.lat, this.pos.lon), // 지도의 중심좌표
-            level: 3 // 지도의 확대 레벨
-        };
-
-        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-        // 마커가 표시될 위치입니다 
-        var markerPosition  = new kakao.maps.LatLng(this.pos.lat, this.pos.lon); 
-
-        // 마커를 생성합니다
-        var marker = new kakao.maps.Marker({
-            position: markerPosition
-        });
-
-        // 마커가 지도 위에 표시되도록 설정합니다
-        marker.setMap(map);
-    //   }
-
-    },
-
-
+  computed: {
+    dataInfo () {
+      return this.$store.state.infoDetail
+    }
   },
-  mounted() {
-    this.getLocation();
-  }
-}
+  // methods: {
+    // getLocation: function(){
+    //   window.navigator.geolocation.getCurrentPosition(this.success, this.error);
+    // },
+    // success: function(pos){
+    //     let crd = pos.coords;
+    //     console.log(this.position)
+        
+    //     this.getMap();
+    //     // console.log(crd);
+    // },
+    // error: function(err){
+    //   console.warn('ERROR(' + err.code + '): ' + err.message);
+    // },
+//     getMap: function() {
+//       console.log('pos', this.position.latitude)
+//       var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+//     //   if (this.pos) {
+//         mapOption = { 
+//             center: new kakao.maps.LatLng(this.position.latitude, this.position.longitude), // 지도의 중심좌표
+//             // 병원, 약국을 중심으로
+//             level: 3 // 지도의 확대 레벨
+//         };
+
+//         var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+//         // 마커가 표시될 위치입니다 
+//         var markerPosition  = new kakao.maps.LatLng(this.position.latitude, this.position.longitude); 
+
+//         // 마커를 생성합니다
+//         var marker = new kakao.maps.Marker({
+//             position: markerPosition
+//         });
+
+//         // 마커가 지도 위에 표시되도록 설정합니다
+//         marker.setMap(map);
+//     //   }
+
+//     },
+//   },
+//   mounted() {
+//     this.getMap();
+//   }
+// }
 
 // var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
   
 //   mapOption = { 
 //     center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
 //     level: 3 // 지도의 확대 레벨
-//   };
+  };
 
 </script>
 

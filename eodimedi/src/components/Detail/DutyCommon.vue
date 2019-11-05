@@ -1,30 +1,23 @@
 <template>
   <div id="dutyCommon">
-    <p class="hospitalName">최경호가정의학과의원</p>
-    <p class="hospitalAddress">대전광역시 유성구 학하중앙로59번길 5-3 (덕명동, 호연빌딩)</p>
+    <p>{{dataInfo}}</p>
+    <!-- <p class="hospitalName">{{detailInfo.dutyName}}</p>
+    <p class="hospitalAddress">{{detailInfo.dutyAddr}}</p>
     <div id="dmap">
         <div id="map" class="Map"></div>
-    </div>
-    <!-- <hr class="thickHr"> -->
-    <div class="timeAndTel">
-      <div class="runTime">
-        <button class="clockImg">
-          <i class="far fa-clock clock"></i>
-        </button>
-        <div class="realRunTime">09:00 ~ 18:00</div>
-      </div>
-      <a href="tel:010-5399-3731" style="text-decoration: none !important;">
-        <div class="call">
-            <button class="callImg">
-                <i class="fas fa-phone-alt phone"></i>
-            </button>
-            <div class="callText">
-                123-4567-8900
-            </div>
+    </div> -->
+    <!-- <DetailMap v-bind:position="postLocation"></DetailMap>
+    <div class="time">
+        <div class="runTime">
+            <div id="runTimeText">운영 시간</div>
+            <div id="realRunTime">09:00 ~ 18:00</div>
         </div>
-      </a>
-    </div>
-    <!-- <hr class="thickHr"> -->
+        <div class="timeByCar">
+            <div id="timeByCarText">전화 번호</div>
+            <div id="realTimeByCar">{{detailInfo.dutyTel1}}</div>
+        </div>
+    </div> -->
+
   </div>
 </template>
 
@@ -33,46 +26,56 @@
 export default {
   data(){
     return{
-      pos: {
-        lat: "",
-        lon: ""
-      }
+    }
+  },
+  computed: {
+    dataInfo () {
+      return this.$store.state.infoDetail
     }
   },
   methods: {
-    getLocation: function(){
-      let currentPosition;
-      window.navigator.geolocation.getCurrentPosition(this.success, this.error, currentPosition);
-    },
-    success: function(pos){
-      let crd = pos.coords;
-      this.pos.lat = crd.latitude;
-      this.pos.lon = crd.longitude;
-      // console.log(crd);
-    },
-    error: function(err){
-      console.warn('ERROR(' + err.code + '): ' + err.message);
-    },
-    getMap: function(){
-      console.log(this.pos)
-      var that = this
-      var temp = that.pos.lat
-      if (this.pos){
-        console.log('##', temp)
-      }
-      var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-        mapOption = { 
-          center: new kakao.maps.LatLng(36.34599697710344, 127.3016960888486), // 지도의 중심좌표
-          level: 3 // 지도의 확대 레벨
-        };
-      var map = new kakao.maps.Map(mapContainer, mapOption); 
-    },
+    // infoDetail
+    // postLocation () {
+    //   console.log('postLocation', this.detailInfo.wgs84Lat)
+    //   return {latitude: this.detailInfo.wgs84Lat, longitude: this.detailInfo.wgs84Lon}
+    // }
+  // },
+  // methods: {
+  //   getLocation: function(){
+      
+  //     let currentPosition;
+  //     window.navigator.geolocation.getCurrentPosition(this.success, this.error, currentPosition);
+  //   },
+  //   success: function(pos){
+  //     let crd = pos.coords;
+  //     this.pos.lat = crd.latitude;
+  //     this.pos.lon = crd.longitude;
+  //     // console.log(crd);
+  //   },
+  //   error: function(err){
+  //     console.warn('ERROR(' + err.code + '): ' + err.message);
+  //   },
+    // getMap: function(){
+    //   console.log(this.pos)
+    //   var that = this
+    //   var temp = that.pos.lat
+    //   if (this.pos){
+    //     console.log('##', temp)
+    //   }
+    //   var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    //     mapOption = { 
+    //       center: new kakao.maps.LatLng(detailInfo.wgs84Lon, detailInfo.wgs84Lat), // 지도의 중심좌표
+    //       level: 3 // 지도의 확대 레벨
+    //     };
+    //   var map = new kakao.maps.Map(mapContainer, mapOption); 
+    // },
 
 
   },
   mounted() {
-    this.getLocation();
-    this.getMap();
+    console.log('detailData', this.detailInfo)
+    // this.getLocation();
+    // this.getMap();
   }
 }
 
