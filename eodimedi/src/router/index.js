@@ -17,6 +17,12 @@ const routes = [{
     component: Detail
   },
   {
+    path: '/pdetail',
+    name: 'pdetail',
+    component: Pdetail
+  },
+  
+  {
     path: '/search/:type',
     name: 'search',
     component: Home

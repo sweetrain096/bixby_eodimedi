@@ -1,6 +1,6 @@
 
 
-var EndPoint = "http://901c017d.ngrok.io/"
+var EndPoint = "https://todoc-proxy-hjhbw6gchq-an.a.run.app/"
 var location = "location" // opCode1 : 가까운 병원
 var detail = "detail" //hpid를 파라미터로 보내서, 병원 상세정보를 받아옴
 var plocation = "plocation" //opCode2 : 가까운 약국

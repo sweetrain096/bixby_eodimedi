@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <Loading v-show="loading"/>
+    <Loading v-show="loading" />
     <div id="page" v-show="!loading">
       <div id="nav">
-        <router-link to="/">Home</router-link>
+        <router-link to="/">Home</router-link>|
+        <router-link to="/about">About</router-link>
       </div>
-      <BottomButton/>
     </div>
-    <router-view :key="$route.path"/>
+    <router-view :key="$route.path" />
     <BottomButton />
     <div class="bottombuttonlayout"></div>
   </div>
@@ -15,12 +15,11 @@
 
 <style>
 .bottombuttonlayout {
-  position: relative;
   height: 70px;
   z-index: -1;
 }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -42,20 +41,19 @@
 </style>
 <script>
 // @ is an alias to /src
-import Loading from '@/components/App/Loading.vue'
-import BottomButton from '@/components/App/BottomButton.vue'
-
+import Loading from "@/components/App/Loading.vue";
+import BottomButton from "@/components/App/BottomButton.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     Loading,
-    BottomButton,
+    BottomButton
   },
   data() {
     return {
       loading: true
-    }
+    };
   },
   methods: {
     setCurrentPosition() {
@@ -69,19 +67,21 @@ export default {
             this.$store.commit("setCurrentPosition", currentPosition);
           },
           error => {
-            alert('error');
+            alert("error");
           }
         );
       } else {
         alert("GPS를 지원하지 않습니다.");
       }
     },
-    loadLoading: function(){
-      setTimeout(() => {this.loading = false}, 1000)
+    loadLoading: function() {
+      setTimeout(() => {
+        this.loading = false;
+      }, 1000);
     }
   },
-  mounted () {
-    this.setCurrentPosition()
+  mounted() {
+    this.setCurrentPosition();
     this.loadLoading();
   }
   // mounted() {
@@ -89,5 +89,5 @@ export default {
   //     this.loading = false
   //   })
   // }
-}
+};
 </script>
