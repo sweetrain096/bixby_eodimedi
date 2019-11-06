@@ -1,5 +1,5 @@
 <template>
-  <div class="homeMain">
+  <div>
     <Map />
 
     <div v-for="(listitem, idx) in dataList" :key="idx">
@@ -86,8 +86,5 @@
 </script>
 
 <style scoped>
-.homeMain {
-  /* max-height: 3500px; */
-  height: 550vh;
-}
+
 </style>
