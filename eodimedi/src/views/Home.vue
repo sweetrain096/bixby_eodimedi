@@ -46,40 +46,63 @@
         }
       },
 
-      startList() {
-        if (window.navigator.geolocation) {
-          window.navigator.geolocation.getCurrentPosition(
-            position => {
-              let url = this.checkOpCode() + "?" +
-                "key=" + vars.ServiceKey +
-                "&lon=" + position.coords.longitude +
-                "&lat=" + position.coords.latitude +
-                "&page=" + vars.pageNo +
-                "&row=" + vars.numOfRows
+      // startList() {
+        // if (window.navigator.geolocation) {
+        //   window.navigator.geolocation.getCurrentPosition(
+        //     position => {
+        //       let url = this.checkOpCode() + "?" +
+        //         "key=" + vars.ServiceKey +
+        //         "&lon=" + '36.355176' +
+        //         "&lat=" + '127.298694' +
+        //         "&page=" + vars.pageNo +
+        //         "&row=" + vars.numOfRows
 
-              api.get(url)
-                .then((res) => {
-                  let payloadData = res.data.response.body.items
-                  if (payloadData.item.length > 1) {
-                    this.dataList.push(...payloadData.item)
-                  } else if (payloadData) {
-                    this.dataList.push(payloadData.item)
-                  } else {
-                    console.log('there is no Hospital')
-                  }
-                })
-            },
-            error => {
-              alert("위치 정보를 허용해주세요.");
+        //       api.get(url)
+        //         .then((res) => {
+        //           let payloadData = res.data.response.body.items
+        //           if (payloadData.item.length > 1) {
+        //             this.dataList.push(...payloadData.item)
+        //           } else if (payloadData) {
+        //             this.dataList.push(payloadData.item)
+        //           } else {
+        //             console.log('there is no Hospital')
+        //           }
+        //         })
+        //     },
+        //     error => {
+        //       alert("위치 정보를 허용해주세요.");
+        //     }
+        //   );
+        // } else {
+        //   alert("GPS를 지원하지 않습니다.");
+        // }
+        
+      // },
+      makeList () {
+        let url = this.checkOpCode() + "?" +
+          "key=" + vars.ServiceKey +
+          "&lon=127.298694" + 
+          "&lat=36.355176" +
+          "&page=" + vars.pageNo +
+          "&row=" + vars.numOfRows
+
+        api.get(url)
+          .then((res) => {
+            console.log(res)
+            let payloadData = res.data.response.body.items
+            if (payloadData.item.length > 1) {
+              this.dataList.push(...payloadData.item)
+            } else if (payloadData) {
+              this.dataList.push(payloadData.item)
+            } else {
+              console.log('there is no Hospital')
             }
-          );
-        } else {
-          alert("GPS를 지원하지 않습니다.");
-        }
+          })
+          this.$store.commit('setListItems', this.dataList)
       }
     },
     mounted() {
-      this.startList()
+      this.makeList()
     },
     watch: {}
   }
