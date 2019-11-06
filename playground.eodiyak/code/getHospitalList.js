@@ -47,6 +47,14 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
   // flag == 3 지역으로 찾기
 
   dgName = (dgName!=undefined)?dgName.replace(/ /gi, ""):"" //중간띄어쓰기 처리
+  console.log("this is newest log3333", locality, locationName)
+  if(locationName != undefined){ // 어디약,어디메디 처럼 어디 가 들어오면 '가까운'으로 처리
+    if(locationName.indexOf("어디") >=0){
+      locality = true;
+      isLocal = true;
+    }
+  }
+  console.log("this is test", locality, locationName)
 
   if(isLocal){
     if (baby == true) { //달빛병원 호출
@@ -93,6 +101,13 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
         + "&numOfRows=" + num
     }else{
       //지역정보를 하나도 못찾았을 경우의 throw를 만들어줘야한다
+      //오 일단은 그냥 isLocal로 해주자
+      url += "&WGS84_LON=" + position['myPos']['longitude']
+      + "&WGS84_LAT=" + position['myPos']['latitude']
+      + "&pageNo=" + pageNo
+      + "&numOfRows=" + num
+      isLocal = true;
+      flag = 1;
     }
   }
   var searchRes = http.getUrl(url, options)
