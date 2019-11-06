@@ -7,7 +7,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    infoDetail : []
+    infoDetail : [],
+    listItems: []
   },
   mutations: {
     setInfoDetail(state, info) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     },
     stateClear(state) {
       state.infoDetail = []
+    },
+    setListItems(state, listitem) {
+      state.listItems = listitem
     }
   },
   actions: {},
