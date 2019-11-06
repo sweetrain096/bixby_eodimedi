@@ -11,14 +11,16 @@
         </button>
         <div class="realRunTime">{{timeFormat(dataInfo.dutyTime1s)}} ~ {{timeFormat(dataInfo.dutyTime1c)}}</div>
         </div>
-      <div class="call">
-        <button class="callImg">
-            <i class="fas fa-phone-alt phone"></i>
-        </button>
-        <div class="callText">
-            {{dataInfo.dutyTel1}}
+      <a :href="`tel:${dataInfo.dutyTel1}`" style="text-decoration: none !important;"> 
+        <div class="call">
+          <button class="callImg">
+              <i class="fas fa-phone-alt phone"></i>
+          </button>
+          <div class="callText">
+              {{dataInfo.dutyTel1}}
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </template>
@@ -150,7 +152,7 @@ export default {
     outline: 0;
     border-radius: 50%;
     display: inline-block;
-    margin: 0px 5px 0px 0px;
+    margin: -3px 5px -3px 0px;
     padding: 0px 10px 0px 5px;
     text-align: center;
     background-color: white;
@@ -187,7 +189,7 @@ export default {
     outline: 0;
     border-radius: 50%;
     display: inline-block;
-    margin: 0px 10px 0px 2.5px;
+    margin: -3px 10px -3px 2.5px;
     text-align: center;
     background-color: white;
   }
