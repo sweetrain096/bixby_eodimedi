@@ -1,10 +1,17 @@
 <template>
-  <div id="about">
+  <div id="container">
+    <div class="about">
       <span>
         &copy;2019 —
         <strong>Team TODOC</strong>
-      </span><br><br>
-      <span>Contact US : <a class="mail" href="mailto:todoc119@gmail.com">todoc119@gmail.com</a></span>
+      </span>
+      <br />
+      <br />
+      <span>
+        Contact US :
+        <a class="mail" href="mailto:todoc119@gmail.com">todoc119@gmail.com</a>
+      </span>
+    </div>
   </div>
 </template>
 
@@ -12,8 +19,8 @@
 export default {
   methods: {
     setHeight() {
-      // let wHeight = window.screen.height;
-      // document.getElementById("about").style.height = wHeight - 149 + "px";
+      let wHeight = window.screen.height;
+      document.getElementById("container").style.height = wHeight - 149 + "px";
     }
   },
   mounted() {
@@ -22,12 +29,13 @@ export default {
 };
 </script>
 
-<style scoped>
-#about {
-  display: block;
-  bottom: 90px;
-  margin-top: 300px;;
+<style>
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .mail {
   text-decoration: none;
   color: darkgrey;
