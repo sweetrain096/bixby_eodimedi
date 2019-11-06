@@ -27,7 +27,7 @@ let params = { version: 1 }
 
 var options = {
   format: 'xmljs',
-  //cacheTime : 0
+  cacheTime : 0
 };
 
 var treatmentList = db.treatmentList
@@ -45,8 +45,17 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
   // flag == 1 병원,달빛병원,약국
   // flag == 2 내과,치과 등
   // flag == 3 지역으로 찾기
-  console.log("============================hyocode2")
-  console.log("locality : ", locality , "locationName : ", locationName)
+
+  dgName = (dgName!=undefined)?dgName.replace(/ /gi, ""):"" //중간띄어쓰기 처리
+  console.log("this is newest log3333", locality, locationName)
+  if(locationName != undefined){ // 어디약,어디메디 처럼 어디 가 들어오면 '가까운'으로 처리
+    if(locationName.indexOf("어디") >=0){
+      locality = true;
+      isLocal = true;
+    }
+  }
+  console.log("this is test", locality, locationName)
+
   if(isLocal){
     if (baby == true) { //달빛병원 호출
       ep = EndPoint
@@ -92,11 +101,16 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
         + "&numOfRows=" + num
     }else{
       //지역정보를 하나도 못찾았을 경우의 throw를 만들어줘야한다
+      //오 일단은 그냥 isLocal로 해주자
+      url += "&WGS84_LON=" + position['myPos']['longitude']
+      + "&WGS84_LAT=" + position['myPos']['latitude']
+      + "&pageNo=" + pageNo
+      + "&numOfRows=" + num
+      isLocal = true;
+      flag = 1;
     }
   }
-  console.log(url)
   var searchRes = http.getUrl(url, options)
-  console.log(searchRes)
   fn.errorHandling(searchRes)
   let results = new Array // 리턴될 변수 선언
 
@@ -144,8 +158,8 @@ module.exports.function = function getHospitalList(position, baby, dgName, local
   console.log(results)
   // results에는 근처에 있는 모든 병원의 정보가 담겨있다. 여기서 포문을 돌려서 가져온 후, 포함된다면 처리하면된다.
 
+  
   let answer = new Array()
-
   for (let i = 0; i < results.length; i++) {
     console.log("this is hyo code")
     // 사용자가 찾는 병원인가?
