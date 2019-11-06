@@ -31,7 +31,11 @@ export default {
         latitude: it.latitude,
         longitude: it.longitude
       };
-      this.$router.push({ name: "detail", params: obj });
+      if (obj.routename == "hospital") {
+        this.$router.push({ name: "detail", params: obj });
+      } else if (obj.routename == "pharmacy") {
+        this.$router.push({ name: "pdetail", params: obj });
+      }
     }
   },
   mounted() {}
@@ -40,7 +44,6 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/earlyaccess/jejugothic.css');
-@import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap');
 
 li {
   margin-bottom: 10px;
@@ -56,7 +59,7 @@ li {
   counter-reset: li;
   list-style: none;
   *list-style: decimal;
-  font-size: 18px;
+  font-size: 16px;
   padding: 0;
   margin: 45px 0px;
   height: 20px;
