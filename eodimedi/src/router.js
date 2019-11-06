@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/views/Home.vue'
-import Main from '@/views/Main.vue'
+import About from '@/views/About.vue'
 import Detail from '@/views/Detail.vue'
 import SelectHospitalSubject from '@/views/SelectHospitalSubject.vue'
 
@@ -30,5 +30,11 @@ export default new Router({
             name: 'selecthospitalsubject',
             component: SelectHospitalSubject
         },
+        {
+            path: '/about',
+            name: 'about',
+            component: About,
+        }
+
     ]
 })
